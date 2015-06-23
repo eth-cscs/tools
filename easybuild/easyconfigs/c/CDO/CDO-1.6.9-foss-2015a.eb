@@ -15,7 +15,7 @@ source_urls = ['https://code.zmaw.de/attachments/download/10198/']
 dependencies = [
     ('HDF5', '1.8.15'),
     ('netCDF', '4.3.3.1'),
-    ('YAXT', '0.3.0'),
+#    ('YAXT', '0.3.0'),
 ]
 
 configopts = "--with-hdf5=$EBROOTHDF5 --with-netcdf=$EBROOTNETCDF"
