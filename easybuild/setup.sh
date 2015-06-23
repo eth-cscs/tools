@@ -16,8 +16,8 @@ if [[ -z "$1" ]]; then
        export PROJ="/scratch/daint/jenscscs/"$hostName
     else
        export PROJ=$APPS
-       export EASYBUILD_REPOSITORYPATH=/apps/common/tools/,easybuild/ebfiles_repo/
-       export EASYBUILD_REPOSITORY=GitRepository
+#       export EASYBUILD_REPOSITORYPATH=/apps/common/tools/,easybuild/ebfiles_repo/
+#       export EASYBUILD_REPOSITORY=GitRepository
     fi
 else
     export PROJ=${1}
