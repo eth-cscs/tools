@@ -1,4 +1,4 @@
-# Built with EasyBuild version 2.1.1 on 2015-06-25_17-19-25
+# Built with EasyBuild version 2.1.1 on 2015-06-25_17-28-03
 easyblock = 'Toolchain'
 
 name = 'CrayGNU'
@@ -20,8 +20,8 @@ moduleclass = 'toolchain'
 buildstats = [{
     "easybuild-framework_version": "2.1.1",
     "easybuild-easyblocks_version": "2.1.1",
-    "timestamp": 1435245561,
-    "build_time": 0.72,
+    "timestamp": 1435246079,
+    "build_time": 2.96,
     "install_size": 1675,
     "command_line": ['--buildpath=/dev/shm/perettig', '--experimental', '--external-modules-metadata=cray-netcdf/4.3.2,cray-hdf5/1.8.13,cray-hdf5-parallel/1.8.13', '--force', '--installpath=/users/perettig/eb-test/', '--optarch=sandybridge', '--prefix=/users/perettig/eb-test/', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/', '--robot=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/software/EasyBuild/2.1.1/lib64/python2.6/site-packages/easybuild_easyconfigs-2.1.1-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:', '--set-gid-bit', '--sourcepath=/users/perettig/eb-test/sources', '--sticky-bit', '--umask=002', 'CrayGNU-5.2.40.eb'],
     "modules_tool": ('EnvironmentModulesC', '/opt/modules/3.2.10.3/bin/modulecmd', '3.2.10'),
