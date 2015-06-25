@@ -16,9 +16,9 @@ if [[ -z "$1" ]]; then
        export PROJ="/scratch/daint/jenscscs/"$hostName
     else # if installing on default apps path, then resulting easyconfig file needs to be pushed to git repository
        export PROJ=$APPS
-#       export EASYBUILD_REPOSITORYPATH=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/ # if using private key
+#       export EASYBUILD_REPOSITORYPATH="git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/"$hostName # if using private key
        if [[ -z "$EASYBUILD_REPOSITORYPATH" ]]; then
-           export EASYBUILD_REPOSITORYPATH="https://github.com/eth-cscs/tools.git,easybuild/ebfiles_repo/"$hostName"/"
+           export EASYBUILD_REPOSITORYPATH="https://github.com/eth-cscs/tools.git,easybuild/ebfiles_repo/"$hostName
        fi
        export EASYBUILD_REPOSITORY=GitRepository
     fi
