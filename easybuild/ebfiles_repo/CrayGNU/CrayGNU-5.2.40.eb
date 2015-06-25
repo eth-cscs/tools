@@ -1,4 +1,4 @@
-# Built with EasyBuild version 2.1.1 on 2015-06-25_14-39-06
+# Built with EasyBuild version 2.1.1 on 2015-06-25_14-39-46
 easyblock = 'Toolchain'
 
 name = 'CrayGNU'
@@ -20,10 +20,10 @@ moduleclass = 'toolchain'
 buildstats = [{
     "easybuild-framework_version": "2.1.1",
     "easybuild-easyblocks_version": "2.1.1",
-    "timestamp": 1435235941,
-    "build_time": 0.74,
+    "timestamp": 1435235982,
+    "build_time": 0.71,
     "install_size": 1659,
-    "command_line": ['--buildpath=/dev/shm/perettig', '--experimental', '--external-modules-metadata=cray-netcdf/4.3.2,cray-hdf5/1.8.13,cray-hdf5-parallel/1.8.13', '--force', '--installpath=/tmp/eb', '--optarch=sandybridge', '--prefix=/tmp/eb', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/', '--robot=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/software/EasyBuild/2.1.1/lib64/python2.6/site-packages/easybuild_easyconfigs-2.1.1-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:', '--set-gid-bit', '--sourcepath=/tmp/eb/sources', '--umask=000', 'CrayGNU-5.2.40.eb'],
+    "command_line": ['--buildpath=/dev/shm/perettig', '--experimental', '--external-modules-metadata=cray-netcdf/4.3.2,cray-hdf5/1.8.13,cray-hdf5-parallel/1.8.13', '--force', '--installpath=/tmp/eb', '--optarch=sandybridge', '--prefix=/tmp/eb', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/', '--robot=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/software/EasyBuild/2.1.1/lib64/python2.6/site-packages/easybuild_easyconfigs-2.1.1-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:', '--set-gid-bit', '--sourcepath=/tmp/eb/sources', '--umask=002', 'CrayGNU-5.2.40.eb'],
     "modules_tool": ('EnvironmentModulesC', '/opt/modules/3.2.10.3/bin/modulecmd', '3.2.10'),
     "core_count": 16,
     "cpu_model": "Intel(R) Xeon(R) CPU E5-2670 0 @ 2.60GHz",
