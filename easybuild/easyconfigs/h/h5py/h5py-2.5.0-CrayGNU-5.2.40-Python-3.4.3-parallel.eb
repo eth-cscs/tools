@@ -23,7 +23,7 @@ versionsuffix = '-%s-%s%s' % (python, pyver, hdf5suff)
 
 dependencies = [
     (python, pyver),
-    ('cray-hdf5-parallel/1.8.13', EXTERNAL_MODULE),
+    ('cray-hdf5-parallel/1.8.14', EXTERNAL_MODULE),
 ]
 
 #buildopts = '--mpi'
