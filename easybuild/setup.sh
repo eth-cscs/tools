@@ -24,6 +24,8 @@ if [[ -z "$1" ]]; then
     fi
 else
     export PROJ=${1}
+    export EASYBUILD_REPOSITORYPATH=${1}/easybuild/ebfiles_repo/
+    export EASYBUILD_REPOSITORY=FileRepository
 fi
 
 # Switch environment modules (set PATH varible)
@@ -64,7 +66,7 @@ fi
 # /apps/common = custom cscs easyblocks
 export PYTHONPATH=$PYTHONPATH:/apps/common:/apps/common/gitpython/lib/python2.7/site-packages/
 env | grep EASYBUILD
-echo $PYTHONPATH
+echo PYTHONPATH=$PYTHONPATH
 
 echo "Updating \$MODULEPATH..."
 mkdir -p $EASYBUILD_PREFIX/modules/all

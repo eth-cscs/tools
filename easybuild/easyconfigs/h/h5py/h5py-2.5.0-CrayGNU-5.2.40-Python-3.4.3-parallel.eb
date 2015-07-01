@@ -28,9 +28,9 @@ dependencies = [
 
 #buildopts = '--mpi'
 
-#sanity_check_paths = {
-#    'files': ['lib/python%(pv)s/site-packages/%%(name)s-%%(version)s-py%(pv)s-linux-x86_64.egg' % {'pv': pyshortver}],
-#    'dirs': [],
-#}
+sanity_check_paths = {
+    'files': ['lib/python%(pv)s/site-packages/%%(name)s-%%(version)s-py%(pv)s-linux-x86_64.egg' % {'pv': pyshortver}],
+    'dirs': [],
+}
 
 moduleclass = 'data'
