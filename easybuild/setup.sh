@@ -4,7 +4,7 @@
 hostName=${HOSTNAME//[0-9]/}
 
 # Check host name
-if [[ "$hostName" != "daint" && "$hostName" != "dora" && "$hostName" != "santis" && "$hostName" != "ela" && "$hostName" != "castor" && "$hostName" != "pilatus" ]] ; then
+if [[ "$hostName" != "daint" && "$hostName" != "dora" && "$hostName" != "santis" && "$hostName" != "ela" && "$hostName" != "castor" && "$hostName" != "pilatus" && "$hostName" != "brisi" ]] ; then
     errorMessage="Not supported host name :""$hostName"
     echo $errorMessage
     exit
@@ -30,7 +30,7 @@ fi
 
 # Switch environment modules (set PATH varible)
 echo "Switching to environment modules ..."
-if [[ "$hostName" == "daint" || "$hostName" == "dora" || "$hostName" == "santis" ]] ; then
+if [[ "$hostName" == "daint" || "$hostName" == "dora" || "$hostName" == "santis" || "$hostName" == "brisi" ]] ; then
     source /opt/modules/3.2.10.3/init/bash
     export PATH=/opt/modules/3.2.10.3/bin/:$PATH
 elif [[ "$hostName" == "castor" ]] ; then
@@ -41,7 +41,7 @@ fi
 
 # Set EasyBuild variables
 echo "Configuring EasyBuild on `hostname` ..."
-if [[ "$hostName" == "daint" || "$hostName" == "dora" || "$hostName" == "santis" || "$hostName" == "castor" ]] ; then
+if [[ "$hostName" == "daint" || "$hostName" == "dora" || "$hostName" == "santis" || "$hostName" == "castor" || "$hostName" == "brisi" ]] ; then
     export EASYBUILD_MODULES_TOOL=EnvironmentModulesC
 elif [[ "$hostName" == "ela" || "$hostName" == "pilatus" ]] ; then
     export EASYBUILD_MODULES_TOOL=EnvironmentModulesTcl
@@ -55,12 +55,13 @@ export EASYBUILD_BUILDPATH=/dev/shm/$USER
 export EASYBUILD_ROBOT_PATHS=/apps/common/easybuild/cscs_easyconfigs/:
 export EASYBUILD_IGNORE_OSDEPS=0
 
-if [[ "$hostName" == "daint" || "$hostName" == "dora" || "$hostName" == "santis" ]] ; then
+if [[ "$hostName" == "daint" || "$hostName" == "dora" || "$hostName" == "santis" || "$hostName" == "brisi" ]] ; then
     export EASYBUILD_EXTERNAL_MODULES_METADATA=/apps/common/easybuild/cray_external_modules_metadata.cfg
     export EASYBUILD_EXPERIMENTAL=1
     export EASYBUILD_OPTARCH=$CRAY_CPU_TARGET
-    echo "Unloading PrgEnv-cray craype cray-mpich "
-    module purge
+    echo "Purging modules..."
+#    module purge
+    module switch PrgEnv-cray PrgEnv-gnu
 fi
 
 # /apps/common = custom cscs easyblocks
