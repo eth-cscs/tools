@@ -32,7 +32,6 @@ osdependencies = [('libopenssl-devel')]
 
 # order is important!
 # package versions updated Jun 17th 2015
-exts_filter = ('PYTHONPATH="%(installdir)s:$PYTHONPATH python -c "import %(ext_name)s"', '')
 exts_list = [
     ('setuptools', '17.1.1', {
         'source_urls': ['http://pypi.python.org/packages/source/s/setuptools/'],
