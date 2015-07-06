@@ -1,0 +1,62 @@
+# Built with EasyBuild version 2.1.1 on 2015-07-03_15-05-43
+#easyblock = "PythonPackage"
+easyblock = "h5py"
+
+name = 'h5py'
+version = '2.5.0'
+
+homepage = 'http://www.h5py.org/'
+description = """HDF5 for Python (h5py) is a general-purpose Python interface to the Hierarchical Data Format library,
+ version 5. HDF5 is a versatile, mature scientific software library designed for the fast, flexible storage of enormous
+ amounts of data."""
+
+toolchain = {'name': 'CrayGNU', 'version': '5.2.40'}
+toolchainopts = {'usempi': True}
+
+source_urls = [PYPI_SOURCE]
+sources = [SOURCE_TAR_GZ]
+
+python = 'Python'
+pyver = '3.4.3'
+pyshortver = '.'.join(pyver.split('.')[0:2])
+hdf5suff = '-parallel'
+versionsuffix = '-%s-%s%s' % (python, pyver, hdf5suff)
+
+dependencies = [
+    (python, pyver),
+    ('cray-hdf5-parallel/1.8.14', EXTERNAL_MODULE),
+]
+
+#buildopts = '--mpi'
+
+sanity_check_paths = {
+    'files': ['lib/python%(pv)s/site-packages/%%(name)s-%%(version)s-py%(pv)s-linux-x86_64.egg' % {'pv': pyshortver}],
+    'dirs': [],
+}
+
+moduleclass = 'data'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.1.1",
+    "easybuild-easyblocks_version": "2.1.1",
+    "timestamp": 1435928739,
+    "build_time": 52.85,
+    "install_size": 12082424,
+    "command_line": ['--buildpath=/dev/shm/perettig', '--experimental', '--external-modules-metadata=cray-netcdf/4.3.2,cray-hdf5/1.8.13,cray-hdf5-parallel/1.8.13', '--force', '--installpath=/apps/dora/easybuild', '--optarch=haswell', '--prefix=/apps/dora/easybuild', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/dora', '--robot=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/software/EasyBuild/2.1.1/lib64/python2.6/site-packages/easybuild_easyconfigs-2.1.1-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:', '--set-gid-bit', '--sourcepath=/apps/dora/easybuild/sources', '--umask=002', 'Python-3.4.3-CrayGNU-5.2.40.eb', 'h5py-2.5.0-CrayGNU-5.2.40-Python-3.4.3-parallel.eb', 'h5py-2.5.0-CrayGNU-5.2.40-Python-3.4.3-serial.eb', 'matplotlib-1.4.3-CrayGNU-5.2.40-Python-3.4.3.eb', 'netcdf4-python-1.1.8-CrayGNU-5.2.40-Python-3.4.3.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/opt/modules/3.2.10.3/bin/modulecmd', '3.2.10'),
+    "core_count": 20,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz",
+    "cpu_speed": 2300.082,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=/opt/gcc/4.9.2/bin/../snos/bin/gcc; COLLECT_LTO_WRAPPER=/opt/gcc/4.9.2/snos/libexec/gcc/x86_64-suse-linux/4.9.2/lto-wrapper; Target: x86_64-suse-linux; Configured with: ../cray-gcc-4.9.2/configure --prefix=/opt/gcc/4.9.2/snos --disable-nls --libdir=/opt/gcc/4.9.2/snos/lib --enable-languages=c,c++,fortran --with-gxx-include-dir=/opt/gcc/4.9.2/snos/include/g++ --with-slibdir=/opt/gcc/4.9.2/snos/lib --with-system-zlib --enable-shared --enable-__cxa_atexit --build=x86_64-suse-linux --with-ppl --with-cloog; Thread model: posix; gcc version 4.9.2 20141030 (Cray Inc.) (GCC) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "dora105",
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP2",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Jul 28 2014, 08:24:16) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/opt/gcc/4.9.2/bin/gcc",
+    "system_python_path": "/apps/dora/easybuild/software/Python/3.4.3-CrayGNU-5.2.40/bin/python",
+}]
