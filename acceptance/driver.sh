@@ -4,7 +4,7 @@ source ~/.profile
 
 run_id=$HOSTNAME-$(date +"%m_%d_%Y_%H_%M")
 
-sleep_time=1
+sleep_time=1200
 
 module load cudatoolkit/6.5.14 
 
