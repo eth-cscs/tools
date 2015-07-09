@@ -1,0 +1,142 @@
+#!/bin/bash
+#location of HPL 
+HPL_DIR=`pwd`
+
+# Number of CPU cores
+CPU_CORES_PER_GPU=1
+
+export OMP_NUM_THREADS=$CPU_CORES_PER_GPU
+export MKL_NUM_THREADS=$CPU_CORES_PER_GPU
+export LD_LIBRARY_PATH=$HPL_DIR:/opt/intel/mkl/lib/intel64/:/opt/intel/composerxe/lib/intel64:/global/opt/nvidia/cudatoolkit/6.5.14/lib64:$LD_LIBRARY_PATH
+export OMP_NUM_THREADS=1
+
+export MY_CORE=$(numactl -s |awk '/physcpubind/ {print $2}')
+export CUDA_DEVICE_MAX_CONNECTIONS=32
+
+#export MONITOR_GPU=1
+export MONITOR_GPU=0
+export GPU_TEMP_WARNING=88
+
+# k40
+#export GPU_POWER_WARNING=224
+#export GPU_CLOCK_WARNING=732
+
+# k80
+export GPU_POWER_WARNING=148
+##export GPU_CLOCK_WARNING=614
+## boost off, clock set to 601
+##export GPU_CLOCK_WARNING=601
+## boost off, clock set to 640
+##export GPU_CLOCK_WARNING=640
+## # boost off, clock set to 666 - best
+##export GPU_CLOCK_WARNING=666
+##export GPU_CLOCK_WARNING=653
+##export GPU_CLOCK_WARNING=640
+##export GPU_CLOCK_WARNING=627
+##export GPU_CLOCK_WARNING=614
+export GPU_CLOCK_WARNING=601
+
+## boost on, clock set to 562 default
+#export GPU_CLOCK_WARNING=640
+
+## not as good as 666
+## boost off, clock set to 745
+##export GPU_CLOCK_WARNING=745
+
+##export TRSM_CUTOFF=36000
+##export GPU_DGEMM_SPLIT=0.8925
+##export GPU_DGEMM_SPLIT2=0.8965
+
+export TRSM_CUTOFF=34000
+#export TRSM_CUTOFF=36000
+
+#echo $HPL_DIR
+
+lrank=$OMPI_COMM_WORLD_LOCAL_RANK
+
+let "lrank = lrank%16"
+#case ${lrank} in
+case ${MY_CORE} in
+0)
+  export CUDA_VISIBLE_DEVICES=0
+  numactl --physcpubind=0 --membind=0 \
+  $HPL_DIR/xhpl
+  ;;
+1)
+  export CUDA_VISIBLE_DEVICES=1
+  numactl --physcpubind=1 --membind=0 \
+  $HPL_DIR/xhpl
+  ;;
+2)
+  export CUDA_VISIBLE_DEVICES=2
+  numactl --physcpubind=2 --membind=0 \
+  $HPL_DIR/xhpl
+  ;;
+3)
+  export CUDA_VISIBLE_DEVICES=3
+  numactl --physcpubind=3 --membind=0 \
+  $HPL_DIR/xhpl
+  ;;
+4)
+  export CUDA_VISIBLE_DEVICES=4
+  numactl --physcpubind=4 --membind=0 \
+  $HPL_DIR/xhpl
+  ;;
+5)
+  export CUDA_VISIBLE_DEVICES=5
+  numactl --physcpubind=5 --membind=0 \
+  $HPL_DIR/xhpl
+  ;;
+6)
+  export CUDA_VISIBLE_DEVICES=6
+  numactl --physcpubind=6 --membind=0 \
+  $HPL_DIR/xhpl
+  ;;
+7)
+  export CUDA_VISIBLE_DEVICES=7
+  numactl --physcpubind=7 --membind=0 \
+  $HPL_DIR/xhpl
+  ;;
+12)
+  export CUDA_VISIBLE_DEVICES=8
+  numactl --physcpubind=12 --membind=1 \
+  $HPL_DIR/xhpl
+  ;;
+13)
+  export CUDA_VISIBLE_DEVICES=9
+  numactl --physcpubind=13 --membind=1 \
+  $HPL_DIR/xhpl
+  ;;
+14)
+  export CUDA_VISIBLE_DEVICES=10
+  numactl --physcpubind=14 --membind=1 \
+  $HPL_DIR/xhpl
+  ;;
+15)
+  export CUDA_VISIBLE_DEVICES=11
+  numactl --physcpubind=15 --membind=1 \
+  $HPL_DIR/xhpl
+  ;;
+16)
+  export CUDA_VISIBLE_DEVICES=12
+  numactl --physcpubind=16 --membind=1 \
+  $HPL_DIR/xhpl
+  ;;
+17)
+  export CUDA_VISIBLE_DEVICES=13
+  numactl --physcpubind=17 --membind=1 \
+  $HPL_DIR/xhpl
+  ;;
+18)
+  export CUDA_VISIBLE_DEVICES=14
+  numactl --physcpubind=18 --membind=1 \
+  $HPL_DIR/xhpl
+  ;;
+19)
+  export CUDA_VISIBLE_DEVICES=15
+  numactl --physcpubind=19 --membind=1 \
+  $HPL_DIR/xhpl
+  ;;
+esac
+
+
