@@ -1,4 +1,4 @@
-# Built with EasyBuild version 2.1.1 on 2015-07-09_20-27-38
+# Built with EasyBuild version 2.1.1 on 2015-07-09_21-03-57
 name = 'MVAPICH2'
 version = '2.1'
 
@@ -24,9 +24,9 @@ moduleclass = 'mpi'
 buildstats = [{
     "easybuild-framework_version": "2.1.1",
     "easybuild-easyblocks_version": "2.1.1",
-    "timestamp": 1436466453,
-    "build_time": 658.15,
-    "install_size": 51778001,
+    "timestamp": 1436468633,
+    "build_time": 651.58,
+    "install_size": 51782824,
     "command_line": ['--buildpath=/dev/shm/perettig', '--force', '--installpath=/apps/escha/easybuild', '--prefix=/apps/escha/easybuild', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/eschaln-', '--robot=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/software/EasyBuild/2.1.1/lib64/python2.6/site-packages/easybuild_easyconfigs-2.1.1-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:', '--set-gid-bit', '--sourcepath=/apps/escha/easybuild/sources', '--umask=002', 'MVAPICH2-2.1-GCC-4.8.2.eb'],
     "modules_tool": ('EnvironmentModulesC', '/usr/Modules/3.2.10/bin/modulecmd', '3.2.10'),
     "core_count": 24,
