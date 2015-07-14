@@ -26,7 +26,6 @@ sources = ['tiff-%(version)s.tar.gz']
 
 toolchain = {'name': 'CrayGNU', 'version': '5.2.40'}
 toolchainopts = {'dynamic': True}
-#toolchainopts = {'dynamic': True, 'pic': True, 'opt': True, 'optarch': True}
 
 
 
