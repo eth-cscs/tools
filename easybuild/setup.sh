@@ -3,17 +3,34 @@
 # Retrieve host name (excluding node number)
 hostName=${HOSTNAME//[0-9]/}
 
-# Check host name
-if [[ "$hostName" != "daint" && "$hostName" != "dora" && "$hostName" != "santis" && "$hostName" != "ela" && "$hostName" != "castor" && "$hostName" != "pilatus" && "$hostName" != "brisi" ]] ; then
-    errorMessage="Not supported host name :""$hostName"
-    echo $errorMessage
-    exit
+if [[ "$hostName" == "eschaln-" || "$hostName" == "keschln-" ]] ; then
+   export APPS=/apps/escha
 fi
+
+# Check host name
+case "$hostName" in
+  "daint" | "dora" | "santis" | "ela" |"castor" | "pilatus" | "brisi" | "monch" | "eschaln-" | "keschln-" )
+  echo
+  echo "Configuring EasyBuild on `hostname` ..."
+  ;;
+
+  * )
+  echo "Not supported host name: ""$hostName"
+  exit
+esac
 
 # If argument is given, use it as path for easybuild and else use default (/scratch for jenkins or $APPS for the rest)
 if [[ -z "$1" ]]; then
     if [[ $USER == "jenscscs" ]] ; then
-       export PROJ="/scratch/daint/jenscscs/"$hostName
+       if [[ "$hostName" == "daint" || "$hostName" == "dora" || "$hostName" == "santis" || "$hostName" == "brisi" || "$hostName" == "pilatus" ]] ; then
+           export PROJ=$SCRATCH"/"$hostName
+       elif [[ "$hostName" == "monch" ]] ; then
+           export PROJ="/mnt/lnec/jenscscs/"$hostName
+       elif [[ "$hostName" == "castor" ]] ; then
+           export PROJ="/users/jenscscs/sandbox/"$hostName
+       elif [[ "$hostName" == "ela" ]] ; then
+           export PROJ="/users/jenscscs/sandbox/"$hostName
+       fi
     else # if installing on default apps path, then resulting easyconfig file needs to be pushed to git repository
        export PROJ=$APPS
 #       export EASYBUILD_REPOSITORYPATH="git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/"$hostName # if using private key
@@ -33,15 +50,25 @@ echo "Switching to environment modules ..."
 if [[ "$hostName" == "daint" || "$hostName" == "dora" || "$hostName" == "santis" || "$hostName" == "brisi" ]] ; then
     source /opt/modules/3.2.10.3/init/bash
     export PATH=/opt/modules/3.2.10.3/bin/:$PATH
+elif [[ "$hostName" == "eschaln-" || "$hostName" == "keschln-" ]] ; then
+    source /usr/Modules/3.2.10/init/bash
+    export PATH=/usr/Modules/3.2.10/bin/:$PATH
+elif [[ "$hostName" == "pilatus" ]] ; then
+    export PATH=/usr/share/Modules/tcl/:$PATH
+    source /usr/share/Modules/tcl/init/bash
+elif [[ "$hostName" == "monch" ]] ; then
+    export PATH=/apps/monch/modules/3.2.10/bin/:$PATH
+    source /apps/monch/modules/3.2.10/init/bash
 elif [[ "$hostName" == "castor" ]] ; then
-    export PATH=$PROJ/Modules/$MODULE_VERSION/bin:$PATH
-else #pilatus
+    export PATH=/apps/castor/Modules/3.2.10/bin/:$PATH
+    source /apps/castor/Modules/3.2.10/init/bash
+elif [[ "$hostName" == "ela" ]] ; then
     export PATH=/usr/share/Modules/tcl/:$PATH
 fi
 
 # Set EasyBuild variables
 echo "Configuring EasyBuild on `hostname` ..."
-if [[ "$hostName" == "daint" || "$hostName" == "dora" || "$hostName" == "santis" || "$hostName" == "castor" || "$hostName" == "brisi" ]] ; then
+if [[ "$hostName" == "daint" || "$hostName" == "dora" || "$hostName" == "santis" || "$hostName" == "castor" || "$hostName" == "brisi" || "$hostName" == "monch" || "$hostName" == "eschaln-" || "$hostName" == "keschln-" ]] ; then
     export EASYBUILD_MODULES_TOOL=EnvironmentModulesC
 elif [[ "$hostName" == "ela" || "$hostName" == "pilatus" ]] ; then
     export EASYBUILD_MODULES_TOOL=EnvironmentModulesTcl
@@ -68,6 +95,7 @@ fi
 export PYTHONPATH=$PYTHONPATH:/apps/common:/apps/common/gitpython/lib/python2.7/site-packages/
 env | grep EASYBUILD
 echo PYTHONPATH=$PYTHONPATH
+echo PATH=$PATH
 
 echo "Updating \$MODULEPATH..."
 mkdir -p $EASYBUILD_PREFIX/modules/all
