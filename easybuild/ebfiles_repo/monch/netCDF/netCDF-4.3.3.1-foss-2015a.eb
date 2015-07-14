@@ -1,0 +1,86 @@
+# Built with EasyBuild version 2.1.1 on 2015-07-14_14-17-46
+# Built with EasyBuild version 2.1.1 on 2015-05-27_17-30-30
+name = 'netCDF'
+version = '4.3.3.1'
+
+homepage = 'http://www.unidata.ucar.edu/software/netcdf/'
+description = """NetCDF (network Common Data Form) is a set of software libraries 
+ and machine-independent data formats that support the creation, access, and sharing of array-oriented 
+ scientific data."""
+
+toolchain = {'name': 'foss', 'version': '2015a'}
+toolchainopts = {'pic': True, 'usempi': True}
+
+sources = [SOURCELOWER_TAR_GZ]
+source_urls = ['http://www.unidata.ucar.edu/downloads/netcdf/ftp/']
+
+dependencies = [('HDF5', '1.8.15')]
+
+builddependencies = [
+    ('CMake', '3.0.0'),
+    ('Doxygen', '1.8.7'),
+    ('cURL', '7.37.1'),
+]
+
+# make sure both static and shared libs are built
+configopts = [
+    "-DCURL_LIBRARY=$EBROOTCURL/lib/libcurl.so -DCURL_INCLUDE_DIR=$EBROOTCURL/include -DBUILD_SHARED_LIBS=ON",
+#    "-DCURL_LIBRARY=$EBROOTCURL/lib/libcurl.so -DCURL_INCLUDE_DIR=$EBROOTCURL/include -DBUILD_SHARED_LIBS=OFF",
+]
+
+sanity_check_paths = {
+    'files': ['lib64/libnetcdf.so'],
+    'dirs': [],
+}
+
+
+moduleclass = 'data'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.1.1",
+    "easybuild-easyblocks_version": "2.1.1",
+    "timestamp": 1432740630,
+    "build_time": 96.51,
+    "install_size": 12641270,
+    "command_line": ['--buildpath=/dev/shm/perettig', '--installpath=/apps/pilatus/easybuild', '--modules-tool=EnvironmentModulesTcl', '--prefix=/apps/pilatus/easybuild', '--repositorypath=/apps/pilatus/easybuild/ebfiles_repo', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs:', '--sourcepath=/apps/pilatus/easybuild/sources', '/apps/common/easybuild/cscs_easyconfigs/netCDF-4.3.3.1-foss-2015a.eb'],
+    "modules_tool": ('EnvironmentModulesTcl', '/usr/share/Modules/tcl/modulecmd.tcl', '1.146'),
+    "core_count": 32,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2670 0 @ 2.60GHz",
+    "cpu_speed": 2601.0,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/pilatus/easybuild/software/GCC/4.9.2/libexec/gcc/x86_64-unknown-linux-gnu/4.9.2/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/pilatus/easybuild/software/GCC/4.9.2 --with-local-prefix=/apps/pilatus/easybuild/software/GCC/4.9.2; Thread model: posix; gcc version 4.9.2 (GCC) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "pilatus02",
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP2",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.9 (default, May 27 2015, 15:23:24) ; [GCC 4.9.2]",
+    "system_gcc_path": "/apps/pilatus/easybuild/software/GCC/4.9.2/bin/gcc",
+    "system_python_path": "/apps/pilatus/easybuild/software/Python/2.7.9-foss-2015a/bin/python",
+}]
+
+buildstats.append({
+    "easybuild-framework_version": "2.1.1",
+    "easybuild-easyblocks_version": "2.1.1",
+    "timestamp": 1436876261,
+    "build_time": 130.58,
+    "install_size": 12568052,
+    "command_line": ['--buildpath=/dev/shm/perettig', '--installpath=/apps/monch/easybuild', '--prefix=/apps/monch/easybuild', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/monch', '--robot=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/software/EasyBuild/2.1.1/lib64/python2.6/site-packages/easybuild_easyconfigs-2.1.1-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:', '--set-gid-bit', '--sourcepath=/apps/monch/easybuild/sources', '--umask=002', 'netCDF-4.3.3.1-foss-2015a.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/apps/monch/modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 40,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2660 v2 @ 2.20GHz",
+    "cpu_speed": 2201.0,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/monch/easybuild/software/GCC/4.9.2/libexec/gcc/x86_64-unknown-linux-gnu/4.9.2/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/monch/easybuild/software/GCC/4.9.2 --with-local-prefix=/apps/monch/easybuild/software/GCC/4.9.2; Thread model: posix; gcc version 4.9.2 (GCC) ; ",
+    "glibc_version": "2.12",
+    "hostname": "monch03",
+    "os_name": "centos",
+    "os_type": "Linux",
+    "os_version": "6.4",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.6 (r266:84292, Feb 22 2013, 00:00:18) ; [GCC 4.4.7 20120313 (Red Hat 4.4.7-3)]",
+    "system_gcc_path": "/apps/monch/easybuild/software/GCC/4.9.2/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+})
