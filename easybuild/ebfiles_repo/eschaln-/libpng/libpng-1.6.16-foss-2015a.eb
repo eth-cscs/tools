@@ -1,0 +1,45 @@
+# Built with EasyBuild version 2.1.1 on 2015-07-28_23-38-23
+easyblock = 'ConfigureMake'
+
+name = 'libpng'
+version = '1.6.16'
+
+homepage = 'http://www.libpng.org/pub/png/libpng.html'
+description = "libpng is the official PNG reference library"
+
+toolchain = {'name': 'foss', 'version': '2015a'}
+toolchainopts = {'pic': True}
+
+source_urls = [SOURCEFORGE_SOURCE]
+sources = [SOURCELOWER_TAR_GZ]
+
+dependencies = [('zlib', '1.2.8')]
+
+configopts = "--with-pic"
+
+moduleclass = 'lib'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.1.1",
+    "easybuild-easyblocks_version": "2.1.1",
+    "timestamp": 1438119499,
+    "build_time": 10.01,
+    "install_size": 2284731,
+    "command_line": ['--buildpath=/dev/shm/perettig', '--installpath=/apps/escha/easybuild', '--prefix=/apps/escha/easybuild', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/eschaln-', '--robot=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/software/EasyBuild/2.1.1/lib64/python2.6/site-packages/easybuild_easyconfigs-2.1.1-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:', '--set-gid-bit', '--sourcepath=/apps/escha/easybuild/sources', '--umask=002', 'matplotlib-1.4.3-foss-2015a-Python-2.7.10.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/usr/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 24,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz",
+    "cpu_speed": 2601.0,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Utilisation des specs internes.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/escha/easybuild/software/GCC/4.9.2/libexec/gcc/x86_64-unknown-linux-gnu/4.9.2/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configuré avec: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/escha/easybuild/software/GCC/4.9.2 --with-local-prefix=/apps/escha/easybuild/software/GCC/4.9.2; Modèle de thread: posix; gcc version 4.9.2 (GCC) ; ",
+    "glibc_version": "2.12",
+    "hostname": "eschaln-0001",
+    "os_name": "RHEL",
+    "os_type": "Linux",
+    "os_version": "6.6",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.6 (r266:84292, Nov 21 2013, 10:50:32) ; [GCC 4.4.7 20120313 (Red Hat 4.4.7-4)]",
+    "system_gcc_path": "/apps/escha/easybuild/software/GCC/4.9.2/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+}]
