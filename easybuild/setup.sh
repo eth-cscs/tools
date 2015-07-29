@@ -81,6 +81,7 @@ export EASYBUILD_UMASK=002
 export EASYBUILD_BUILDPATH=/dev/shm/$USER
 export EASYBUILD_ROBOT_PATHS=/apps/common/easybuild/cscs_easyconfigs/:
 export EASYBUILD_IGNORE_OSDEPS=0
+export EASYBUILD_SOURCEPATH=/apps/common/easybuild/sources/
 
 if [[ "$hostName" == "daint" || "$hostName" == "dora" || "$hostName" == "santis" || "$hostName" == "brisi" ]] ; then
     export EASYBUILD_EXTERNAL_MODULES_METADATA=/apps/common/easybuild/cray_external_modules_metadata.cfg
@@ -102,4 +103,10 @@ mkdir -p $EASYBUILD_PREFIX/modules/all
 module use $EASYBUILD_PREFIX/modules/all
 
 echo "Loading EasyBuild..."
-module load /apps/common/easybuild/modules/all/EasyBuild/2.1.1
+if [[ $USER == "jenscscs" ]] ; then
+   module load /apps/common/easybuild/modules/all/EasyBuild/2.2.0
+else
+   module load /apps/common/easybuild/modules/all/EasyBuild/2.1.1
+fi
+
+
