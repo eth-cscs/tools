@@ -1,7 +1,7 @@
 easyblock = "Toolchain"
 
 name = 'gmvapich2'
-version = '2015a'
+version = '1.7.20.mch'
 
 homepage = '(none)'
 description = """GNU Compiler Collection (GCC) based compiler toolchain,
@@ -9,11 +9,16 @@ description = """GNU Compiler Collection (GCC) based compiler toolchain,
 
 toolchain = {'name': 'dummy', 'version': 'dummy'}
 
+compname = 'GCC'
+compver = '4.8.2'
+comp = (compname, compver)
+
+#dependencies = [('binutils', '2.24')]
 
 # compiler toolchain dependencies
 dependencies = [
-    ('GCC/4.8.2', EXTERNAL_MODULE),
-    ('MVAPICH2/2.0.1_gnu48', EXTERNAL_MODULE),
+    comp,
+    ('MVAPICH2', '2.1', '', comp),
 ]
 
 moduleclass = 'toolchain'
