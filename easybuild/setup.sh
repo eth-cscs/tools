@@ -76,6 +76,7 @@ fi
 
 export EASYBUILD_PREFIX=${PROJ}/easybuild
 export EASYBUILD_SET_GID_BIT=1
+#export EASYBUILD_GROUP_WRITABLE_INSTALLDIR=1
 #export EASYBUILD_STICKY_BIT=1
 export EASYBUILD_UMASK=002
 export EASYBUILD_BUILDPATH=/dev/shm/$USER
@@ -105,6 +106,7 @@ module use $EASYBUILD_PREFIX/modules/all
 echo "Loading EasyBuild..."
 if [[ $USER == "jenscscs" ]] ; then
    module load /apps/common/easybuild/modules/all/EasyBuild/2.2.0
+   export EASYBUILD_GROUP_WRITABLE_INSTALLDIR=1
 else
    module load /apps/common/easybuild/modules/all/EasyBuild/2.1.1
 fi
