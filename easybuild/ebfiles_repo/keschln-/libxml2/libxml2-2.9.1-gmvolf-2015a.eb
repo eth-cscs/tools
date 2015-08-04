@@ -1,4 +1,4 @@
-# Built with EasyBuild version 2.2.0 on 2015-08-04_10-14-46
+# Built with EasyBuild version 2.2.0 on 2015-08-04_10-34-31
 easyblock = 'ConfigureMake'
 
 name = 'libxml2'
@@ -18,7 +18,7 @@ sources = [SOURCELOWER_TAR_GZ]
 
 configopts = 'CC="$CC" CXX="$CXX" --with-pic --without-python'
 
-dependencies = [('zlib', '1.2.7')]
+dependencies = [('zlib', '1.2.8')]
 
 sanity_check_paths = {
     'files': [('lib/libxml2.a', 'lib64/libxml2.a'), ('lib/libxml2.so', 'lib64/libxml2.so')],
@@ -31,10 +31,10 @@ moduleclass = 'lib'
 buildstats = [{
     "easybuild-framework_version": "2.2.0",
     "easybuild-easyblocks_version": "2.2.0",
-    "timestamp": 1438676082,
-    "build_time": 17.83,
+    "timestamp": 1438677267,
+    "build_time": 18.37,
     "install_size": 14123944,
-    "command_line": ['--buildpath=/dev/shm/piccinal', '--experimental', '--external-modules-metadata=cray-netcdf/4.3.2,cray-hdf5/1.8.13,cray-hdf5-parallel/1.8.13', '--group-writable-installdir', '--installpath=/apps/escha/easybuild', '--packagepath=/apps/escha/easybuild/packages', '--prefix=/apps/escha/easybuild', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/keschln-', '--robot=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/software/EasyBuild/2.2.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.2.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--try-toolchain="[\'gmvolf\', \'2015a\']"', '--umask=002', 'libxml2-2.9.1-gmpolf-1.4.8.eb'],
+    "command_line": ['--buildpath=/dev/shm/piccinal', '--experimental', '--external-modules-metadata=cray-netcdf/4.3.2,cray-hdf5/1.8.13,cray-hdf5-parallel/1.8.13', '--group-writable-installdir', '--installpath=/apps/escha/easybuild', '--packagepath=/apps/escha/easybuild/packages', '--prefix=/apps/escha/easybuild', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/keschln-', '--robot=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/software/EasyBuild/2.2.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.2.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--umask=002', '/users/piccinal/libxml2-2.9.1-gmvolf-2015a.eb'],
     "modules_tool": ('EnvironmentModulesC', '/usr/Modules/3.2.10/bin/modulecmd', '3.2.10'),
     "core_count": 24,
     "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz",
