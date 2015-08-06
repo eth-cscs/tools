@@ -1,0 +1,117 @@
+# Built with EasyBuild version 2.2.0 on 2015-08-04_09-53-52
+name = 'Python'
+version = '2.7.3'
+
+homepage = 'http://python.org/'
+description = "Python is a programming language that lets you work more quickly and integrate your systems more effectively."
+
+toolchain = {'name': 'gmvolf', 'version': '2015a'}
+toolchainopts = {'pic': True, 'opt': True, 'optarch': True}
+
+numpyversion = '1.6.1'
+scipyversion = '0.10.1'
+
+source_urls = ['http://www.python.org/ftp/%(namelower)s/%(version)s/']
+sources = [SOURCE_TGZ]
+
+# python needs bzip2 to build the bz2 package
+dependencies = [
+    ('bzip2', '1.0.6'),
+    ('zlib', '1.2.7'),
+    ('libreadline', '6.2'),
+    ('ncurses', '5.9'),
+#   ('OpenSSL', '1.0.1f'),  # OS dependency should be preferred for security reasons
+]
+
+osdependencies = [('openssl-devel', 'libssl-dev', 'libopenssl-devel')]
+
+# order is important!
+exts_list = [
+    ('setuptools', '0.6c11', {
+        'source_urls': ['https://pypi.python.org/packages/source/s/setuptools/'],
+    }),
+    ('pip', '1.1', {
+        'source_urls': ['https://pypi.python.org/packages/source/p/pip/'],
+    }),
+    ('nose', '1.1.2', {
+        'source_urls': ['https://pypi.python.org/packages/source/n/nose/'],
+    }),
+    ('numpy', numpyversion, {
+        'source_urls': [('http://sourceforge.net/projects/numpy/files/NumPy/%s' % numpyversion, 'download')],
+        'patches': [
+            'numpy-%s_distutils_multiple-lib-dirs.patch' % numpyversion,
+        ],
+    }),
+    ('scipy', scipyversion, {
+        'source_urls': [('http://sourceforge.net/projects/scipy/files/scipy/%s' % scipyversion, 'download')],
+    }),
+    ('mpi4py', '1.3', {
+        'source_urls': ['http://bitbucket.org/mpi4py/mpi4py/downloads/'],
+    }),
+    ('paycheck', '1.0.2', {
+        'source_urls': ['https://pypi.python.org/packages/source/p/paycheck/'],
+    }),
+    ('argparse', '1.2.1', {
+        'source_urls': ['https://pypi.python.org/packages/source/a/argparse/'],
+    }),
+    ('lockfile', '0.9.1', {
+        'source_urls': ['https://pypi.python.org/packages/source/l/lockfile/'],
+    }),
+    ('Cython', '0.17.2', {
+        'source_urls': ['http://www.cython.org/release/'],
+    }),
+    ('six', '1.1.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/s/six/'],
+    }),
+    ('dateutil', '2.1', {
+        'source_tmpl': 'python-%(name)s-%(version)s.tar.gz',
+        'source_urls': ['https://pypi.python.org/packages/source/p/python-dateutil/'],
+    }),
+    ('deap', '0.9.1', {
+        'source_urls': ['https://pypi.python.org/packages/source/d/deap/'],
+    }),
+    ('decorator', '3.4.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/d/decorator/'],
+    }),
+    ('arff', '1.1', {
+        'source_tmpl': 'liac-%(name)s-%(version)s.zip',
+        'source_urls': ['https://pypi.python.org/packages/source/l/liac-arff/'],
+    }),
+    ('pycrypto', '2.6.1', {
+        'modulename': 'Crypto',
+        'source_urls': ['http://ftp.dlitz.net/pub/dlitz/crypto/pycrypto/'],
+    }),
+    ('ecdsa', '0.8', {
+        'source_urls': ['https://pypi.python.org/packages/source/e/ecdsa/'],
+    }),
+    ('paramiko', '1.12.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/p/paramiko/'],
+    }),
+]
+
+moduleclass = 'lang'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.2.0",
+    "easybuild-easyblocks_version": "2.2.0",
+    "timestamp": 1438674826,
+    "build_time": 539.66,
+    "install_size": 198932154,
+    "command_line": ['--buildpath=/dev/shm/piccinal', '--experimental', '--external-modules-metadata=cray-netcdf/4.3.2,cray-hdf5/1.8.13,cray-hdf5-parallel/1.8.13', '--group-writable-installdir', '--installpath=/apps/escha/easybuild', '--packagepath=/apps/escha/easybuild/packages', '--prefix=/apps/escha/easybuild', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/keschln-', '--robot=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/software/EasyBuild/2.2.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.2.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--try-toolchain="[\'gmvolf\', \'2015a\']"', '--umask=002', 'Qt-4.8.5-gmpolf-1.4.8.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/usr/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 24,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz",
+    "cpu_speed": 2601.0,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=/opt/gcc/4.8.2/bin/../snos/bin/gcc; COLLECT_LTO_WRAPPER=/global/opt/gcc/4.8.2/snos/bin/../libexec/gcc/x86_64-suse-linux/4.8.2/lto-wrapper; Target: x86_64-suse-linux; Configured with: ../gcc-4.8.2/configure --prefix=/opt/gcc/4.8.2/snos --disable-nls --libdir=/opt/gcc/4.8.2/snos/lib --enable-languages=c,c++,fortran --with-gxx-include-dir=/opt/gcc/4.8.2/snos/include/g++ --with-slibdir=/opt/gcc/4.8.2/snos/lib --with-system-zlib --enable-shared --enable-__cxa_atexit --build=x86_64-suse-linux --with-mpc=/opt/gcc/mpc/0.8.1 --with-mpfr=/opt/gcc/mpfr/2.4.2 --with-gmp=/opt/gcc/gmp/4.3.2 --disable-multilib; Thread model: posix; gcc version 4.8.2 (GCC) ; ",
+    "glibc_version": "2.12",
+    "hostname": "keschln-0001",
+    "os_name": "RHEL",
+    "os_type": "Linux",
+    "os_version": "6.6",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.6 (r266:84292, Nov 21 2013, 10:50:32) ; [GCC 4.4.7 20120313 (Red Hat 4.4.7-4)]",
+    "system_gcc_path": "/opt/gcc/4.8.2/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+}]

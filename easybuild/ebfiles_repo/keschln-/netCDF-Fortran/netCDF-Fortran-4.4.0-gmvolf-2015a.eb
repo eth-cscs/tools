@@ -1,7 +1,6 @@
-# Built with EasyBuild version 2.2.0 on 2015-08-05_16-12-15
-# Built with EasyBuild version 2.1.1 on 2015-05-27_17-30-30
-name = 'netCDF'
-version = '4.3.3.1'
+# Built with EasyBuild version 2.2.0 on 2015-08-05_16-13-15
+name = 'netCDF-Fortran'
+version = '4.4.0'
 
 homepage = 'http://www.unidata.ucar.edu/software/netcdf/'
 description = """NetCDF (network Common Data Form) is a set of software libraries 
@@ -9,32 +8,15 @@ description = """NetCDF (network Common Data Form) is a set of software librarie
  scientific data."""
 
 toolchain = {'name': 'gmvolf', 'version': '2015a'}
-toolchainopts = {'pic': True, 'usempi': True}
+toolchainopts = {'pic': True}
 
 sources = [SOURCELOWER_TAR_GZ]
-source_urls = ['http://www.unidata.ucar.edu/downloads/netcdf/ftp/']
-
-dependencies = [('HDF5', '1.8.15')]
-
-postinstallcmds = [('ln -s %(installdir)s/lib64 %(installdir)s/lib')]
-
-builddependencies = [
-    ('CMake', '3.2.2'),
-    ('Doxygen', '1.8.9.1'),
-    ('cURL', '7.40.0'),
+source_urls = [
+    'ftp://ftp.unidata.ucar.edu/pub/netcdf/',
+    'ftp://ftp.unidata.ucar.edu/pub/netcdf/old',
 ]
 
-# make sure both static and shared libs are built
-configopts = [
-    "-DCURL_LIBRARY=$EBROOTCURL/lib/libcurl.so -DCURL_INCLUDE_DIR=$EBROOTCURL/include -DBUILD_SHARED_LIBS=ON",
-#    "-DCURL_LIBRARY=$EBROOTCURL/lib/libcurl.so -DCURL_INCLUDE_DIR=$EBROOTCURL/include -DBUILD_SHARED_LIBS=OFF",
-]
-
-sanity_check_paths = {
-    'files': ['lib64/libnetcdf.so'],
-    'dirs': [],
-}
-
+dependencies = [('netCDF', '4.3.3.1')]
 
 moduleclass = 'data'
 
@@ -42,10 +24,10 @@ moduleclass = 'data'
 buildstats = [{
     "easybuild-framework_version": "2.2.0",
     "easybuild-easyblocks_version": "2.2.0",
-    "timestamp": 1438783930,
-    "build_time": 33.11,
-    "install_size": 12997132,
-    "command_line": ['--buildpath=/dev/shm/perettig', '--force', '--group-writable-installdir', '--installpath=/apps/escha/easybuild', '--packagepath=/apps/escha/easybuild/packages', '--prefix=/apps/escha/easybuild', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/keschln-', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--umask=002', 'netCDF-4.3.3.1-gmvolf-2015a.eb'],
+    "timestamp": 1438783991,
+    "build_time": 37.27,
+    "install_size": 4258611,
+    "command_line": ['--buildpath=/dev/shm/perettig', '--group-writable-installdir', '--installpath=/apps/escha/easybuild', '--packagepath=/apps/escha/easybuild/packages', '--prefix=/apps/escha/easybuild', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/keschln-', '--robot=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/software/EasyBuild/2.2.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.2.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--umask=002', 'netCDF-Fortran-4.4.0-gmvolf-2015a.eb'],
     "modules_tool": ('EnvironmentModulesC', '/usr/Modules/3.2.10/bin/modulecmd', '3.2.10'),
     "core_count": 24,
     "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz",
