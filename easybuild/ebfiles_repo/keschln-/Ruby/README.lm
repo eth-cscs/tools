@@ -1,0 +1,13 @@
+Installed gem rb-gsl on eschaln (Aug 11th 2015) upon request in CSCS ticket #20260:
+ ssh escha-login3.cscs.ch
+ module use $APPS/easybuild/modules/all/
+ source /apps/common/easybuild/setup.sh
+ export PATH=/opt/cray/cce/8.3.10/cray-binutils/x86_64-unknown-linux-gnu/bin:$PATH (see CSCS ticket #20137)
+ module load GSL/1.16-gmvolf-2015a
+ module load Ruby/2.2.2-gmvolf-2015a
+ gem install rb-gsl (see https://github.com/SciRuby/rb-gsl)
+ 
+New naming convention for this gem: gsl instead of rb-gsl (see gem list).
+Folder for gem gsl: /apps/escha/easybuild/software/Ruby/2.2.2-gmvolf-2015a/lib/ruby/gems/2.2.0/gems/gsl-1.16.0.6
+Test subfolder ./test contains the output test.out of the test command "ruby -I. gsl_test.rb";
+the subfolder ./test/gsl contains the output test.out of all tests in this subfolder ("ruby -I.. <testname>.rb"). 
