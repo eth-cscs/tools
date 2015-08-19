@@ -1,0 +1,83 @@
+# Built with EasyBuild version 2.2.0 on 2015-08-19_15-12-13
+# Built with EasyBuild version 2.2.0 on 2015-08-19_14-44-39
+easyblock = "PythonPackage"
+
+name = 'pysqlite'
+version = '2.6.3'
+
+homepage = 'https://pypi.python.org/pypi/pysqlite'
+description = """pysqlite is an interface to the SQLite 3.x embedded relational database engine.
+ It is almost fully compliant with the Python database API version 2.0 also exposes the unique features of SQLite."""
+
+toolchain = {'name': 'CrayGNU', 'version': '5.2.40'}
+
+source_urls = [PYPI_SOURCE]
+sources = [SOURCELOWER_TAR_GZ]
+
+python = 'Python'
+pyver = '2.7.9'
+pyshortver = '.'.join(pyver.split('.')[:2])
+versionsuffix = '-%s-%s' % (python, pyver)
+
+dependencies = [
+    (python, pyver),
+    ('SQLite', '3.8.8.1'),  # also dependency for Python itself
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%s/site-packages/%%(name)s%%(version_major)s' % pyshortver],
+}
+
+options = {'modulename': '%(name)s%(version_major)s'}
+
+moduleclass = 'tools'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.2.0",
+    "easybuild-easyblocks_version": "2.2.0",
+    "timestamp": 1439988279,
+    "build_time": 4.35,
+    "install_size": 587308,
+    "command_line": ['--buildpath=/dev/shm/piccinal', '--experimental', '--external-modules-metadata=cray-netcdf/4.3.2,cray-hdf5/1.8.13,cray-hdf5-parallel/1.8.13', '--group-writable-installdir', '--installpath=/apps/dora/sandbox/easybuild', '--optarch=haswell', '--packagepath=/apps/dora/sandbox/easybuild/packages', '--prefix=/apps/dora/sandbox/easybuild', '--repositorypath=/apps/dora/sandbox/easybuild/ebfiles_repo/', '--robot=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/software/EasyBuild/2.2.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.2.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--try-toolchain="[\'CrayGNU\', \'5.2.40\']"', '--umask=002', 'IPython-3.2.0-foss-2015a-Python-2.7.9.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/opt/modules/3.2.10.3/bin/modulecmd', '3.2.10'),
+    "core_count": 20,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz",
+    "cpu_speed": 2299.912,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=/opt/gcc/4.9.2/bin/../snos/bin/gcc; COLLECT_LTO_WRAPPER=/opt/gcc/4.9.2/snos/libexec/gcc/x86_64-suse-linux/4.9.2/lto-wrapper; Target: x86_64-suse-linux; Configured with: ../cray-gcc-4.9.2/configure --prefix=/opt/gcc/4.9.2/snos --disable-nls --libdir=/opt/gcc/4.9.2/snos/lib --enable-languages=c,c++,fortran --with-gxx-include-dir=/opt/gcc/4.9.2/snos/include/g++ --with-slibdir=/opt/gcc/4.9.2/snos/lib --with-system-zlib --enable-shared --enable-__cxa_atexit --build=x86_64-suse-linux --with-ppl --with-cloog; Thread model: posix; gcc version 4.9.2 20141030 (Cray Inc.) (GCC) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "dora102",
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP2",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Jul 28 2014, 08:24:16) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/opt/gcc/4.9.2/bin/gcc",
+    "system_python_path": "/apps/dora/sandbox/easybuild/software/Python/2.7.9-CrayGNU-5.2.40/bin/python",
+}]
+
+buildstats.append({
+    "easybuild-framework_version": "2.2.0",
+    "easybuild-easyblocks_version": "2.2.0",
+    "timestamp": 1439989928,
+    "build_time": 4.29,
+    "install_size": 583492,
+    "command_line": ['--buildpath=/dev/shm/piccinal', '--experimental', '--external-modules-metadata=cray-netcdf/4.3.2,cray-hdf5/1.8.13,cray-hdf5-parallel/1.8.13', '--group-writable-installdir', '--installpath=/apps/dora/easybuild', '--optarch=haswell', '--packagepath=/apps/dora/easybuild/packages', '--prefix=/apps/dora/easybuild', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/dora', '--robot=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/software/EasyBuild/2.2.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.2.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--umask=002', 'util-linux-2.26.1-CrayGNU-5.2.40.eb', 'requests-2.7.0-CrayGNU-5.2.40-Python-2.7.9.eb', 'pysqlite-2.6.3-CrayGNU-5.2.40-Python-2.7.9.eb', 'ZeroMQ-3.2.5-CrayGNU-5.2.40.eb', 'Tcl-8.6.3-CrayGNU-5.2.40.eb', 'SQLite-3.8.8.1-CrayGNU-5.2.40.eb', 'Pygments-2.0.2-CrayGNU-5.2.40-Python-2.7.9.eb', 'PyZMQ-14.7.0-CrayGNU-5.2.40-Python-2.7.9-zmq3.eb', 'OpenPGM-5.2.122-CrayGNU-5.2.40.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/opt/modules/3.2.10.3/bin/modulecmd', '3.2.10'),
+    "core_count": 20,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz",
+    "cpu_speed": 2299.912,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=/opt/gcc/4.9.2/bin/../snos/bin/gcc; COLLECT_LTO_WRAPPER=/opt/gcc/4.9.2/snos/libexec/gcc/x86_64-suse-linux/4.9.2/lto-wrapper; Target: x86_64-suse-linux; Configured with: ../cray-gcc-4.9.2/configure --prefix=/opt/gcc/4.9.2/snos --disable-nls --libdir=/opt/gcc/4.9.2/snos/lib --enable-languages=c,c++,fortran --with-gxx-include-dir=/opt/gcc/4.9.2/snos/include/g++ --with-slibdir=/opt/gcc/4.9.2/snos/lib --with-system-zlib --enable-shared --enable-__cxa_atexit --build=x86_64-suse-linux --with-ppl --with-cloog; Thread model: posix; gcc version 4.9.2 20141030 (Cray Inc.) (GCC) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "dora102",
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP2",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Jul 28 2014, 08:24:16) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/opt/gcc/4.9.2/bin/gcc",
+    "system_python_path": "/apps/dora/easybuild/software/Python/2.7.9-CrayGNU-5.2.40/bin/python",
+})
