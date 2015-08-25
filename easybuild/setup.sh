@@ -30,12 +30,14 @@ if [[ -z "$1" ]]; then
            export PROJ="/users/jenscscs/sandbox/"$hostName
        elif [[ "$hostName" == "ela" ]] ; then
            export PROJ="/users/jenscscs/sandbox/"$hostName
+       elif [[ "$hostName" == "eschaln-" || "$hostName" == "keschln-" ]] ; then
+           export PROJ="/lus/scratch/jenscscs/sandbox/"$hostName
        fi
     else # if installing on default apps path, then resulting easyconfig file needs to be pushed to git repository
        export PROJ=$APPS
-#       export EASYBUILD_REPOSITORYPATH="git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/"$hostName # if using private key
        if [[ -z "$EASYBUILD_REPOSITORYPATH" ]]; then
-           export EASYBUILD_REPOSITORYPATH="https://github.com/eth-cscs/tools.git,easybuild/ebfiles_repo/"$hostName
+           export EASYBUILD_REPOSITORYPATH="git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/"$hostName # if using private key
+#           export EASYBUILD_REPOSITORYPATH="https://github.com/eth-cscs/tools.git,easybuild/ebfiles_repo/"$hostName
        fi
        export EASYBUILD_REPOSITORY=GitRepository
     fi
@@ -82,12 +84,20 @@ export EASYBUILD_UMASK=002
 export EASYBUILD_BUILDPATH=/dev/shm/$USER
 export EASYBUILD_ROBOT_PATHS=/apps/common/easybuild/cscs_easyconfigs/:
 export EASYBUILD_IGNORE_OSDEPS=0
-export EASYBUILD_SOURCEPATH=/apps/common/easybuild/sources/
 
+if [[ $USER == "jenscscs" ]] ; then
+    export EASYBUILD_SOURCEPATH=/lus/scratch/jenscscs/sources/
+else
+    export EASYBUILD_SOURCEPATH=/apps/common/easybuild/sources/
+fi
+
+
+#if [[ "$hostName" == "daint" || "$hostName" == "dora" || "$hostName" == "santis" || "$hostName" == "brisi" || "$hostName" == "eschaln-" || "$hostName" == "keschln-" ]] ; then
 if [[ "$hostName" == "daint" || "$hostName" == "dora" || "$hostName" == "santis" || "$hostName" == "brisi" ]] ; then
     export EASYBUILD_EXTERNAL_MODULES_METADATA=/apps/common/easybuild/cray_external_modules_metadata.cfg
     export EASYBUILD_EXPERIMENTAL=1
     export EASYBUILD_OPTARCH=$CRAY_CPU_TARGET
+    export CRAYPE_LINK_TYPE=dynamic
     echo "Purging modules..."
 #    module purge
     module switch PrgEnv-cray PrgEnv-gnu
@@ -104,11 +114,11 @@ mkdir -p $EASYBUILD_PREFIX/modules/all
 module use $EASYBUILD_PREFIX/modules/all
 
 echo "Loading EasyBuild..."
-if [[ $USER == "jenscscs" ]] ; then
+#if [[ $USER == "jenscscs" ]] ; then
    module load /apps/common/easybuild/modules/all/EasyBuild/2.2.0
    export EASYBUILD_GROUP_WRITABLE_INSTALLDIR=1
-else
-   module load /apps/common/easybuild/modules/all/EasyBuild/2.1.1
-fi
+#else
+#   module load /apps/common/easybuild/modules/all/EasyBuild/2.1.1
+#fi
 
 
