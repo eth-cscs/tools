@@ -1,4 +1,4 @@
-# Built with EasyBuild version 2.3.0 on 2015-09-14_16-48-46
+# Built with EasyBuild version 2.3.0 on 2015-09-14_17-30-43
 name = 'ScaLAPACK'
 version = '2.0.2'
 
@@ -29,10 +29,10 @@ moduleclass = 'numlib'
 buildstats = [{
     "easybuild-framework_version": "2.3.0",
     "easybuild-easyblocks_version": "2.3.0",
-    "timestamp": 1442242122,
-    "build_time": 205.52,
-    "install_size": 10242538,
-    "command_line": ['--buildpath=/dev/shm/perettig', '--force', '--group-writable-installdir', '--installpath=/apps/escha/easybuild', '--packagepath=/apps/escha/easybuild/packages', '--prefix=/apps/escha/easybuild', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/keschln-', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--umask=002', '/apps/common/easybuild/cscs_easyconfigs/s/ScaLAPACK/ScaLAPACK-2.0.2-gmvapich2-2015b-OpenBLAS-0.2.13-LAPACK-3.5.0.eb'],
+    "timestamp": 1442244638,
+    "build_time": 204.9,
+    "install_size": 10245892,
+    "command_line": ['--buildpath=/dev/shm/perettig', '--force', '--group-writable-installdir', '--installpath=/apps/escha/easybuild', '--packagepath=/apps/escha/easybuild/packages', '--prefix=/apps/escha/easybuild', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/keschln-', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--umask=002', 'FFTW-3.3.4-gmvapich2-2015b.eb', 'ScaLAPACK-2.0.2-gmvapich2-2015b-OpenBLAS-0.2.13-LAPACK-3.5.0.eb', 'gmvolf-2015b.eb', 'OpenBLAS-0.2.13-GCC-4.8.2-EB-LAPACK-3.5.0.eb'],
     "modules_tool": ('EnvironmentModulesC', '/usr/Modules/3.2.10/bin/modulecmd', '3.2.10'),
     "core_count": 24,
     "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz",
