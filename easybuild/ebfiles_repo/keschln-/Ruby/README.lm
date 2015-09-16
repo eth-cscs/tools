@@ -11,3 +11,12 @@ New naming convention for this gem: gsl instead of rb-gsl (see gem list).
 Folder for gem gsl: /apps/escha/easybuild/software/Ruby/2.2.2-gmvolf-2015a/lib/ruby/gems/2.2.0/gems/gsl-1.16.0.6
 Test subfolder ./test contains the output test.out of the test command "ruby -I. gsl_test.rb";
 the subfolder ./test/gsl contains the output test.out of all tests in this subfolder ("ruby -I.. <testname>.rb"). 
+
+
+====================================================================================================================
+Procedure used for gmvolf-2015b <GPP>
+====================================================================================================================
+
+module load Ruby/2.2.2-gmvolf-2015b GSL/1.16-gmvolf-2015b 
+gem install bigdecimal io-console json  mail mime-types minitest more_rinda narray net-ssh open4 pony power_assert psych rb-gsl rinruby ruby-prof test-unit xml-simple 
+
