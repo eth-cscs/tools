@@ -76,7 +76,7 @@ export EASYBUILD_GROUP_WRITABLE_INSTALLDIR=1
 #export EASYBUILD_STICKY_BIT=1
 export EASYBUILD_UMASK=002
 export EASYBUILD_BUILDPATH=/dev/shm/$USER
-export EASYBUILD_ROBOT_PATHS=/apps/common/easybuild/cscs_easyconfigs/:
+export EASYBUILD_ROBOT_PATHS=/apps/common/easybuild/ebfiles_repo/${hostName}:/apps/common/easybuild/cscs_easyconfigs/:
 export EASYBUILD_IGNORE_OSDEPS=0
 
 # Set up private repository for jenkins user (it doesnt belong to csstaff group, it is not supposed to write under /apps/common)
