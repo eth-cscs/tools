@@ -1,0 +1,66 @@
+# Built with EasyBuild version 2.3.0 on 2015-10-06_19-48-04
+easyblock = 'ConfigureMake'
+
+name = 'binutils'
+version = '2.25'
+
+homepage = 'http://directory.fsf.org/project/binutils/'
+description = "binutils: GNU binary utilities"
+
+toolchain = {'name': 'GCC', 'version': '4.9.3-binutils-%(version)s'}
+
+sources = [SOURCE_TAR_GZ]
+source_urls = [GNU_SOURCE]
+
+builddependencies = [
+    ('flex', '2.5.39'),
+    ('Bison', '3.0.4'),
+    # zlib required, but being linked instatically, so not a runtime dep
+    ('zlib', '1.2.8'),
+    # use same binutils version that was used when building GCC toolchain, to 'bootstrap' this binutils
+    ('binutils', version, '', True)
+]
+
+# statically link with zlib, to avoid runtime dependency on zlib
+preconfigopts = 'LIBS="$EBROOTZLIB/lib/libz.a"'
+prebuildopts = 'LIBS="$EBROOTZLIB/lib/libz.a"'
+
+# make sure that system libraries are also considered by ld and ld.gold is also built
+# --enable-plugins should be used whenever --enable-gold is used, see http://llvm.org/docs/GoldPlugin.html
+configopts = '--with-sysroot=/ --enable-gold --enable-ld=default --enable-plugins'
+
+binlist = ['addr2line', 'ar', 'as', 'c++filt', 'elfedit', 'gprof', 'ld', 'ld.bfd', 'ld.gold', 'nm',
+           'objcopy', 'objdump', 'ranlib', 'readelf', 'size', 'strings', 'strip' ]
+
+sanity_check_paths = {
+    'files': ['bin/%s' % x for x in binlist] + ['lib/libbfd.a', 'lib/libopcodes.a'] +
+             ['include/%s' % x for x in ['ansidecl.h', 'bfd.h', 'bfdlink.h', 'dis-asm.h', 'symcat.h']],
+    'dirs': [],
+}
+
+moduleclass = 'tools'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.3.0",
+    "easybuild-easyblocks_version": "2.3.0",
+    "timestamp": 1444153677,
+    "build_time": 102.34,
+    "install_size": 81205621,
+    "command_line": ['--buildpath=/dev/shm/perettig', '--group-writable-installdir', '--installpath=/apps/castor/easybuild', '--packagepath=/apps/castor/easybuild/packages', '--prefix=/apps/castor/easybuild', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/castor', '--robot=/apps/common/easybuild/ebfiles_repo/castor:/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/software/EasyBuild/2.3.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.3.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/ebfiles_repo/castor:/apps/common/easybuild/cscs_easyconfigs/:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--umask=002', 'CGAL-4.6-foss-2015b-Python-2.7.10.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/apps/castor/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 8,
+    "cpu_model": "Intel(R) Xeon(R) CPU           E5620  @ 2.40GHz",
+    "cpu_speed": 2400.094,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/castor/easybuild/software/GCC/4.9.3-binutils-2.25/libexec/gcc/x86_64-unknown-linux-gnu/4.9.3/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/castor/easybuild/software/GCC/4.9.3-binutils-2.25 --with-local-prefix=/apps/castor/easybuild/software/GCC/4.9.3-binutils-2.25; Thread model: posix; gcc version 4.9.3 (GCC) ; ",
+    "glibc_version": "2.12",
+    "hostname": "castor00",
+    "os_name": "RHEL",
+    "os_type": "Linux",
+    "os_version": "6.6",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.6 (r266:84292, Nov 21 2013, 10:50:32) ; [GCC 4.4.7 20120313 (Red Hat 4.4.7-4)]",
+    "system_gcc_path": "/apps/castor/easybuild/software/GCC/4.9.3-binutils-2.25/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+}]
