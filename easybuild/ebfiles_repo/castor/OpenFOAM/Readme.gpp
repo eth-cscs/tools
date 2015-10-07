@@ -1,0 +1,20 @@
+Compiling foamyHexMesh and foamyQuadMesh
+
+module use /apps/castor/easybuild/modules/all/
+module load GMP/6.0.0a-GNU-4.9.3-2.25 Boost/1.58.0-foss-2015b-Python-2.7.10 MPFR/3.1.2-foss-2015b-GMP-6.0.0a Qt/4.8.6-foss-2015b-GLib-2.44.0
+
+1-CGAL
+
+edit OpenFOAM/2.3.1-foss-2015b/OpenFOAM-2.3.1/etc/bashrc
+
+foamInstall=/apps/castor/easybuild/software/OpenFOAM/2.3.1-foss-2015b/
+
+edit ThirdParty-2.3.1/makeCGAL
+BOOST_ARCH_PATH=/apps/castor/easybuild/software/Boost/1.58.0-foss-2015b-Python-2.7.10/
+
+then run:
+ThirdParty-2.3.1/makeCGAL
+
+applications/utilities/mesh/generation/foamyHexMesh/Allwmake
+
+applications/utilities/mesh/generation/foamyQuadMesh/Allwmake
