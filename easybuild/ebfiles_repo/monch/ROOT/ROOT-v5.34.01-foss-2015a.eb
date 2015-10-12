@@ -1,4 +1,4 @@
-# Built with EasyBuild version 2.3.0 on 2015-10-11_10-02-53
+# Built with EasyBuild version 2.3.0 on 2015-10-12_11-30-28
 name = 'ROOT'
 version = 'v5.34.01'
 
@@ -32,7 +32,7 @@ configopts = ' --disable-xft --disable-x11 --disable-xrootd --disable-mysql'
 # enable features
 configopts += ' --enable-unuran --enable-table --enable-explicitlink --enable-minuit2 --enable-roofit'
 configopts += ' --with-gsl-incdir=$EBROOTGSL/include/gsl --with-gsl-libdir=$EBROOTGSL/lib'
-configopts += ' --with-xml-incdir=$EBROOTLIBXML2/include/libxml2/libxml --with-xml-libdir=$EBROOTLIBXML2/lib'
+configopts += ' --enable-xml --with-xml-incdir=$EBROOTLIBXML2/include/libxml2/libxml --with-xml-libdir=$EBROOTLIBXML2/lib'
 configopts += ' --with-fftw3-incdir=$FFTW_INC_DIR --with-fftw3-libdir=$FFTW_LIB_DIR'
 configopts += ' --with-python-libdir=$EBROOTPYTHON/lib'
 
@@ -42,10 +42,10 @@ moduleclass = 'data'
 buildstats = [{
     "easybuild-framework_version": "2.3.0",
     "easybuild-easyblocks_version": "2.3.0",
-    "timestamp": 1444550565,
-    "build_time": 1092.23,
-    "install_size": 216852139,
-    "command_line": ['--buildpath=/dev/shm/piccinal', '--group-writable-installdir', '--installpath=/apps/monch/easybuild', '--packagepath=/apps/monch/easybuild/packages', '--prefix=/apps/monch/easybuild', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/monch', '--robot=/apps/common/easybuild/ebfiles_repo/monch:/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/software/EasyBuild/2.3.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.3.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/ebfiles_repo/monch:/apps/common/easybuild/cscs_easyconfigs/:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--umask=002', './ROOT-v5.34.01-foss-2015a.eb'],
+    "timestamp": 1444642221,
+    "build_time": 937.63,
+    "install_size": 217031623,
+    "command_line": ['--buildpath=/dev/shm/piccinal', '--force', '--group-writable-installdir', '--installpath=/apps/monch/easybuild', '--packagepath=/apps/monch/easybuild/packages', '--prefix=/apps/monch/easybuild', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/monch', '--robot=/apps/common/easybuild/ebfiles_repo/monch:/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/software/EasyBuild/2.3.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.3.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/ebfiles_repo/monch:/apps/common/easybuild/cscs_easyconfigs/:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--umask=002', './ROOT-v5.34.01-foss-2015a.eb'],
     "modules_tool": ('EnvironmentModulesC', '/apps/monch/modules/3.2.10/bin/modulecmd', '3.2.10'),
     "core_count": 40,
     "cpu_model": "Intel(R) Xeon(R) CPU E5-2660 v2 @ 2.20GHz",
@@ -53,7 +53,7 @@ buildstats = [{
     "cpu_vendor": "Intel",
     "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/monch/easybuild/software/GCC/4.9.2/libexec/gcc/x86_64-unknown-linux-gnu/4.9.2/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/monch/easybuild/software/GCC/4.9.2 --with-local-prefix=/apps/monch/easybuild/software/GCC/4.9.2; Thread model: posix; gcc version 4.9.2 (GCC) ; ",
     "glibc_version": "2.12",
-    "hostname": "monch02",
+    "hostname": "monch03",
     "os_name": "centos",
     "os_type": "Linux",
     "os_version": "6.4",
