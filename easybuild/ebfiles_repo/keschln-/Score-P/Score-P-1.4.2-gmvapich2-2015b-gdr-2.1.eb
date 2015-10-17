@@ -1,4 +1,4 @@
-# Built with EasyBuild version 2.3.0 on 2015-10-16_12-56-22
+# Built with EasyBuild version 2.3.0 on 2015-10-17_19-05-59
 # This is an easyconfig file for EasyBuild, see https://github.com/hpcugent/easybuild
 # Copyright:: Copyright 2013 Juelich Supercomputing Centre, Germany
 # Authors::   Bernd Mohr <b.mohr@fz-juelich.de>
@@ -24,6 +24,7 @@ toolchainopts = {"usempi": True}
 
 sources = ["scorep-%(version)s.tar.gz"]
 source_urls = ['http://www.vi-hps.org/upload/packages/scorep/']
+patches = ['scorep-1.4.2.patch']
 
 checksums = [
     '3b9a042b13bdd5836452354e6567f71e',         # 1.4.2
@@ -69,8 +70,8 @@ moduleclass = 'perf'
 buildstats = [{
     "easybuild-framework_version": "2.3.0",
     "easybuild-easyblocks_version": "2.3.0",
-    "timestamp": 1444992977,
-    "build_time": 154.08,
+    "timestamp": 1445101555,
+    "build_time": 172.12,
     "install_size": 20638503,
     "command_line": ['--buildpath=/dev/shm/piccinal', '--group-writable-installdir', '--installpath=/apps/escha/easybuild', '--packagepath=/apps/escha/easybuild/packages', '--prefix=/apps/escha/easybuild', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/keschln-', '--robot=/apps/common/easybuild/ebfiles_repo/keschln-:/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/software/EasyBuild/2.3.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.3.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/ebfiles_repo/keschln-:/apps/common/easybuild/cscs_easyconfigs/:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--umask=002', './zlib-1.2.8-gmvapich2-2015b-gdr-2.1.eb', './Score-P-1.4.2-gmvapich2-2015b-gdr-2.1.eb', './Cube-4.3.2-gmvapich2-2015b-gdr-2.1.eb', './OTF2-1.5.1-gmvapich2-2015b-gdr-2.1.eb', './OPARI2-1.1.4-gmvapich2-2015b-gdr-2.1.eb', './Scalasca-2.2.2-gmvapich2-2015b-gdr-2.1.eb'],
     "modules_tool": ('EnvironmentModulesC', '/usr/Modules/3.2.10/bin/modulecmd', '3.2.10'),
