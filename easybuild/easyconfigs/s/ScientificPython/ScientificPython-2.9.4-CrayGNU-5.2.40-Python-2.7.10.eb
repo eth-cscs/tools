@@ -1,0 +1,62 @@
+# Built with EasyBuild version 2.3.0 on 2015-09-23_19-35-02
+easyblock = "PythonPackage"
+
+name = 'ScientificPython'
+version = '2.9.4'
+
+homepage = 'https://sourcesup.cru.fr/projects/scientific-py/'
+description = """ScientificPython is a collection of Python modules for scientific computing.
+ It contains support for geometry, mathematical functions, statistics, physical units, IO, visualization,
+ and parallelization."""
+
+toolchain = {'name': 'CrayGNU', 'version': '5.2.40'}
+
+source_urls = ['https://sourcesup.renater.fr/frs/download.php/file/4570/']
+sources = [SOURCE_TAR_GZ]
+
+python = 'Python'
+pythonversion = '2.7.10'
+pythonshortversion = '.'.join(pythonversion.split('.')[:-1])
+
+versionsuffix = "-%s-%s" % (python, pythonversion)
+
+dependencies = [
+    (python, pythonversion),
+    # older version of numpy than the one included in Python module required
+    # cfr. https://bitbucket.org/khinsen/scientificpython/issue/13/numpy-19-has-dropped-support-for
+    ('numpy', '1.8.2', versionsuffix),
+]
+
+options = {'modulename': 'Scientific'}
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%s/site-packages/Scientific' % pythonshortversion],
+}
+
+moduleclass = 'math'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.3.0",
+    "easybuild-easyblocks_version": "2.3.0",
+    "timestamp": 1443029702,
+    "build_time": 4.96,
+    "install_size": 2418468,
+    "command_line": ['--buildpath=/dev/shm/perettig', '--experimental', '--external-modules-metadata=cray-netcdf/4.3.2,cray-hdf5/1.8.13,cray-hdf5-parallel/1.8.13,cudatoolkit/6.5.14-1.0502.9613.6.1', '--group-writable-installdir', '--installpath=/apps/dora/sandbox//easybuild', '--optarch=haswell', '--packagepath=/apps/dora/sandbox//easybuild/packages', '--prefix=/apps/dora/sandbox//easybuild', '--repositorypath=/apps/dora/sandbox//easybuild/ebfiles_repo/', '--robot=/apps/common/easybuild/ebfiles_repo/dora:/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/software/EasyBuild/2.3.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.3.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/ebfiles_repo/dora:/apps/common/easybuild/cscs_easyconfigs/:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--try-toolchain="[\'CrayGNU\', \'5.2.40\']"', '--umask=002', './ScientificPython-2.9.4-intel-2015a-Python-2.7.10.eb', './numpy-1.8.2-intel-2015a-Python-2.7.10.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/opt/modules/3.2.10.3/bin/modulecmd', '3.2.10'),
+    "core_count": 20,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz",
+    "cpu_speed": 2300.044,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=/opt/gcc/4.9.2/bin/../snos/bin/gcc; COLLECT_LTO_WRAPPER=/opt/gcc/4.9.2/snos/libexec/gcc/x86_64-suse-linux/4.9.2/lto-wrapper; Target: x86_64-suse-linux; Configured with: ../cray-gcc-4.9.2/configure --prefix=/opt/gcc/4.9.2/snos --disable-nls --libdir=/opt/gcc/4.9.2/snos/lib --enable-languages=c,c++,fortran --with-gxx-include-dir=/opt/gcc/4.9.2/snos/include/g++ --with-slibdir=/opt/gcc/4.9.2/snos/lib --with-system-zlib --enable-shared --enable-__cxa_atexit --build=x86_64-suse-linux --with-ppl --with-cloog; Thread model: posix; gcc version 4.9.2 20141030 (Cray Inc.) (GCC) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "dora105",
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP2",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Jul 28 2014, 08:24:16) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/opt/gcc/4.9.2/bin/gcc",
+    "system_python_path": "/apps/dora/sandbox/easybuild/software/Python/2.7.10-CrayGNU-5.2.40/bin/python",
+}]
