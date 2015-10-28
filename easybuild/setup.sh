@@ -26,7 +26,7 @@ if [[ -z "$1" ]]; then
        elif [[ "$hostName" == "ela" ]] ; then
            export PROJ="/users/jenscscs/sandbox/"$hostName
        elif [[ "$hostName" == "eschaln-" || "$hostName" == "keschln-" ]] ; then
-           export PROJ="/lus/scratch/jenscscs/sandbox/"$hostName
+           export PROJ="/scratch/jenscscs/sandbox/"$hostName
        fi
     else # if installing on default apps path, then resulting easyconfig file needs to be pushed to github repository
        export PROJ=$APPS
@@ -80,10 +80,12 @@ export EASYBUILD_ROBOT_PATHS=/apps/common/easybuild/ebfiles_repo/${hostName}:/ap
 export EASYBUILD_IGNORE_OSDEPS=0
 
 # Set up private repository for jenkins user (it doesnt belong to csstaff group, it is not supposed to write under /apps/common)
-if [[ $USER == "jenscscs" ]] ; then
-    export EASYBUILD_SOURCEPATH=$SCRATCH/sources/
-else
+if [[ -w /apps/common/easybuild/sources/ ]] ; then
     export EASYBUILD_SOURCEPATH=/apps/common/easybuild/sources/
+elif [[ $USER == "jenscscs" ]] ; then
+    export EASYBUILD_SOURCEPATH=$HOME #/scratch/jenscscs/sources/
+else
+    export EASYBUILD_SOURCEPATH=$HOME
 fi
 
 if [[ "$hostName" == "daint" || "$hostName" == "dora" || "$hostName" == "santis" || "$hostName" == "brisi" ]] ; then
