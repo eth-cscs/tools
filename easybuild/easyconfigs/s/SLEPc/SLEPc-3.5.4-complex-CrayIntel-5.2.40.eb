@@ -15,9 +15,9 @@ toolchainopts = {'usempi': True}
 source_urls = ['http://www.grycap.upv.es/slepc/download/download.php?filename=']
 sources = [SOURCELOWER_TAR_GZ]
 
-dependencies = [('cray-petsc-complex-64/3.5.3.1', EXTERNAL_MODULE)]
+dependencies = [('cray-petsc-complex/3.5.3.1', EXTERNAL_MODULE)]
 
-preconfigopts = 'export PETSC_DIR=$EBROOTPETSC &&'
+preconfigopts = 'export PETSC_DIR=$CRAY_PETSC_DIR &&'
 buildopts = 'SLEPC_DIR=$PWD PETSC_DIR=$EBROOTPETSC PETSC_ARCH=arch-linux2-c-opt'
 
 parallel = 1
