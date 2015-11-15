@@ -23,8 +23,9 @@ dependencies = [
 ]
 
 sanity_check_paths = {
-    'files': ['bin/nc3tonc4', 'bin/nc4tonc3', 'bin/ncinfo'],
-    'dirs': ['lib/python%(pv)s/site-packages/netCDF4-%%(version)s-py%(pv)s-linux-x86_64.egg' % {'pv': pythonshortver}],
+    'files': ['bin/nc3tonc4', 'bin/nc4tonc3', 'bin/ncinfo',
+                'lib/python%(pv)s/site-packages/netCDF4-%%(version)s-py%(pv)s-linux-x86_64.egg' % {'pv': pythonshortver}],
+    'dirs': [],
 }
 
 moduleclass = 'data'
