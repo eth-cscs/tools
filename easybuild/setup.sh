@@ -29,7 +29,11 @@ if [[ -z "$1" ]]; then
            export PROJ="/scratch/jenscscs/sandbox/"$hostName
        fi
     else # if installing on default apps path, then resulting easyconfig file needs to be pushed to github repository
-       export PROJ=$APPS
+       if [[ "$hostName" == "keschln-" ]] ; then
+         export PROJ=/apps/kesch
+       else
+         export PROJ=$APPS
+       fi
        if [[ -z "$EASYBUILD_REPOSITORYPATH" ]]; then
            export EASYBUILD_REPOSITORYPATH="git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/"$hostName # if using private key
 #           export EASYBUILD_REPOSITORYPATH="https://github.com/eth-cscs/tools.git,easybuild/ebfiles_repo/"$hostName # will ask for github password
@@ -78,12 +82,14 @@ export EASYBUILD_UMASK=002
 export EASYBUILD_BUILDPATH=/dev/shm/$USER
 export EASYBUILD_ROBOT_PATHS=/apps/common/easybuild/ebfiles_repo/${hostName}:/apps/common/easybuild/cscs_easyconfigs/:
 export EASYBUILD_IGNORE_OSDEPS=0
+export EASYBUILD_HIDE_DEPS=Bison,Doxygen,JasPer,NASM,SQLite,Szip,Tcl,bzip2,cURL,flex,freetype,libjpeg-turbo,libpng,libreadline,libtool,libxml2,ncurses,zlib,M4,Serf,APR,APR-util,expat,SCons
+export EASYBUILD_RECURSIVE_MODULE_UNLOAD=1
 
 # Set up private repository for jenkins user (it doesnt belong to csstaff group, it is not supposed to write under /apps/common)
 if [[ -w /apps/common/easybuild/sources/ ]] ; then
     export EASYBUILD_SOURCEPATH=/apps/common/easybuild/sources/
 elif [[ $USER == "jenscscs" ]] ; then
-    export EASYBUILD_SOURCEPATH=$HOME #/scratch/jenscscs/sources/
+    export EASYBUILD_SOURCEPATH=$HOME/sources #/scratch/jenscscs/sources/
 else
     export EASYBUILD_SOURCEPATH=$HOME
 fi
