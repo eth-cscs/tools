@@ -116,4 +116,5 @@ module use $EASYBUILD_PREFIX/modules/all
 echo MODULEPATH=$MODULEPATH
 
 echo "Loading EasyBuild..."
-module load /apps/common/easybuild/modules/all/EasyBuild/2.3.0
+#module load /apps/common/easybuild/modules/all/EasyBuild/2.3.0
+module load /apps/common/UES/easybuild/modules/all/EasyBuild/2.4.0
