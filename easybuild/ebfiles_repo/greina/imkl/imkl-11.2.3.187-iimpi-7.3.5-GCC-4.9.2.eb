@@ -1,0 +1,48 @@
+# Built with EasyBuild version 2.2.0 on 2015-07-22_15-32-04
+name = 'imkl'
+version = '11.2.3.187'
+
+homepage = 'http://software.intel.com/en-us/intel-mkl/'
+description = """Intel Math Kernel Library is a library of highly optimized,
+ extensively threaded math routines for science, engineering, and financial
+ applications that require maximum performance. Core math functions include
+ BLAS, LAPACK, ScaLAPACK, Sparse Solvers, Fast Fourier Transforms, Vector Math, and more."""
+
+toolchain = {'name': 'iimpi', 'version': '7.3.5-GCC-4.9.2'}
+
+sources = ['l_mkl_%(version)s.tgz']
+
+dontcreateinstalldir = 'True'
+
+# license file
+import os
+license_file = os.path.join(os.getenv('HOME'), "licenses", "intel", "license.lic")
+
+interfaces = True
+
+moduleclass = 'numlib'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.2.0",
+    "easybuild-easyblocks_version": "2.2.0",
+    "timestamp": 1437571922,
+    "build_time": 900.25,
+    "install_size": 2687821905,
+    "command_line": ['--buildpath=/users/lucamar/bin/easybuild/build', '--installpath=/users/lucamar/bin/easybuild', '--packagepath=/users/lucamar/bin/easybuild/packages', '--prefix=/users/lucamar/bin/easybuild', '--repositorypath=/users/lucamar/bin/easybuild/ebfiles_repo', '--sourcepath=/users/lucamar/bin/easybuild/sources', 'imkl-11.2.3.187-iimpi-7.3.5-GCC-4.9.2.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 24,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz",
+    "cpu_speed": 2501.0,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/home/lucamar/bin/easybuild/software/GCC/4.9.2/bin/../libexec/gcc/x86_64-unknown-linux-gnu/4.9.2/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/users/lucamar/.local/easybuild/software/GCC/4.9.2 --with-local-prefix=/users/lucamar/.local/easybuild/software/GCC/4.9.2; Thread model: posix; gcc version 4.9.2 (GCC) ; ",
+    "glibc_version": "2.12",
+    "hostname": "lspci",
+    "os_name": "SL",
+    "os_type": "Linux",
+    "os_version": "6.6",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.6 (r266:84292, Jan 22 2014, 05:06:49) ; [GCC 4.4.7 20120313 (Red Hat 4.4.7-3)]",
+    "system_gcc_path": "/users/lucamar/bin/easybuild/software/GCC/4.9.2/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+}]

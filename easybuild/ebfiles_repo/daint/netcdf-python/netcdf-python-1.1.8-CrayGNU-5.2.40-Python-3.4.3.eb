@@ -1,4 +1,4 @@
-# Built with EasyBuild version 2.1.1 on 2015-07-03_15-18-46
+# Built with EasyBuild version 2.3.0 on 2015-10-21_16-51-38
 name = 'netcdf-python'
 version = '1.1.8'
 
@@ -32,25 +32,25 @@ moduleclass = 'data'
 
 # Build statistics
 buildstats = [{
-    "easybuild-framework_version": "2.1.1",
-    "easybuild-easyblocks_version": "2.1.1",
-    "timestamp": 1435929522,
-    "build_time": 123.83,
-    "install_size": 6033700,
-    "command_line": ['--buildpath=/dev/shm/perettig', '--experimental', '--external-modules-metadata=cray-netcdf/4.3.2,cray-hdf5/1.8.13,cray-hdf5-parallel/1.8.13', '--force', '--installpath=/apps/daint/5.2.UP02/easybuild', '--optarch=sandybridge', '--prefix=/apps/daint/5.2.UP02/easybuild', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/daint', '--robot=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/software/EasyBuild/2.1.1/lib64/python2.6/site-packages/easybuild_easyconfigs-2.1.1-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:', '--set-gid-bit', '--sourcepath=/apps/daint/5.2.UP02/easybuild/sources', '--umask=002', 'Python-3.4.3-CrayGNU-5.2.40.eb', 'h5py-2.5.0-CrayGNU-5.2.40-Python-3.4.3-parallel.eb', 'h5py-2.5.0-CrayGNU-5.2.40-Python-3.4.3-serial.eb', 'matplotlib-1.4.3-CrayGNU-5.2.40-Python-3.4.3.eb', 'netcdf4-python-1.1.8-CrayGNU-5.2.40-Python-3.4.3.eb', 'pycuda-2015.1-CrayGNU-5.2.40-Python-3.4.3.eb'],
+    "easybuild-framework_version": "2.3.0",
+    "easybuild-easyblocks_version": "2.3.0",
+    "timestamp": 1445439098,
+    "build_time": 141.89,
+    "install_size": 5472417,
+    "command_line": ['--buildpath=/dev/shm/perettig', '--experimental', '--external-modules-metadata=cray-netcdf/4.3.2,cray-hdf5/1.8.13,cray-hdf5-parallel/1.8.13,cudatoolkit/6.5.14-1.0502.9613.6.1,cray-petsc-complex-64/3.5.3.1,cray-petsc-64/3.5.3.1', '--group-writable-installdir', '--installpath=/apps/daint/UES/5.2.UP04//easybuild', '--optarch=sandybridge', '--packagepath=/apps/daint/UES/5.2.UP04//easybuild/packages', '--prefix=/apps/daint/UES/5.2.UP04//easybuild', '--repositorypath=/apps/daint/UES/5.2.UP04//easybuild/ebfiles_repo/', '--robot=/apps/common/easybuild/ebfiles_repo/santis:/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/software/EasyBuild/2.3.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.3.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/ebfiles_repo/santis:/apps/common/easybuild/cscs_easyconfigs/:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--umask=002', 'Python-2.7.10-CrayGNU-5.2.40.eb', 'h5py-2.5.0-CrayGNU-5.2.40-Python-2.7.10-parallel.eb', 'h5py-2.5.0-CrayGNU-5.2.40-Python-2.7.10-serial.eb', 'matplotlib-1.4.3-CrayGNU-5.2.40-Python-2.7.10.eb', 'netcdf4-python-1.1.8-CrayGNU-5.2.40-Python-2.7.10.eb', 'Python-3.4.3-CrayGNU-5.2.40.eb', 'h5py-2.5.0-CrayGNU-5.2.40-Python-3.4.3-parallel.eb', 'h5py-2.5.0-CrayGNU-5.2.40-Python-3.4.3-serial.eb', 'matplotlib-1.4.3-CrayGNU-5.2.40-Python-3.4.3.eb', 'netcdf4-python-1.1.8-CrayGNU-5.2.40-Python-3.4.3.eb', 'CDO-1.6.9-CrayGNU-5.2.40.eb', 'libunwind-1.1-CrayGNU-5.2.40.eb'],
     "modules_tool": ('EnvironmentModulesC', '/opt/modules/3.2.10.3/bin/modulecmd', '3.2.10'),
-    "core_count": 16,
+    "core_count": 32,
     "cpu_model": "Intel(R) Xeon(R) CPU E5-2670 0 @ 2.60GHz",
-    "cpu_speed": 2599.856,
+    "cpu_speed": 2599.886,
     "cpu_vendor": "Intel",
-    "gcc_version": "Using built-in specs.; COLLECT_GCC=/opt/gcc/4.8.2/bin/../snos/bin/gcc; COLLECT_LTO_WRAPPER=/opt/gcc/4.8.2/snos/libexec/gcc/x86_64-suse-linux/4.8.2/lto-wrapper; Target: x86_64-suse-linux; Configured with: ../cray-gcc-4.8.2/configure --prefix=/opt/gcc/4.8.2/snos --disable-nls --libdir=/opt/gcc/4.8.2/snos/lib --enable-languages=c,c++,fortran --with-gxx-include-dir=/opt/gcc/4.8.2/snos/include/g++ --with-slibdir=/opt/gcc/4.8.2/snos/lib --with-system-zlib --enable-shared --enable-__cxa_atexit --build=x86_64-suse-linux --with-mpc=/opt/gcc/mpc/0.8.1 --with-mpfr=/opt/gcc/mpfr/2.4.2 --with-gmp=/opt/gcc/gmp/4.3.2; Thread model: posix; gcc version 4.8.2 20131016 (Cray Inc.) (GCC) ; ",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=/opt/gcc/4.9.2/bin/../snos/bin/gcc; COLLECT_LTO_WRAPPER=/opt/gcc/4.9.2/snos/libexec/gcc/x86_64-suse-linux/4.9.2/lto-wrapper; Target: x86_64-suse-linux; Configured with: ../cray-gcc-4.9.2/configure --prefix=/opt/gcc/4.9.2/snos --disable-nls --libdir=/opt/gcc/4.9.2/snos/lib --enable-languages=c,c++,fortran --with-gxx-include-dir=/opt/gcc/4.9.2/snos/include/g++ --with-slibdir=/opt/gcc/4.9.2/snos/lib --with-system-zlib --enable-shared --enable-__cxa_atexit --build=x86_64-suse-linux --with-ppl --with-cloog; Thread model: posix; gcc version 4.9.2 20141030 (Cray Inc.) (GCC) ; ",
     "glibc_version": "2.11.3",
-    "hostname": "daint105",
+    "hostname": "santis101",
     "os_name": "SLES",
     "os_type": "Linux",
     "os_version": "11_SP2",
     "platform_name": "x86_64-unknown-linux",
     "python_version": "2.6.9 (unknown, Jul 28 2014, 08:24:16) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
-    "system_gcc_path": "/opt/gcc/4.8.2/bin/gcc",
-    "system_python_path": "/apps/daint/5.2.UP02/easybuild/software/Python/3.4.3-CrayGNU-5.2.40/bin/python",
+    "system_gcc_path": "/opt/gcc/4.9.2/bin/gcc",
+    "system_python_path": "/apps/daint/UES/5.2.UP04/easybuild/software/Python/3.4.3-CrayGNU-5.2.40/bin/python",
 }]

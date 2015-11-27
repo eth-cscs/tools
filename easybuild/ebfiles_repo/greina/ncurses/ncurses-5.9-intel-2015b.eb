@@ -1,0 +1,62 @@
+# Built with EasyBuild version 2.2.0 on 2015-07-23_01-44-29
+easyblock = 'ConfigureMake'
+
+name = 'ncurses'
+version = '5.9'
+
+homepage = 'http://www.gnu.org/software/ncurses/'
+description = """The Ncurses (new curses) library is a free software emulation of curses in System V Release 4.0,
+ and more. It uses Terminfo format, supports pads and color and multiple highlights and forms characters and
+ function-key mapping, and has all the other SYSV-curses enhancements over BSD Curses."""
+
+toolchain = {'name': 'intel', 'version': '2015b'}
+toolchainopts = {'optarch': True, 'pic': True}
+
+source_urls = [GNU_SOURCE]
+sources = [SOURCE_TAR_GZ]
+
+patches = ['ncurses-%(version)s_configure_darwin.patch']
+
+configopts = [
+    # default build
+    '--with-shared --enable-overwrite',
+    # the UTF-8 enabled version (ncursesw)
+    '--with-shared --enable-overwrite --enable-ext-colors --enable-widec --includedir=%(installdir)s/include/ncursesw/'
+]
+
+libs = ["form", "menu", "ncurses", "panel"]
+sanity_check_paths = {
+    'files': ['bin/%s' % x for x in ["captoinfo", "clear", "infocmp", "infotocap", "ncurses5-config",
+                                     "reset", "tabs", "tic", "toe", "tput", "tset"]] +
+             ['lib/lib%s%s.a' % (x, y) for x in libs for y in ['', '_g', 'w', 'w_g']] +
+             ['lib/lib%s%s.so' % (x, y) for x in libs for y in ['', 'w']] +
+             ['lib/libncurses++%s.a' % x for x in ['', 'w']],
+    'dirs': ['include', 'include/ncursesw'],
+}
+
+moduleclass = 'devel'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.2.0",
+    "easybuild-easyblocks_version": "2.2.0",
+    "timestamp": 1437608669,
+    "build_time": 731.66,
+    "install_size": 27096703,
+    "command_line": ['--buildpath=/users/lucamar/bin/easybuild/build', '--installpath=/users/lucamar/bin/easybuild', '--packagepath=/users/lucamar/bin/easybuild/packages', '--prefix=/users/lucamar/bin/easybuild', '--repositorypath=/users/lucamar/bin/easybuild/ebfiles_repo', '--sourcepath=/users/lucamar/bin/easybuild/sources', 'ncurses-5.9-intel-2015b.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 24,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz",
+    "cpu_speed": 2501.0,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/home/lucamar/bin/easybuild/software/GCC/4.9.2/bin/../libexec/gcc/x86_64-unknown-linux-gnu/4.9.2/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/users/lucamar/.local/easybuild/software/GCC/4.9.2 --with-local-prefix=/users/lucamar/.local/easybuild/software/GCC/4.9.2; Thread model: posix; gcc version 4.9.2 (GCC) ; ",
+    "glibc_version": "2.12",
+    "hostname": "lspci",
+    "os_name": "SL",
+    "os_type": "Linux",
+    "os_version": "6.6",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.6 (r266:84292, Jan 22 2014, 05:06:49) ; [GCC 4.4.7 20120313 (Red Hat 4.4.7-3)]",
+    "system_gcc_path": "/users/lucamar/bin/easybuild/software/GCC/4.9.2/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+}]
