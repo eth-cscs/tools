@@ -101,8 +101,6 @@ if [[ "$hostName" == "daint" || "$hostName" == "dora" || "$hostName" == "santis"
     export EASYBUILD_EXPERIMENTAL=1
     export EASYBUILD_OPTARCH=$CRAY_CPU_TARGET
     export CRAYPE_LINK_TYPE=dynamic
-#    echo "Purging modules..."
-#    module purge
     module switch PrgEnv-cray PrgEnv-gnu
 fi
 
