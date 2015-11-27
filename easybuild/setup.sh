@@ -31,6 +31,8 @@ if [[ -z "$1" ]]; then
     else # if installing on default apps path, then resulting easyconfig file needs to be pushed to github repository
        if [[ "$hostName" == "keschln-" ]] ; then
          export PROJ=/apps/kesch
+       elif [[ "$hostName" == "daint" ]] ; then
+         export PROJ=/apps/daint/UES/5.2.UP04
        else
          export PROJ=$APPS
        fi
@@ -116,4 +118,4 @@ module use $EASYBUILD_PREFIX/modules/all
 echo MODULEPATH=$MODULEPATH
 
 echo "Loading EasyBuild..."
-module load /apps/common/easybuild/modules/all/EasyBuild/2.3.0
+module load /apps/common/UES/easybuild/modules/all/EasyBuild/2.4.0 
