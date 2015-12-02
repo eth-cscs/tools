@@ -1,4 +1,5 @@
-# Built with EasyBuild version 2.4.0 on 2015-12-02_16-37-21
+# Built with EasyBuild version 2.4.0 on 2015-12-02_17-38-54
+#
 name = 'Python'
 version = '3.5.0'
 
@@ -20,6 +21,8 @@ dependencies = [
     ('zlib', '1.2.8'),
     ('libreadline', '6.3'),
     ('ncurses', '6.0'),
+    ('freetype', '2.5.5'),
+    ('libpng', '1.6.16'),
 ]
 
 osdependencies = [('openssl-devel', 'libssl-dev')]
@@ -68,9 +71,9 @@ exts_list = [
 buildstats = [{
     "easybuild-framework_version": "2.4.0",
     "easybuild-easyblocks_version": "2.4.0",
-    "timestamp": 1449070634,
-    "build_time": 1001.77,
-    "install_size": 472062406,
+    "timestamp": 1449074326,
+    "build_time": 998.11,
+    "install_size": 472088269,
     "command_line": ['--buildpath=/dev/shm/lucamar', '--force', '--group-writable-installdir', '--hide-deps=Bison,Doxygen,JasPer,NASM,SQLite,Szip,Tcl,bzip2,cURL,flex,freetype,libjpeg-turbo,libpng,libreadline,libtool,libxml2,ncurses,zlib,M4,Serf,APR,APR-util,expat,SCons', '--installpath=/apps/escha/UES/RH6.6_PE15.09/easybuild', '--packagepath=/apps/escha/UES/RH6.6_PE15.09/easybuild/packages', '--prefix=/apps/escha/UES/RH6.6_PE15.09/easybuild', '--recursive-module-unload', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/keschln-', '--robot=/apps/common/easybuild/ebfiles_repo/keschln-:/apps/common/easybuild/cscs_easyconfigs/:/apps/common/UES/easybuild/software/EasyBuild/2.4.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.4.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/ebfiles_repo/keschln-:/apps/common/easybuild/cscs_easyconfigs/:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--umask=002', 'Python-3.5.0-gmvolf-15.11.eb'],
     "modules_tool": ('EnvironmentModulesC', '/usr/Modules/3.2.10/bin/modulecmd', '3.2.10'),
     "core_count": 24,
