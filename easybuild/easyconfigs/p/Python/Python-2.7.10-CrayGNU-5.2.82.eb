@@ -25,6 +25,9 @@ dependencies = [
 #   nice to have an up to date openssl for security reasons
 ]
 
+# enviroment variable to use package repository with pip
+modextravars = {'PIP_CERT':'/apps/common/UES/certificates/DigiCertHighAssuranceEVRootCA.pem'}
+
 osdependencies = [('libopenssl-devel')]
 
 buildopts = 'LINKCC="$CC -dynamic"'

@@ -19,7 +19,7 @@ sources = [SOURCELOWER_TAR_GZ]
 dependencies = [('cray-petsc-64/3.5.3.1', EXTERNAL_MODULE)]
 
 preconfigopts = 'export PETSC_DIR=$EBROOTPETSC &&'
-buildopts = 'SLEPC_DIR=$PWD PETSC_DIR=$EBROOTPETSC PETSC_ARCH=arch-linux2-c-opt'
+buildopts = 'SLEPC_DIR=$PWD PETSC_DIR=$EBROOTPETSC'
 
 parallel = 1
 

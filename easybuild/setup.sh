@@ -29,10 +29,10 @@ if [[ -z "$1" ]]; then
            export PROJ="/scratch/jenscscs/sandbox/"$hostName
        fi
     else # if installing on default apps path, then resulting easyconfig file needs to be pushed to github repository
-       if [[ "$hostName" == "keschln-" ]] ; then
-         export PROJ=/apps/kesch
-       elif [[ "$hostName" == "daint" ]] ; then
-         export PROJ=/apps/daint/UES/5.2.UP04
+       if [[ "$hostName" == "eschaln-" || "$hostName" == "keschln-" ]] ; then
+         export PROJ=/apps/escha/UES/RH6.6_PE15.09
+       elif [[ "$hostName" == "daint" || "$hostName" == "dora" || "$hostName" == "santis" || "$hostName" == "brisi" ]] ; then
+         export PROJ=$UES/5.2.UP04
        else
          export PROJ=$APPS
        fi
@@ -101,7 +101,7 @@ if [[ "$hostName" == "daint" || "$hostName" == "dora" || "$hostName" == "santis"
     export EASYBUILD_EXPERIMENTAL=1
     export EASYBUILD_OPTARCH=$CRAY_CPU_TARGET
     export CRAYPE_LINK_TYPE=dynamic
-    module switch PrgEnv-cray PrgEnv-gnu
+    module rm PrgEnv-cray 
 fi
 
 # /apps/common = custom cscs easyblocks

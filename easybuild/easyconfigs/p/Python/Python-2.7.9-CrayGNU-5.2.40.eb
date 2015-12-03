@@ -25,6 +25,8 @@ dependencies = [
 #   nice to have an up to date openssl for security reasons
 ]
 
+modextravars = {'PIP_CERT':'/apps/common/UES/certificates/DigiCertHighAssuranceEVRootCA.pem'}
+
 osdependencies = [('libopenssl-devel')]
 
 buildopts = 'LINKCC="$CC -dynamic"'
