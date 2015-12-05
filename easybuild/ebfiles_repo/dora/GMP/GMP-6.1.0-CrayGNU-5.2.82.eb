@@ -1,4 +1,4 @@
-# Built with EasyBuild version 2.4.0 on 2015-12-05_00-44-28
+# Built with EasyBuild version 2.4.0 on 2015-12-05_01-03-39
 # Built with EasyBuild version 2.3.0 on 2015-10-23_09-40-51
 easyblock = 'ConfigureMake'
 
@@ -13,6 +13,7 @@ toolchain = {'name': 'CrayGNU', 'version': '5.2.82'}
 sources = [SOURCELOWER_TAR_BZ2]
 source_urls = [GNU_SOURCE]
 
+preconfigopts = 'export CFLAGS=-mcmodel=large && '
 runtest = 'check'
 
 sanity_check_paths = {
@@ -26,10 +27,10 @@ moduleclass = 'math'
 buildstats = [{
     "easybuild-framework_version": "2.4.0",
     "easybuild-easyblocks_version": "2.4.0",
-    "timestamp": 1449272664,
-    "build_time": 121.48,
-    "install_size": 3571466,
-    "command_line": ['--buildpath=/dev/shm/lucamar', '--experimental', '--external-modules-metadata=cray-netcdf/4.3.2,cray-hdf5/1.8.13,cray-hdf5-parallel/1.8.13,cudatoolkit/6.5.14-1.0502.9613.6.1,cray-petsc-complex-64/3.5.3.1,cray-petsc-complex/3.5.3.1,cray-petsc/3.5.3.1,cray-petsc-64/3.5.3.1', '--group-writable-installdir', '--hide-deps=Bison,Doxygen,JasPer,NASM,SQLite,Szip,Tcl,bzip2,cURL,flex,freetype,libjpeg-turbo,libpng,libreadline,libtool,libxml2,ncurses,zlib,M4,Serf,APR,APR-util,expat,SCons', '--installpath=/apps/dora/UES/5.2.UP04/easybuild', '--optarch=haswell', '--packagepath=/apps/dora/UES/5.2.UP04/easybuild/packages', '--prefix=/apps/dora/UES/5.2.UP04/easybuild', '--recursive-module-unload', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/dora', '--robot=/apps/common/easybuild/ebfiles_repo/dora:/apps/common/easybuild/cscs_easyconfigs/:/apps/common/UES/easybuild/software/EasyBuild/2.4.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.4.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/ebfiles_repo/dora:/apps/common/easybuild/cscs_easyconfigs/:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--umask=002', 'GMP-6.1.0-CrayGNU-5.2.82.eb'],
+    "timestamp": 1449273815,
+    "build_time": 132.73,
+    "install_size": 4346002,
+    "command_line": ['--buildpath=/dev/shm/lucamar', '--experimental', '--external-modules-metadata=cray-netcdf/4.3.2,cray-hdf5/1.8.13,cray-hdf5-parallel/1.8.13,cudatoolkit/6.5.14-1.0502.9613.6.1,cray-petsc-complex-64/3.5.3.1,cray-petsc-complex/3.5.3.1,cray-petsc/3.5.3.1,cray-petsc-64/3.5.3.1', '--force', '--group-writable-installdir', '--hide-deps=Bison,Doxygen,JasPer,NASM,SQLite,Szip,Tcl,bzip2,cURL,flex,freetype,libjpeg-turbo,libpng,libreadline,libtool,libxml2,ncurses,zlib,M4,Serf,APR,APR-util,expat,SCons', '--installpath=/apps/dora/UES/5.2.UP04/easybuild', '--optarch=haswell', '--packagepath=/apps/dora/UES/5.2.UP04/easybuild/packages', '--prefix=/apps/dora/UES/5.2.UP04/easybuild', '--recursive-module-unload', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/dora', '--robot=/apps/common/easybuild/ebfiles_repo/dora:/apps/common/easybuild/cscs_easyconfigs/:/apps/common/UES/easybuild/software/EasyBuild/2.4.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.4.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/ebfiles_repo/dora:/apps/common/easybuild/cscs_easyconfigs/:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--umask=002', 'GMP-6.1.0-CrayGNU-5.2.82.eb'],
     "modules_tool": ('EnvironmentModulesC', '/opt/modules/3.2.10.3/bin/modulecmd', '3.2.10'),
     "core_count": 20,
     "cpu_model": "Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz",
