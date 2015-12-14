@@ -1,0 +1,69 @@
+# Built with EasyBuild version 2.5.0.dev0-r15e835e1a49e6340047eee99a1c48c1b2ca68a19 on 2015-12-14_16-15-14
+# contributed by Luca Marsella (CSCS)
+name = 'CP2K'
+version = '2.6.2'
+
+homepage = 'http://www.cp2k.org/'
+description = """CP2K is a freely available (GPL) program, written in Fortran 95, to perform atomistic and molecular
+ simulations of solid state, liquid, molecular and biological systems. It provides a general framework for different
+ methods such as e.g. density functional theory (DFT) using a mixed Gaussian and plane waves approach (GPW), and
+ classical pair and many-body potentials. """
+
+toolchain = {'name': 'CrayGNU', 'version': '2015.11-XC'}
+toolchainopts = {'pic': True}
+
+sources = [SOURCELOWER_TAR_BZ2]
+source_urls = [SOURCEFORGE_SOURCE]
+
+patches = [
+    'CP2K-2.6.0-ifort-compiler-bug-fix.patch',
+    'CP2K-2.4.0-fix_compile_date_lastsvn.patch',
+]
+
+dependencies = [
+    ('Libint', '1.1.4'),
+    ('libxc', '2.2.2'),
+]
+
+builddependencies = [
+    ('cudatoolkit/7.0.28-1.0502.10742.5.1', EXTERNAL_MODULE),
+    ('flex', '2.5.39'),
+    ('Bison', '3.0.2'),
+]
+
+# don't use parallel make, results in compilation failure
+# because Fortran module files aren't created before they are needed
+parallel = 1
+
+# regression test reports failures
+ignore_regtest_fails = True
+
+# build type
+type = 'psmp'
+
+moduleclass = 'chem'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.5.0.dev0-r15e835e1a49e6340047eee99a1c48c1b2ca68a19",
+    "easybuild-easyblocks_version": "2.5.0.dev0-r592c303fd4f55d4368935dafadd68fd492c9eb34",
+    "timestamp": 1450106091,
+    "build_time": 1526.6,
+    "install_size": 217509160,
+    "command_line": ['--buildpath=/dev/shm/lucamar', '--experimental', '--external-modules-metadata=cray-netcdf/4.3.2,cray-hdf5/1.8.13,cray-hdf5-parallel/1.8.13,cray-libsci/13.0.4,cudatoolkit/6.5.14-1.0502.9613.6.1,cudatoolkit/6.5.14-1.0502.9836.8.1,cudatoolkit/7.0.28-1.0502.10742.5.1,cray-petsc-complex-64/3.5.3.1,cray-petsc-complex/3.5.3.1,cray-petsc/3.5.3.1,cray-petsc-64/3.5.3.1,gcc/4.9.2', '--group-writable-installdir', '--hide-deps=Bison,Doxygen,JasPer,NASM,SQLite,Szip,Tcl,bzip2,cURL,flex,freetype,libjpeg-turbo,libpng,libreadline,libtool,libxml2,ncurses,zlib,M4,Serf,APR,APR-util,expat,SCons', '--include-easyblocks=easybuildinstall/blocks/cp2k.py', '--installpath=/users/lucamar/easybuildinstall', '--optarch=sandybridge', '--packagepath=/apps/daint/UES/5.2.UP04/easybuild/packages', '--prefix=/apps/daint/UES/5.2.UP04/easybuild', '--pretend', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/daint', '--robot=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/ebfiles_repo/daint:/apps/common/UES/easybuild/software/EasyBuild/2.4.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.4.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/ebfiles_repo/daint:/apps/common/UES/easybuild/software/EasyBuild/2.4.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.4.0-py2.6.egg/easybuild/easyconfigs', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--try-toolchain="[\'CrayGNU\', \'2015.11-XC\']"', '--umask=002', 'configs/CP2K-2.6.2-CrayGNU-5.2.82.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/opt/modules/3.2.10.3/bin/modulecmd', '3.2.10'),
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2670 0 @ 2.60GHz",
+    "cpu_speed": 2600.051,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=/opt/gcc/4.9.3/bin/../snos/bin/gcc; COLLECT_LTO_WRAPPER=/opt/gcc/4.9.3/snos/libexec/gcc/x86_64-suse-linux/4.9.3/lto-wrapper; Target: x86_64-suse-linux; Configured with: ../cray-gcc-4.9.3/configure --prefix=/opt/gcc/4.9.3/snos --disable-nls --libdir=/opt/gcc/4.9.3/snos/lib --enable-languages=c,c++,fortran --with-gxx-include-dir=/opt/gcc/4.9.3/snos/include/g++ --with-slibdir=/opt/gcc/4.9.3/snos/lib --with-system-zlib --enable-shared --enable-__cxa_atexit --build=x86_64-suse-linux --with-ppl --with-cloog; Thread model: posix; gcc version 4.9.3 20150626 (Cray Inc.) (GCC) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "daint101",
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP3",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Apr  7 2015, 08:28:12) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/opt/gcc/4.9.3/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+}]
