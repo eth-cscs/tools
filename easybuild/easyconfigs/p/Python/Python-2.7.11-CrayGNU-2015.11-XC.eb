@@ -1,18 +1,21 @@
-# contributed by Luca MArsella (CSCS)
+# contributed by Luca MArsella and GPPezzi (CSCS)
+
 name = 'Python'
-version = '3.5.0'
+version = "2.7.11"
 
 homepage = 'http://python.org/'
 description = "Python is a programming language that lets you work more quickly and integrate your systems more effectively."
 
-toolchain = {'name': 'CrayGNU', 'version': '5.2.82'}
-toolchainopts = {'pic': True, 'opt': True, 'optarch': True}
+toolchain = {'name': 'CrayGNU', 'version': '2015.11-XC'}
+toolchainopts = {'dynamic': True, 'pic': True, 'opt': True, 'optarch': True}
 
 numpyversion = '1.10.1'
 scipyversion = '0.16.1'
 
 source_urls = ['http://www.python.org/ftp/%(namelower)s/%(version)s/']
 sources = [SOURCE_TGZ]
+
+patches = ['unixccompiler-Python-2.7.9.patch']
 
 # python needs bzip2 to build the bz2 package
 dependencies = [
@@ -28,28 +31,31 @@ dependencies = [
 modextravars = {'PIP_CERT':'/apps/common/UES/certificates/DigiCertHighAssuranceEVRootCA.pem'}
 
 osdependencies = [('libopenssl-devel')]
-patches = ['unixccompiler-Python-3.4.3.patch']
+
+buildopts = 'LINKCC="$CC -dynamic"'
 
 # order is important!
 # package versions updated Dec 1st 2015
 exts_list = [
     ('setuptools', '18.6.1', {
-        'source_urls': ['https://pypi.python.org/packages/source/s/setuptools/'],
+        'source_urls': ['http://pypi.python.org/packages/source/s/setuptools/'],
     }),
     ('pip', '7.1.2', {
-        'source_urls': ['https://pypi.python.org/packages/source/p/pip/'],
+        'source_urls': ['http://pypi.python.org/packages/source/p/pip/'],
     }),
     ('nose', '1.3.7', {
-        'source_urls': ['https://pypi.python.org/packages/source/n/nose/'],
+        'source_urls': ['http://pypi.python.org/packages/source/n/nose/'],
     }),
     ('numpy', numpyversion, {
         'source_urls': [('http://sourceforge.net/projects/numpy/files/NumPy/%s' % numpyversion, 'download')],
-        'patches': ['numpy-1.8.1-mkl.patch'],
+        'patches': [
+            'numpy-1.8.0-mkl.patch', # % numpyversion,
+        ],
     }),
     ('scipy', scipyversion, {
         'source_urls': [('http://sourceforge.net/projects/scipy/files/scipy/%s' % scipyversion, 'download')],
     }),
-    ('mpi4py', '2.0.0', {
+    ('mpi4py', '1.3.1', {
         'source_urls': ['http://bitbucket.org/mpi4py/mpi4py/downloads/'],
     }),
     ('Cython', '0.23.4', {
@@ -65,7 +71,8 @@ exts_list = [
         'source_urls': ['https://pypi.python.org/packages/source/m/matplotlib/'],
     }),
     ('pandas', '0.17.1', {
-            'source_urls': ['https://pypi.python.org/packages/source/p/pandas/'],
+        'source_urls': ['https://pypi.python.org/packages/source/p/pandas/'],
     }),
-
 ]
+
+moduleclass = 'lang'

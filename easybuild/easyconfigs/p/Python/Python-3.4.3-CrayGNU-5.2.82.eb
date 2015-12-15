@@ -1,5 +1,4 @@
-# Built with EasyBuild version 2.3.0 on 2015-11-11_18-03-19
-# Built with EasyBuild version 2.1.1 on 2015-05-27_20-37-14
+# contributed by Luca MArsella (CSCS)
 name = 'Python'
 version = '3.4.3'
 
