@@ -85,7 +85,7 @@ export EASYBUILD_BUILDPATH=/dev/shm/$USER
 export EASYBUILD_ROBOT_PATHS=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/ebfiles_repo/${hostName}:
 export EASYBUILD_IGNORE_OSDEPS=0
 export EASYBUILD_HIDE_DEPS=Bison,Doxygen,JasPer,NASM,SQLite,Szip,Tcl,bzip2,cURL,flex,freetype,libjpeg-turbo,libpng,libreadline,libtool,libxml2,ncurses,zlib,M4,Serf,APR,APR-util,expat,SCons
-export EASYBUILD_RECURSIVE_MODULE_UNLOAD=0
+export EASYBUILD_RECURSIVE_MODULE_UNLOAD=1
 
 # Set up private repository for jenkins user (it doesnt belong to csstaff group, it is not supposed to write under /apps/common)
 if [[ -w /apps/common/easybuild/sources/ ]] ; then
@@ -93,7 +93,7 @@ if [[ -w /apps/common/easybuild/sources/ ]] ; then
 elif [[ $USER == "jenscscs" ]] ; then
     export EASYBUILD_SOURCEPATH=$HOME/sources #/scratch/jenscscs/sources/
 else
-    export EASYBUILD_SOURCEPATH=/dev/shm/$USER/sources
+    export EASYBUILD_SOURCEPATH=$HOME
 fi
 
 if [[ "$hostName" == "daint" || "$hostName" == "dora" || "$hostName" == "santis" || "$hostName" == "brisi" ]] ; then
@@ -101,7 +101,7 @@ if [[ "$hostName" == "daint" || "$hostName" == "dora" || "$hostName" == "santis"
     export EASYBUILD_EXPERIMENTAL=1
     export EASYBUILD_OPTARCH=$CRAY_CPU_TARGET
     export CRAYPE_LINK_TYPE=dynamic
-#    module rm PrgEnv-cray 
+    module rm PrgEnv-cray 
 fi
 
 # /apps/common = custom cscs easyblocks
@@ -116,7 +116,4 @@ module use $EASYBUILD_PREFIX/modules/all
 echo MODULEPATH=$MODULEPATH
 
 echo "Loading EasyBuild..."
-module load /apps/common/UES/easybuild/modules/all/EasyBuild/2.5.0 
-#export PYTHONPATH=/apps/common/UES/easybuild/testing/boegel/easybuild/easybuild-easyblocks/:/apps/common/UES/easybuild/testing/boegel/easybuild/easybuild-framework/:/apps/common/UES/easybuild/testing/hpcugent/easybuild/vsc-base/lib/:/apps/common:/apps/common/gitpython/lib/python2.7/site-packages/
-#export PYTHONPATH=/apps/common/UES/easybuild/testing/hpcugent/easybuild/easybuild-easyblocks/:/apps/common/UES/easybuild/testing/hpcugent/easybuild/easybuild-framework/:/apps/common/UES/easybuild/testing/hpcugent/easybuild/vsc-base/lib/:/apps/common:/apps/common/gitpython/lib/python2.7/site-packages/
-#export PATH=/apps/common/UES/easybuild/testing/boegel/easybuild/easybuild-framework/:$PATH
+module load /apps/common/UES/easybuild/modules/all/EasyBuild/2.4.0 

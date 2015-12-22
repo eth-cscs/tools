@@ -6,7 +6,7 @@ version = '1.6.2'
 homepage = 'http://icl.cs.utk.edu/magma/'
 description = "The MAGMA project aims to develop a dense linear algebra library similar to LAPACK but for heterogeneous/hybrid architectures, starting with current Multicore+GPU systems."
 
-toolchain = {'name': 'CrayGNU', 'version': '5.2.40'}
+toolchain = {'name': 'CrayGNU', 'version': '2015.06-XC'}
 toolchainopts = {'pic': True, 'dynamic': True,  'openmp': True, }
 
 preinstallopts = "export EBINSTALLPREFIX=%(installdir)s && "
@@ -18,8 +18,6 @@ skipsteps = ['configure']
 
 builddependencies = [ ('cudatoolkit/6.5.14-1.0502.9613.6.1', EXTERNAL_MODULE) ]
  
-#start_dir =  'magma-1.6.2/' 
-
 sanity_check_paths={
     'files': ['lib/libmagma.so', 'lib/libmagma.a'],
     'dirs': ['include'],
