@@ -1,0 +1,61 @@
+# Built with EasyBuild version 2.5.0 on 2015-12-23_13-29-22
+# easyblock = 'EB_Score_minus_P'
+easyblock = 'ConfigureMake'
+
+name = "OTF2"
+version = "2.0-beta1"
+
+homepage = 'http://www.score-p.org'
+description = """The Open Trace Format 2 is a highly scalable, memory efficient event
+ trace data format plus support library. It will become the new standard trace format
+ for Scalasca, Vampir, and Tau and is open for other tools."""
+
+toolchain = {'version': '2015.11-XC', 'name': 'CrayGNU'}
+configopts = '--enable-shared'
+
+#sources = [SOURCELOWER_TAR_GZ]
+sources = ["otf2-%(version)s.tar.gz"]
+source_urls = ['ftp://ftp.cscs.ch/out/jgp/easybuild/']
+#source_urls = ['http://www.vi-hps.org/upload/packages/otf2/']
+
+checksums = [
+        '3289247c955acb98f3902ebff51ba4b0', # otf2-2.0-beta1.tar.gz
+#        'ebf2a58e2dd34a7ba2f65e49dbc6e16f', # opari2-2.0-beta1.tar.gz    
+]
+
+dependencies = [
+    ('libunwind', '1.1'),
+]
+
+sanity_check_paths = {
+    # note by Bernd Mohr: on some systems libraries end up in lib/
+    'files': ["bin/otf2-config", "include/otf2/otf2.h", ("lib64/libotf2.a", "lib/libotf2.a")],
+    'dirs': [],
+}
+
+moduleclass = 'perf'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.5.0",
+    "easybuild-easyblocks_version": "2.5.0",
+    "timestamp": 1450873757,
+    "build_time": 27.69,
+    "install_size": 23014908,
+    "command_line": ['--buildpath=/dev/shm/piccinal', '--experimental', '--external-modules-metadata=cray-netcdf/4.3.2,cray-hdf5/1.8.13,cray-hdf5-parallel/1.8.13,cray-libsci/13.0.4,cray-libsci/13.2.0,cudatoolkit/6.5.14-1.0502.9613.6.1,cudatoolkit/6.5.14-1.0502.9836.8.1,cudatoolkit/7.0.28-1.0502.10742.5.1,cray-petsc-complex-64/3.5.3.1,cray-petsc-complex/3.5.3.1,cray-petsc/3.5.3.1,cray-petsc-64/3.5.3.1,gcc/4.9.2', '--group-writable-installdir', '--hide-deps=Bison,Doxygen,JasPer,NASM,SQLite,Szip,Tcl,bzip2,cURL,flex,freetype,libjpeg-turbo,libpng,libreadline,libtool,libxml2,ncurses,zlib,M4,Serf,APR,APR-util,expat,SCons', '--installpath=/apps/dora/UES/5.2.UP04/easybuild', '--optarch=haswell', '--packagepath=/apps/dora/UES/5.2.UP04/easybuild/packages', '--prefix=/apps/dora/UES/5.2.UP04/easybuild', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/dora', '--robot=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/ebfiles_repo/dora:/apps/common/UES/easybuild/software/EasyBuild/2.5.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.5.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/ebfiles_repo/dora:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--umask=002', './libunwind-1.1-CrayGNU-2015.11-XC.eb', './OTF2-2.0-CrayGNU-2015.11-XC.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/opt/modules/3.2.10.3/bin/modulecmd', '3.2.10'),
+    "core_count": 20,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz",
+    "cpu_speed": 2299.885,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=/opt/gcc/4.9.3/bin/../snos/bin/gcc; COLLECT_LTO_WRAPPER=/opt/gcc/4.9.3/snos/libexec/gcc/x86_64-suse-linux/4.9.3/lto-wrapper; Target: x86_64-suse-linux; Configured with: ../cray-gcc-4.9.3/configure --prefix=/opt/gcc/4.9.3/snos --disable-nls --libdir=/opt/gcc/4.9.3/snos/lib --enable-languages=c,c++,fortran --with-gxx-include-dir=/opt/gcc/4.9.3/snos/include/g++ --with-slibdir=/opt/gcc/4.9.3/snos/lib --with-system-zlib --enable-shared --enable-__cxa_atexit --build=x86_64-suse-linux --with-ppl --with-cloog; Thread model: posix; gcc version 4.9.3 20150626 (Cray Inc.) (GCC) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "dora103",
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP3",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Apr  7 2015, 08:28:12) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/opt/gcc/4.9.3/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+}]
