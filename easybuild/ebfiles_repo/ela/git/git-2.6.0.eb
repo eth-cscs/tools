@@ -1,0 +1,71 @@
+# Built with EasyBuild version 2.5.0 on 2015-12-23_17-03-06
+##
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# Copyright:: Copyright 2012-2014 Uni.Lu/LCSB, NTUA
+# Authors::   Fotis Georgatos <fotis@cern.ch>
+# Authors::   Dmitri Gribenko <gribozavr@gmail.com>
+# License::   MIT/GPL
+# $Id$
+#
+# This work implements a part of the HPCBIOS project and is a component of the policy:
+# http://hpcbios.readthedocs.org/en/latest/HPCBIOS_2012-90.html
+##
+
+easyblock = 'ConfigureMake'
+
+name = 'git'
+version = '2.6.0'
+
+homepage = 'http://git-scm.com/'
+description = """Git is a free and open source distributed version control system designed
+to handle everything from small to very large projects with speed and efficiency."""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+sources = ['v%(version)s.tar.gz']
+source_urls = ['https://github.com/git/git/archive']
+
+dependencies = [
+    ('cURL', '7.40.0'),
+    ('expat', '2.1.0'),
+    ('gettext', '0.19.4'),
+]
+
+preconfigopts = 'make configure && '
+
+# Work around git build system bug.  If LIBS contains -lpthread, then configure
+# will not append -lpthread to LDFLAGS, but Makefile ignores LIBS.
+configopts = "--enable-pthreads='-lpthread'"
+
+sanity_check_paths = {
+    'files': ['bin/git'],
+    'dirs': [],
+}
+
+moduleclass = 'tools'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.5.0",
+    "easybuild-easyblocks_version": "2.5.0",
+    "timestamp": 1450886581,
+    "build_time": 15.12,
+    "install_size": 934159580,
+    "command_line": ['--buildpath=/dev/shm/perettig', '--group-writable-installdir', '--hide-deps=Bison,Doxygen,JasPer,NASM,SQLite,Szip,Tcl,bzip2,cURL,flex,freetype,libjpeg-turbo,libpng,libreadline,libtool,libxml2,ncurses,zlib,M4,Serf,APR,APR-util,expat,SCons,gettext', '--installpath=/apps/ela/easybuild', '--modules-tool=EnvironmentModulesTcl', '--packagepath=/apps/ela/easybuild/packages', '--prefix=/apps/ela/easybuild', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/ela', '--robot=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/ebfiles_repo/ela:/apps/common/UES/easybuild/software/EasyBuild/2.5.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.5.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/ebfiles_repo/ela:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--umask=002', 'git-2.6.0.eb'],
+    "modules_tool": ('EnvironmentModulesTcl', '/usr/share/Modules/tcl/modulecmd.tcl', '1.146'),
+    "core_count": 32,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2650 v2 @ 2.60GHz",
+    "cpu_speed": 2601.0,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; Target: x86_64-suse-linux; Configured with: ../configure --prefix=/usr --infodir=/usr/share/info --mandir=/usr/share/man --libdir=/usr/lib64 --libexecdir=/usr/lib64 --enable-languages=c,c++,objc,fortran,obj-c++,java,ada --enable-checking=release --with-gxx-include-dir=/usr/include/c++/4.3 --enable-ssp --disable-libssp --with-bugurl=http://bugs.opensuse.org/ --with-pkgversion='SUSE Linux' --disable-libgcj --disable-libmudflap --with-slibdir=/lib64 --with-system-zlib --enable-__cxa_atexit --enable-libstdcxx-allocator=new --disable-libstdcxx-pch --enable-version-specific-runtime-libs --program-suffix=-4.3 --enable-linux-futex --without-system-libunwind --with-cpu=generic --build=x86_64-suse-linux; Thread model: posix; gcc version 4.3.4 [gcc-4_3-branch revision 152973] (SUSE Linux) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "ela3",
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP3",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Apr  7 2015, 08:28:12) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/usr/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+}]
