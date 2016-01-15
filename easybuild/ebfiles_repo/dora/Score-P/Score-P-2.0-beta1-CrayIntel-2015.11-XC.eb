@@ -1,0 +1,132 @@
+# Built with EasyBuild version 2.5.0 on 2016-01-15_10-24-10
+# This is an easyconfig file for EasyBuild, see https://github.com/hpcugent/easybuild
+# Copyright:: Copyright 2013 Juelich Supercomputing Centre, Germany
+# Authors::   Bernd Mohr <b.mohr@fz-juelich.de>
+# License::   New BSD
+#
+# This work is based from experiences from the UNITE project
+# http://apps.fz-juelich.de/unite/
+##
+# make sure we don't fall back to the ConfigureMake easyblock
+# easyblock = 'EB_Score_minus_P'
+easyblock = 'ConfigureMake'
+
+name = 'Score-P'
+version = '2.0-beta1'
+
+homepage = 'http://www.score-p.org'
+description = """The Score-P measurement infrastructure is a highly scalable and
+ easy-to-use tool suite for profiling, event tracing, and online analysis of HPC
+ applications."""
+
+toolchain = {'version': '2015.11-XC', 'name': 'CrayIntel'}
+toolchainopts = {"usempi": True}
+
+sources = ["scorep-%(version)s.tar.gz"]
+source_urls = ['http://www.vi-hps.org/upload/packages/scorep/']
+checksums = [ 'ddf425d5c7de428e7fe547c6a8d53ccf' ] # scorep-2.0-beta1.tar.gz 
+
+# TODO: STATISTICS
+# TODO: patches = ['scorep-1.4.2.patch']
+
+# builddependencies = [ ('cudatoolkit/6.5.14', EXTERNAL_MODULE) ]
+builddependencies = [
+        ('zlib', '1.2.8', '', True),
+        ('binutils', '2.25', '', True), 
+        ('libunwind', '1.1', '', True),
+        ('Cube', '4.3.3', '', True),
+        ('OTF2', '2.0-beta1', '', True),   # = dummy toolchain
+        ('OPARI2', '2.0-beta1', '', True), # = dummy toolchain
+        ('papi/5.4.1.2', EXTERNAL_MODULE), # must have papi.pc to avoid missing -ldl
+]
+
+dependencies = [
+        ('zlib', '1.2.8', '', True),
+        ('binutils', '2.25', '', True), 
+        ('libunwind', '1.1', '', True),
+        ('Cube', '4.3.3', '', True),
+        ('OTF2', '2.0-beta1', '', True),   # = dummy toolchain
+        ('OPARI2', '2.0-beta1', '', True), # = dummy toolchain
+        ('papi/5.4.1.2', EXTERNAL_MODULE), # must have papi.pc to avoid missing -ldl
+]
+# ('', ''),
+#+ tard:    ('Scalasca', '2.2.2'),
+
+configopts  = ' --with-machine-name=dora'
+#configopts += ' --with-libbfd-include=/usr/include'
+#configopts += ' --with-libbfd-lib=/usr/lib64'
+configopts += ' --with-binutils=$EBROOTBINUTILS/bin'
+configopts += ' --with-libbfd-include=$EBROOTBINUTILS/include'
+configopts += ' --with-libbfd-lib=$EBROOTBINUTILS/lib'
+configopts += ' --with-libunwind=$EBROOTLIBUNWIND'
+configopts += ' --with-cube=$EBROOTCUBE/bin'
+configopts += ' --with-otf2=$EBROOTOTF2/bin'
+configopts += ' --with-opari2=$EBROOTOPARI2/bin'
+configopts += ' --with-papi=/opt/cray/papi/default'
+configopts += ' --with-papi-header=/opt/cray/papi/default/include'
+configopts += ' --with-papi-lib=/opt/cray/papi/default/lib'
+# configopts += ' --with-librca=/opt/cray/rca/default/'
+# configopts += ' --with-libpmi=/opt/cray/rca/default/'
+configopts += ' --with-libpmi-include=/opt/cray/pmi/default/include'
+configopts += ' --with-libpmi-lib=/opt/cray/pmi/default/lib64'
+configopts += ' --with-librca-include=/opt/cray/rca/default/include'
+configopts += ' --with-librca-lib=/opt/cray/rca/default/lib64'
+configopts += ' --enable-shared'
+# configopts += ' LD=/apps/dora/UES/5.2.UP04/sandboxjg/easybuild/software/binutils/2.25/bin/ld'
+configopts += ' CC=cc CFLAGS=-O2'       # !needed for build-score
+configopts += ' CXX=CC CXXFLAGS=-O2'    # !needed for build-score
+
+#buildopts  = ' CC=cc CC'
+#buildopts += ' CXX=CC'
+
+# --- cuda ---
+#configopts += ' --enable-cuda'
+##configopts += ' --enable-debug'
+##no configopts += ' --with-libcuda=/global/opt/nvidia/cudatoolkit/6.5.14'
+#configopts += ' --with-libcuda-lib=/global/opt/nvidia/cudatoolkit/7.0.28/lib64/stubs'
+#configopts += ' --with-libcuda-include=/global/opt/nvidia/cudatoolkit/7.0.28/include'
+#configopts += ' --with-libcudart=/global/opt/nvidia/cudatoolkit/7.0.28'
+#configopts += ' --with-cupti=/global/opt/nvidia/cudatoolkit/7.0.28/extras/CUPTI'
+# /global/opt/nvidia/cudatoolkit/7.0.28/lib64/libcudart.so
+# /global/opt/nvidia/cudatoolkit/7.0.28/lib64/stubs/libcuda.so
+
+sanity_check_paths = {
+    'files': [("bin/scorep", "bin/scorep-score", "bin/scorep-config", "bin/backend/scorep-backend-info"),
+              ("bin/scorep-ftn", "bin/scorep-cc", "bin/scorep-CC"),
+              ("include/scorep/SCOREP_User.h"),
+#              ("include/opari2/pomp2_user_lib.h", "include/otf2/OTF2_Reader.h", "include/scorep/SCOREP_User.h"),
+#              ("lib/libotf2.a", "lib/libotf2.so", "lib/backend/libotf2.a", "lib/backend/libotf2.so"),
+              ("lib/backend/libscorep_adapter_compiler_event.a", "lib/backend/libscorep_adapter_compiler_mgmt.a"),
+              ("lib/backend/libscorep_adapter_mpi_event.a", "lib/backend/libscorep_adapter_mpi_mgmt.a"),
+              ("lib/backend/libscorep_mpp_mpi.a", "lib/backend/libscorep_online_access_mpi_mockup.a", "lib/backend/libscorep_online_access_mpp_mpi.a"),
+              ("share/doc/scorep/pdf/scorep.pdf", "share/scorep/scorep.summary"),          
+],
+    'dirs': [],
+}
+
+moduleclass = 'perf'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.5.0",
+    "easybuild-easyblocks_version": "2.5.0",
+    "timestamp": 1452849845,
+    "build_time": 816.44,
+    "install_size": 26310223,
+    "command_line": ['--buildpath=/dev/shm/piccinal', '--experimental', '--external-modules-metadata=cray-netcdf/4.3.2,cray-hdf5/1.8.13,cray-hdf5-parallel/1.8.13,cray-libsci/13.0.4,cray-libsci/13.2.0,cudatoolkit/6.5.14-1.0502.9613.6.1,cudatoolkit/6.5.14-1.0502.9836.8.1,cudatoolkit/7.0.28-1.0502.10742.5.1,cray-petsc-complex-64/3.5.3.1,cray-petsc-complex/3.5.3.1,cray-petsc/3.5.3.1,cray-petsc-64/3.5.3.1,gcc/4.9.2', '--group-writable-installdir', '--hide-deps=Bison,Doxygen,JasPer,NASM,SQLite,Szip,Tcl,bzip2,cURL,flex,freetype,libjpeg-turbo,libpng,libreadline,libtool,libxml2,ncurses,zlib,M4,Serf,APR,APR-util,expat,SCons,gettext', '--installpath=/apps/dora/UES/5.2.UP04/easybuild', '--optarch=haswell', '--packagepath=/apps/dora/UES/5.2.UP04/easybuild/packages', '--prefix=/apps/dora/UES/5.2.UP04/easybuild', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/dora', '--robot=D:/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/ebfiles_repo/dora:/apps/common/UES/easybuild/software/EasyBuild/2.5.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.5.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=D:/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/ebfiles_repo/dora:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--umask=002', './Score-P-2.0-beta1-CrayIntel-2015.11-XC.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/opt/modules/3.2.10.3/bin/modulecmd', '3.2.10'),
+    "core_count": 20,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz",
+    "cpu_speed": 2299.851,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; Target: x86_64-suse-linux; Configured with: ../configure --prefix=/usr --infodir=/usr/share/info --mandir=/usr/share/man --libdir=/usr/lib64 --libexecdir=/usr/lib64 --enable-languages=c,c++,objc,fortran,obj-c++,java,ada --enable-checking=release --with-gxx-include-dir=/usr/include/c++/4.3 --enable-ssp --disable-libssp --with-bugurl=http://bugs.opensuse.org/ --with-pkgversion='SUSE Linux' --disable-libgcj --disable-libmudflap --with-slibdir=/lib64 --with-system-zlib --enable-__cxa_atexit --enable-libstdcxx-allocator=new --disable-libstdcxx-pch --enable-version-specific-runtime-libs --program-suffix=-4.3 --enable-linux-futex --without-system-libunwind --with-cpu=generic --build=x86_64-suse-linux; Thread model: posix; gcc version 4.3.4 [gcc-4_3-branch revision 152973] (SUSE Linux) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "dora104",
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP3",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Apr  7 2015, 08:28:12) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/usr/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+}]
