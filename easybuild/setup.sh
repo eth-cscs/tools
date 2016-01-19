@@ -1,1 +1,1 @@
-setup.sh-testing
+setup.sh-stable

@@ -21,4 +21,9 @@ versionsuffix = '-%s-%s' % (python, pyver)
 
 dependencies = [(python, pyver)]
 
+sanity_check_paths = {
+    'files': [], 
+    'dirs': ['lib/python2.7/site-packages/mpi4py/bin'],
+}
+
 moduleclass = 'mpi'
