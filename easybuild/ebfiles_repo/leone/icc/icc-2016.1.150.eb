@@ -1,4 +1,4 @@
-# Built with EasyBuild version 2.5.0 on 2016-01-23_16-47-49
+# Built with EasyBuild version 2.5.0 on 2016-01-23_17-09-35
 # This is an easyconfig file for EasyBuild, see http://hpcugent.github.io/easybuild
 
 name = 'icc'
@@ -39,8 +39,8 @@ moduleclass = 'compiler'
 buildstats = [{
     "easybuild-framework_version": "2.5.0",
     "easybuild-easyblocks_version": "2.5.0",
-    "timestamp": 1453564064,
-    "build_time": 0.52,
+    "timestamp": 1453565370,
+    "build_time": 0.48,
     "install_size": 4663,
     "command_line": ['--buildpath=/dev/shm/piccinal', '--group-writable-installdir', '--hide-deps=Bison,Doxygen,JasPer,NASM,SQLite,Szip,Tcl,bzip2,cURL,flex,freetype,libjpeg-turbo,libpng,libreadline,libtool,libxml2,ncurses,zlib,M4,Serf,APR,APR-util,expat,SCons', '--installpath=/apps/leone/UES/RH6.7_PE15.12/easybuild', '--packagepath=/apps/leone/UES/RH6.7_PE15.12/easybuild/packages', '--prefix=/apps/leone/UES/RH6.7_PE15.12/easybuild', '--recursive-module-unload', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/leone', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/ebfiles_repo/leone:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--umask=002', './icc-2016.1.150.eb'],
     "modules_tool": ('EnvironmentModulesC', '/usr/bin/modulecmd', '3.2.10'),
