@@ -1,4 +1,4 @@
-# Built with EasyBuild version 2.5.0 on 2016-01-23_14-53-31
+# Built with EasyBuild version 2.5.0 on 2016-01-23_20-32-06
 easyblock = 'ConfigureMake'
 
 name = 'Szip'
@@ -28,8 +28,8 @@ moduleclass = 'lib'
 buildstats = [{
     "easybuild-framework_version": "2.5.0",
     "easybuild-easyblocks_version": "2.5.0",
-    "timestamp": 1453557207,
-    "build_time": 5.39,
+    "timestamp": 1453577520,
+    "build_time": 5.35,
     "install_size": 218246,
     "command_line": ['--buildpath=/dev/shm/piccinal', '--group-writable-installdir', '--hide-deps=Bison,Doxygen,JasPer,NASM,SQLite,Szip,Tcl,bzip2,cURL,flex,freetype,libjpeg-turbo,libpng,libreadline,libtool,libxml2,ncurses,zlib,M4,Serf,APR,APR-util,expat,SCons', '--installpath=/apps/leone/UES/RH6.7_PE15.12/easybuild', '--packagepath=/apps/leone/UES/RH6.7_PE15.12/easybuild/packages', '--prefix=/apps/leone/UES/RH6.7_PE15.12/easybuild', '--recursive-module-unload', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/leone', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/ebfiles_repo/leone:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--umask=002', './Szip-2.1.eb'],
     "modules_tool": ('EnvironmentModulesC', '/usr/bin/modulecmd', '3.2.10'),
