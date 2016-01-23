@@ -1,4 +1,4 @@
-# Built with EasyBuild version 2.5.0 on 2016-01-23_17-09-35
+# Built with EasyBuild version 2.5.0 on 2016-01-23_17-12-07
 # This is an easyconfig file for EasyBuild, see http://hpcugent.github.io/easybuild
 
 name = 'icc'
@@ -7,8 +7,16 @@ version = '2016.1.150'
 homepage = 'http://software.intel.com/en-us/intel-compilers/'
 description = "C and C++ compiler from Intel"
 
+# export LM_LICENSE_FILE=/opt/intel/licenses/USE_SERVER.lic
 toolchain = {'name': 'dummy', 'version': 'dummy'}
 dependencies = [ ('PrgEnv-intel/16.0.1.150', EXTERNAL_MODULE), ]
+source_urls = ['ftp://ftp.cscs.ch/out/jgp/easybuild/']
+sources = ["intel-%(version)s.tar.gz"]
+checksums = [ '43d41e45feb48d77ca3d185ac17cfe21' ] # intel-2016.1.150.tar.gz
+skipsteps = [ 'sanitycheck' ] 
+components = [ 'intel-icc' ]
+
+moduleclass = 'compiler'
 
 #cscs  sources = ['parallel_studio_xe_%(version_major)s_composer_edition_for_cpp.tgz']
 #cscs  checksums = ['f57a892fb494db3c80f20a88aa3e901f']
@@ -24,23 +32,13 @@ dependencies = [ ('PrgEnv-intel/16.0.1.150', EXTERNAL_MODULE), ]
 #cscs  license_file = os.path.join(os.getenv('HOME'), "licenses", "intel", "license.lic")
 
 
-source_urls = ['ftp://ftp.cscs.ch/out/jgp/easybuild/']
-sources = ["intel-%(version)s.tar.gz"]
-# checksums = [ '17898918df6b4b58e576e9df3ef83b29' ] # intel-2016.1.150.tar.gz
-# PSET_INSTALL_DIR=/apps/leone/system/opt/intel/2016-up1/
-skipsteps = [ 'sanitycheck' ] 
-components = [ 'intel-icc' ]
-# dontcreateinstalldir = 'True'
-# export LM_LICENSE_FILE=/opt/intel/licenses/USE_SERVER.lic
-
-moduleclass = 'compiler'
 
 # Build statistics
 buildstats = [{
     "easybuild-framework_version": "2.5.0",
     "easybuild-easyblocks_version": "2.5.0",
-    "timestamp": 1453565370,
-    "build_time": 0.48,
+    "timestamp": 1453565522,
+    "build_time": 0.38,
     "install_size": 4663,
     "command_line": ['--buildpath=/dev/shm/piccinal', '--group-writable-installdir', '--hide-deps=Bison,Doxygen,JasPer,NASM,SQLite,Szip,Tcl,bzip2,cURL,flex,freetype,libjpeg-turbo,libpng,libreadline,libtool,libxml2,ncurses,zlib,M4,Serf,APR,APR-util,expat,SCons', '--installpath=/apps/leone/UES/RH6.7_PE15.12/easybuild', '--packagepath=/apps/leone/UES/RH6.7_PE15.12/easybuild/packages', '--prefix=/apps/leone/UES/RH6.7_PE15.12/easybuild', '--recursive-module-unload', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/leone', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/ebfiles_repo/leone:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--umask=002', './icc-2016.1.150.eb'],
     "modules_tool": ('EnvironmentModulesC', '/usr/bin/modulecmd', '3.2.10'),
