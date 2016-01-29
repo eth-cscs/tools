@@ -1,4 +1,4 @@
-# Built with EasyBuild version 2.5.0 on 2016-01-29_18-13-33
+# Built with EasyBuild version 2.5.0 on 2016-01-29_18-25-14
 # jgp@cscs
 easyblock = 'CMakeMake'
 
@@ -23,6 +23,8 @@ builddependencies = [('CMake', '3.4.1', '', True)] # dummy
 configopts  = ' -DCMAKE_BUILD_TYPE=Release -DCMAKE_VERBOSE_MAKEFILE=TRUE '
 # configopts  = ' -DCMAKE_BUILD_TYPE=Release -DGTI_INSTALL_PREFIX=${EBROOTGTI}'
 
+runtest = 'test'
+
 sanity_check_paths = {
     'files': ["bin/c.exe"],
     'dirs': [],
@@ -34,8 +36,8 @@ moduleclass = 'perf'
 buildstats = [{
     "easybuild-framework_version": "2.5.0",
     "easybuild-easyblocks_version": "2.5.0",
-    "timestamp": 1454087608,
-    "build_time": 3.1,
+    "timestamp": 1454088309,
+    "build_time": 3.26,
     "install_size": 17136,
     "command_line": ['--buildpath=/dev/shm/piccinal', '--group-writable-installdir', '--hide-deps=Bison,Doxygen,JasPer,NASM,SQLite,Szip,Tcl,bzip2,cURL,flex,freetype,libjpeg-turbo,libpng,libreadline,libtool,libxml2,ncurses,zlib,M4,Serf,APR,APR-util,expat,SCons', '--installpath=/apps/leone/UES/RH6.7_PE15.12/easybuild', '--packagepath=/apps/leone/UES/RH6.7_PE15.12/easybuild/packages', '--prefix=/apps/leone/UES/RH6.7_PE15.12/easybuild', '--recursive-module-unload', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/leone', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/ebfiles_repo/leone:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--umask=002', './papiwrap-1.0-gmvapich2-16.01.eb'],
     "modules_tool": ('EnvironmentModulesC', '/usr/bin/modulecmd', '3.2.10'),
