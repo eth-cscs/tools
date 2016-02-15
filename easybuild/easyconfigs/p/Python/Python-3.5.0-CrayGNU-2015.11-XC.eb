@@ -8,7 +8,7 @@ description = "Python is a programming language that lets you work more quickly 
 toolchain = {'name': 'CrayGNU', 'version': '2015.11-XC'}
 toolchainopts = {'pic': True, 'opt': True, 'optarch': True}
 
-numpyversion = '1.10.1'
+numpyversion = '1.10.4'
 scipyversion = '0.16.1'
 
 source_urls = ['http://www.python.org/ftp/%(namelower)s/%(version)s/']
@@ -31,12 +31,12 @@ osdependencies = [('libopenssl-devel')]
 patches = ['unixccompiler-Python-3.4.3.patch']
 
 # order is important!
-# package versions updated Dec 1st 2015
+# package versions updated Feb 4th 2016
 exts_list = [
-    ('setuptools', '18.6.1', {
+    ('setuptools', '19.7', {
         'source_urls': ['https://pypi.python.org/packages/source/s/setuptools/'],
     }),
-    ('pip', '7.1.2', {
+    ('pip', '8.0.2', {
         'source_urls': ['https://pypi.python.org/packages/source/p/pip/'],
     }),
     ('nose', '1.3.7', {
@@ -58,10 +58,10 @@ exts_list = [
     ('six', '1.10.0', {
         'source_urls': ['https://pypi.python.org/packages/source/s/six/'],
     }),
-    ('virtualenv', '13.1.2', {
+    ('virtualenv', '14.0.5', {
         'source_urls': ['https://pypi.python.org/packages/source/v/virtualenv'],
     }),
-    ('matplotlib', '1.5.0', {
+    ('matplotlib', '1.5.1', {
         'source_urls': ['https://pypi.python.org/packages/source/m/matplotlib/'],
     }),
     ('pandas', '0.17.1', {

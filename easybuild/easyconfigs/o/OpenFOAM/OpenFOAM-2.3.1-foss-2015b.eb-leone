@@ -1,4 +1,4 @@
-easyblock = 'OpenFOAMdev'
+#easyblock = 'OpenFOAMdev'
 
 name = 'OpenFOAM'
 version = '2.3.1'
@@ -37,7 +37,7 @@ dependencies = [
 
 builddependencies = [
     ('flex', '2.5.39'),
-#    ('CMake', '3.3.1', '', True),                        
+    ('CMake', '3.3.1', '', True),                        
 ]
 
 moduleclass = 'cae'
