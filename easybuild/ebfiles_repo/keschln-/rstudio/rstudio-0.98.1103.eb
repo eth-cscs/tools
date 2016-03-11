@@ -1,0 +1,39 @@
+# Built with EasyBuild version 2.6.0 on 2016-03-11_14-07-46
+name = 'rstudio'
+version = '0.98.1103'
+
+homepage = 'https://www.rstudio.com/products/rstudio/download/'
+description = """RStudio is a set of integrated tools designed to help you be more productive with R."""
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+# cd /apps/common/easybuild/sources/r/rstudio
+# wget => https://support.rstudio.com/hc/en-us/articles/206569407-Older-Versions-of-RStudio-Desktop
+#no: wget https://download1.rstudio.org/rstudio-0.99.892-x86_64-fedora.tar.gz
+sources = ['rstudio-%(version)s-x86_64-fedora.tar.gz']
+
+moduleclass = 'lang'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.6.0",
+    "easybuild-easyblocks_version": "2.6.0",
+    "timestamp": 1457701661,
+    "build_time": 1.92,
+    "install_size": 1022,
+    "command_line": ['--buildpath=/dev/shm/piccinal', '--group-writable-installdir', '--hide-deps=Bison,Doxygen,JasPer,NASM,SQLite,Szip,Tcl,bzip2,cURL,flex,freetype,libjpeg-turbo,libpng,libreadline,libtool,libxml2,ncurses,zlib,M4,Serf,APR,APR-util,expat,SCons,binutils,Coreutils,GLib,Qt,SCOTCH,Tk,hwloc,libffi,libunwind,make,numactl,pkg-config,gettext,Autotools,Automake,Autoconf,GCCcore,OPARI2,OTF2,UDUNITS', '--installpath=/apps/escha/UES/RH6.7/easybuild', '--packagepath=/apps/escha/UES/RH6.7/easybuild/packages', '--prefix=/apps/escha/UES/RH6.7/easybuild', '--recursive-module-unload', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/keschln-', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/ebfiles_repo/keschln-:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--umask=002', './rstudio-0.98.1103.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/usr/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 24,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz",
+    "cpu_speed": 2601.0,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; Target: x86_64-redhat-linux; Configured with: ../configure --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=http://bugzilla.redhat.com/bugzilla --enable-bootstrap --enable-shared --enable-threads=posix --enable-checking=release --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-languages=c,c++,objc,obj-c++,java,fortran,ada --enable-java-awt=gtk --disable-dssi --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-1.5.0.0/jre --enable-libgcj-multifile --enable-java-maintainer-mode --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --disable-libjava-multilib --with-ppl --with-cloog --with-tune=generic --with-arch_32=i686 --build=x86_64-redhat-linux; Thread model: posix; gcc version 4.4.7 20120313 (Red Hat 4.4.7-16) (GCC) ; ",
+    "glibc_version": "2.12",
+    "hostname": "keschln-0001",
+    "os_name": "RHEL",
+    "os_type": "Linux",
+    "os_version": "6.7",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.6 (r266:84292, May 22 2015, 08:34:51) ; [GCC 4.4.7 20120313 (Red Hat 4.4.7-15)]",
+    "system_gcc_path": "/usr/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+}]
