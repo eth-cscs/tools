@@ -12,7 +12,7 @@ toolchain = {'name': 'CrayGNU', 'version': '5.2.82'}
 sources = [SOURCELOWER_TAR_BZ2]
 source_urls = [GNU_SOURCE]
 
-preconfigopts = 'export CFLAGS=-mcmodel=large && '
+preconfigopts = 'export CFLAGS="$CFLAGS -mcmodel=large" && '
 runtest = 'check'
 
 sanity_check_paths = {

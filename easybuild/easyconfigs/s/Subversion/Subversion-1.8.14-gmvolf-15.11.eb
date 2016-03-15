@@ -10,6 +10,7 @@ description = " Subversion is an open source version control system."
 toolchain = {'name': 'gmvolf', 'version': '15.11'}
 
 source_urls = [
+    'http://archive.apache.org/dist/%(namelower)s',
     'http://apache.belnet.be/%(namelower)s',
     'http://www.eu.apache.org/dist/%(namelower)s',
     'http://www.us.apache.org/dist/%(namelower)s',

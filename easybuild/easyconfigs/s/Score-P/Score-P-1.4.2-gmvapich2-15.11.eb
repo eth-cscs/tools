@@ -24,20 +24,16 @@ toolchainopts = {"usempi": True}
 sources = ["scorep-%(version)s.tar.gz"]
 source_urls = ['http://www.vi-hps.org/upload/packages/scorep/']
 patches = ['scorep-1.4.2.patch']
-
-checksums = [
-    '3b9a042b13bdd5836452354e6567f71e',         # 1.4.2
-]
-
+checksums = [ '3b9a042b13bdd5836452354e6567f71e' ] # 1.4.2
 # TODO: add STATISTICS !!!
 
-dependencies = [
-    #('zlib', '1.2.8'),
-    ('Cube', '4.3.2'),
-    ('OTF2', '1.5.1'),
-    ('OPARI2', '1.1.4'),
+dependencies = [ 
+    ('PAPI',   '5.4.1', '', True),
+    ('OTF2',   '1.5.1', '', True),
+    ('OPARI2', '1.1.4', '', True),
+    ('Cube',   '4.3.3', '', True),
     ('Scalasca', '2.2.2'),
-    # ('binutils', '2.25'), # already loaded by mvapich2
+    # ('binutils', '2.26'), # gmvapich2/15.11 loads cudatoolkit/7.0.28 + GCC/4.9.3-binutils-2.25
 ]
 configopts  = ' --with-machine-name=kescha'
 configopts += ' --with-binutils=$EBROOTBINUTILS/bin'
@@ -46,9 +42,9 @@ configopts += ' --with-libbfd-lib=$EBROOTBINUTILS/lib'
 configopts += ' --with-otf2=$EBROOTOTF2/bin'
 configopts += ' --with-opari2=$EBROOTOPARI2/bin'
 configopts += ' --with-cube=$EBROOTCUBE/bin'
-configopts += ' --with-papi=/opt/cray/papi/default'
-configopts += ' --with-papi-header=/opt/cray/papi/default/include'
-configopts += ' --with-papi-lib=/opt/cray/papi/default/lib'
+configopts += ' --with-papi=$EBROOTPAPI'
+configopts += ' --with-papi-header=$EBROOTPAPI/include'
+configopts += ' --with-papi-lib=$EBROOTPAPI/lib'
 configopts += ' --enable-shared'
 configopts += ' --enable-cuda'
 #no configopts += ' --with-libcuda=/global/opt/nvidia/cudatoolkit/6.5.14'
