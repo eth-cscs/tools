@@ -3,7 +3,7 @@ easyblock = 'CrayToolchain'
 name = 'CrayGNU'
 version = '2016.03'
 
-homepage = 'http://docs.cray.com/books/S-9407-1511'
+homepage = 'http://docs.cray.com/books/S-9408-1603/'
 description = """Toolchain using Cray compiler wrapper, using PrgEnv-gnu module (PE release: November 2015).\n"""
 
 toolchain = {'name': 'dummy', 'version': 'dummy'}
