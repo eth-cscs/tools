@@ -23,7 +23,7 @@ toolchain = {'name': 'dummy', 'version': 'dummy'}
 sources = [SOURCE_TAR_GZ]
 source_urls = ['http://www.nano-editor.org/dist/v%s' % '.'.join(version.split('.')[0:2])]
 
-dependencies = [('ncurses', '5.9')]
+dependencies = [('ncurses', '6.0')]
 
 sanity_check_paths = {
     'files': ['bin/nano'],

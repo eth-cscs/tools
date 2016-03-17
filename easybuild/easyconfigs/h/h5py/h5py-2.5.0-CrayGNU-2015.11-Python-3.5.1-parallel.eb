@@ -1,4 +1,5 @@
-easyblock = "PythonPackage"
+#easyblock = "PythonPackage"
+easyblock= "h5py"
 
 name = 'h5py'
 version = '2.5.0'
@@ -9,20 +10,23 @@ description = """HDF5 for Python (h5py) is a general-purpose Python interface to
  amounts of data."""
 
 toolchain = {'name': 'CrayGNU', 'version': '2015.11'}
+toolchainopts = {'usempi': True}
 
 source_urls = [PYPI_SOURCE]
 sources = [SOURCE_TAR_GZ]
 
 python = 'Python'
-pyver = '2.7.11'
+pyver = '3.5.1'
 pyshortver = '.'.join(pyver.split('.')[0:2])
-hdf5suff = '-serial'
+hdf5suff = '-parallel'
 versionsuffix = '-%s-%s%s' % (python, pyver, hdf5suff)
 
 dependencies = [
     (python, pyver),
-    ('cray-hdf5/1.8.13', EXTERNAL_MODULE),
+    ('cray-hdf5-parallel/1.8.14', EXTERNAL_MODULE),
 ]
+
+#prebuildopts = ' python setup.py configure --mpi  && '
 
 sanity_check_paths = {
     'files': [],
