@@ -1,0 +1,60 @@
+# contributed by Luca Marsella (CSCS)
+#
+# This file requires the easyblocks boostcray.py and gromacscray.py that can be found in $EASYBUILD_INCLUDE_EASYBLOCKS.
+# The easyconfig builds a working MPI executable gmx_mpi, but it fails make check with the error:
+# No rule to make target `-L/opt/cray/libsci/13.2.0/GNU/4.9/x86_64/lib', needed by `lib/libgromacs_mpi.so.1.2.0'
+# The issue is likely related to dynamic libraries, since the static library libgromacs_mpi.a is built instead
+# successfully by the easyconfig GROMACS-5.1.2-CrayGNU-2016.03.eb (no dynamic option selected for the toolchain
+# and GMX_PREFER_STATIC_LIBS flag is used during the configure step).
+# 
+# Previously there's a warning on cray-libsci in the log:
+# -- Looking for dgemm_ - not found
+# CMake Warning at cmake/gmxManageLinearAlgebraLibraries.cmake:78 (message):
+#  GMX_BLAS_USER library
+#  /dev/shm/lucamar/GROMACS/5.1.2/CrayGNU-2016.03-cuda-7.0/gromacs-5.1.2/-L/opt/cray/libsci/16.03.1/GNU/4.9/x86_64/lib
+#  was specified, but it may not provide BLAS.  We are proceeding by assuming you know what you are doing and that linking F77-style to this library will work.
+# 
+# Skipping the test step does not help either, as the install step would fail with the same error.
+#
+# Copyright:: Copyright 2012-2013 University of Luxembourg / LCSB, Cyprus Institute / CaSToRC, Ghent University
+# Authors::   Wiktor Jurkowski <wiktor.jurkowski@uni.lu>, Fotis Georgatos <fotis.georgatos@uni.lu>, \
+#             George Tsouloupas <g.tsouloupas@cyi.ac.cy>, Kenneth Hoste
+# License::   MIT/GPL
+# $Id$
+#
+# This work implements a part of the HPCBIOS project and is a component of the policy:
+# http://hpcbios.readthedocs.org/en/latest/HPCBIOS_2012-93.html
+#
+
+easyblock = 'gromacscray'
+
+name = 'GROMACS'
+version = "5.1.2"
+cudaversion = '7.0'
+versionsuffix = '-cuda-%s' % cudaversion
+
+homepage = 'http://www.gromacs.org'
+description = """GROMACS is a versatile package to perform molecular dynamics,
+ i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles."""
+
+toolchain = {'name': 'CrayGNU', 'version': '2015.11'}
+toolchainopts = {'usempi': 'True', 'openmp': 'True', 'dynamic': 'True'}
+
+source_urls = ['ftp://ftp.gromacs.org/pub/gromacs/']
+sources = [SOURCELOWER_TAR_GZ]
+
+configopts = ' -DCMAKE_C_FLAGS="-g -fopenmp -fPIC" -DCMAKE_CXX_FLAGS="-g -fopenmp -fPIC" '
+configopts += ' -DCUDA_NVCC_FLAGS="-arch sm_35" '
+
+skipsteps = ['test']
+
+# CMake and libxml2 dependencies with dummy toolchain
+builddependencies = [
+    ('CMake', '3.5.0'),
+    ('cudatoolkit/7.0.28-1.0502.10742.5.1', EXTERNAL_MODULE),
+    ('fftw/3.3.4.3', EXTERNAL_MODULE),
+    ('Boost', '1.60.0', '-Python-2.7.11'),
+    ('libxml2', '2.9.3'),
+]
+
+moduleclass = 'bio'

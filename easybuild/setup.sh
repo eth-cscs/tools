@@ -1,1 +1,1 @@
-setup.sh-2.6.0
+setup.sh-2.7.0

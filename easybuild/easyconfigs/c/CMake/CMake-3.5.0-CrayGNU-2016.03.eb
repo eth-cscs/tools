@@ -1,4 +1,5 @@
 # Built with EasyBuild version 2.7.0.dev0-r0479d88454e39c1ab0e60daeeb26f64e4305cf4e on 2016-03-16_00-21-01
+# Contributed by Luca Marsella (CSCS)
 easyblock = 'ConfigureMake'
 
 name = 'CMake'

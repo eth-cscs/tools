@@ -108,11 +108,8 @@ fi
 
 if [[ "$hostName" == "daint" || "$hostName" == "dora" || "$hostName" == "santis" || "$hostName" == "brisi" ]] ; then
     export EASYBUILD_EXTERNAL_MODULES_METADATA=/apps/common/easybuild/cray_external_modules_metadata.cfg
-    export EASYBUILD_EXPERIMENTAL=1
     export EASYBUILD_OPTARCH=$CRAY_CPU_TARGET
-    export CRAYPE_LINK_TYPE=dynamic
     export EASYBUILD_RECURSIVE_MODULE_UNLOAD=0 #recursive unload currently not working on Cray* toolchains
-    module rm PrgEnv-cray 
 fi
 
 # /apps/common = custom cscs easyblocks
@@ -127,4 +124,4 @@ export MODULEPATH=$EASYBUILD_PREFIX/modules/all:$MODULEPATH
 echo MODULEPATH=$MODULEPATH
 
 echo "Loading EasyBuild..."
-module load /apps/common/UES/easybuild/modules/all/EasyBuild/2.6.0 
+module load /apps/common/UES/easybuild/modules/all/EasyBuild/2.7.0 

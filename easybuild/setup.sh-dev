@@ -12,5 +12,5 @@ export PYTHONPATH=/apps/common/UES/easybuild/testing/hpcugent/easybuild-easyconf
 export PYTHONPATH=$PYTHONPATH:/apps/common/UES/easybuild/testing/hpcugent/easybuild-easyblocks/
 export PYTHONPATH=$PYTHONPATH:/apps/common/UES/easybuild/testing/hpcugent/easybuild-framework/
 export PYTHONPATH=$PYTHONPATH:/apps/common/UES/easybuild/testing/hpcugent/vsc-base/lib/
-export PYTHONPATH=$PYTHONPATH:/apps/common:/apps/common/gitpython/lib/python2.7/site-packages/
+export PYTHONPATH=$PYTHONPATH:/apps/common/gitpython/lib/python2.7/site-packages/
 

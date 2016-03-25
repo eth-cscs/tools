@@ -1,3 +1,4 @@
+# Contributed by Luca Marsella (CSCS)
 easyblock = 'ConfigureMake'
 
 name = 'CMake'
