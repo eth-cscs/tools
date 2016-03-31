@@ -1,7 +1,8 @@
 # Production builds
 
-Please add here the list of eb files used on production
+Use the files below to keep the list of eb files used on production up to date. 
 
+Since all changes need to be reviewed, **please issue a Pull Request** for adding new packages
 * Daint/Santis 
   * 5.2.UP04-2015.11 + 5.2.UP04-cuda-2015.11
 
