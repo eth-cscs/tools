@@ -1,0 +1,10 @@
+Boost-1.59.0-CrayGNU-5.2.82-Python-2.7.10.eb \
+Python-2.7.10-CrayGNU-5.2.82.eb \
+Python-3.4.3-CrayGNU-5.2.82.eb \
+h5py-2.5.0-CrayGNU-5.2.82-Python-2.7.10-parallel.eb \
+h5py-2.5.0-CrayGNU-5.2.82-Python-2.7.10-serial.eb  \
+matplotlib-1.4.3-CrayGNU-5.2.82-Python-2.7.10.eb \
+matplotlib-1.4.3-CrayGNU-5.2.82-Python-3.4.3.eb \
+netcdf-python-1.1.8-CrayGNU-5.2.82-Python-2.7.10.eb \
+netcdf-python-1.1.8-CrayGNU-5.2.82-Python-3.4.3.eb \
+ncview-2.1.6-CrayGNU-5.2.82.eb -r
