@@ -1,0 +1,66 @@
+# Built with EasyBuild version 2.7.0 on 2016-04-05_10-26-36
+##
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# Copyright:: Copyright 2012-2014 Uni.Lu/LCSB, NTUA
+# Authors::   Fotis Georgatos <fotis@cern.ch>
+# License::   MIT/GPL
+# $Id$
+#
+# This work implements a part of the HPCBIOS project and is a component of the policy:
+# http://hpcbios.readthedocs.org/en/latest/
+##
+
+easyblock = 'ConfigureMake'
+
+name = 'SQLite'
+version = '3.9.2'
+
+homepage = 'http://www.sqlite.org/'
+description = 'SQLite: SQL Database Engine in a C Library'
+
+toolchain = {'name': 'CrayGNU', 'version': '2015.11'}
+
+# eg. http://www.sqlite.org/2014/sqlite-autoconf-3080600.tar.gz
+source_urls = ['http://www.sqlite.org/2015/']
+version_str = '%%(version_major)s%s00' % ''.join('%02d' % int(x) for x in version.split('.')[1:])
+sources = ['sqlite-autoconf-%s.tar.gz' % version_str]
+
+dependencies = [
+    ('libreadline', '6.3'),
+    ('Tcl', '8.6.4'),
+]
+
+parallel = 1
+
+sanity_check_paths = {
+    'files': ['bin/sqlite3', 'include/sqlite3ext.h', 'include/sqlite3.h', 'lib/libsqlite3.a', 'lib/libsqlite3.%s' % SHLIB_EXT],
+    'dirs': ['lib/pkgconfig'],
+}
+
+moduleclass = 'devel'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.7.0",
+    "easybuild-easyblocks_version": "2.7.0",
+    "timestamp": 1459844792,
+    "build_time": 81.34,
+    "install_size": 5133864,
+    "command_line": ['--buildpath=/dev/shm/jfavre', '--external-modules-metadata=/apps/common/easybuild/cray_external_modules_metadata.cfg', '--group-writable-installdir', '--hide-deps=Bison,Doxygen,JasPer,NASM,SQLite,Szip,Tcl,bzip2,cURL,flex,freetype,libjpeg-turbo,libpng,libreadline,libtool,libxml2,ncurses,zlib,M4,Serf,APR,APR-util,expat,SCons,binutils,Coreutils,GLib,Qt,SCOTCH,Tk,hwloc,libffi,libunwind,make,numactl,pkg-config,gettext,Autotools,Automake,Autoconf,GCCcore,OPARI2,OTF2,UDUNITS,ZeroMQ,OpenPGM,util-linux,libsodium', '--include-easyblocks=/apps/common/easybuild/easyblocks/*.py', '--installpath=/apps/daint/UES/5.2.UP04/easybuild', '--optarch=sandybridge', '--packagepath=/apps/daint/UES/5.2.UP04/easybuild/packages', '--prefix=/apps/daint/UES/5.2.UP04/easybuild', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/daint', '--robot=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/ebfiles_repo/daint:/apps/common/UES/easybuild/software/EasyBuild/2.7.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.7.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/ebfiles_repo/daint:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--umask=002', '/apps/common/easybuild/cscs_easyconfigs/p/ParaView/ParaView-5.0.1-CrayGNU-2015.11.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/opt/modules/3.2.10.3/bin/modulecmd', '3.2.10'),
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2670 0 @ 2.60GHz",
+    "cpu_speed": 2599.982,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=/opt/gcc/4.9.3/bin/../snos/bin/gcc; COLLECT_LTO_WRAPPER=/opt/gcc/4.9.3/snos/libexec/gcc/x86_64-suse-linux/4.9.3/lto-wrapper; Target: x86_64-suse-linux; Configured with: ../cray-gcc-4.9.3/configure --prefix=/opt/gcc/4.9.3/snos --disable-nls --libdir=/opt/gcc/4.9.3/snos/lib --enable-languages=c,c++,fortran --with-gxx-include-dir=/opt/gcc/4.9.3/snos/include/g++ --with-slibdir=/opt/gcc/4.9.3/snos/lib --with-system-zlib --enable-shared --enable-__cxa_atexit --build=x86_64-suse-linux --with-ppl --with-cloog; Thread model: posix; gcc version 4.9.3 20150626 (Cray Inc.) (GCC) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "daint104",
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP3",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.6 (default, May 28 2014, 14:38:13) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/opt/gcc/4.9.3/bin/gcc",
+    "system_python_path": "/apps/daint/5.2.UP02/python2.7/2.7.6/bin/python",
+}]
