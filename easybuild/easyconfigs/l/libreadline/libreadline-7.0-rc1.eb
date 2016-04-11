@@ -1,7 +1,7 @@
 easyblock = 'ConfigureMake'
 
 name = 'libreadline'
-version = '6.3'
+version = '7.0-rc1'
 
 homepage = 'http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html'
 description = """The GNU Readline library provides a set of functions for use by applications that
@@ -12,12 +12,13 @@ description = """The GNU Readline library provides a set of functions for use by
 toolchain = {'name': 'dummy', 'version': 'dummy'}
 toolchainopts = {'pic': True}
 
+# source_urls = ['http://ftp.gnu.org/gnu/readline']
+source_urls = ['http://ftp.gnu.org/gnu/bash']
 sources = ['readline-%(version)s.tar.gz']
-source_urls = ['http://ftp.gnu.org/gnu/readline']
 # unset EBROOTLIBREADLINE
-dependencies = [('ncurses', '6.0')]
 
 # for the termcap symbols, use EB ncurses
+dependencies = [('ncurses', '6.0')]
 preconfigopts = "LDFLAGS='-lncurses'"
 
 sanity_check_paths = {

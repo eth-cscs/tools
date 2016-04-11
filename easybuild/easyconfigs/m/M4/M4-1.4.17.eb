@@ -1,4 +1,3 @@
-# jgp (CSCS)
 easyblock = 'ConfigureMake'
 
 name = 'M4'

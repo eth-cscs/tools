@@ -32,7 +32,7 @@ builddependencies = [
     ('CMake', '3.5.0', '', True),
     ('fftw/3.3.4.5', EXTERNAL_MODULE),
     ('Boost', '1.60.0', '-Python-2.7.11'),
-    ('libxml2', '2.9.3', '', True),
+    ('libxml2', '2.9.3'),
 ]
 
 moduleclass = 'bio'

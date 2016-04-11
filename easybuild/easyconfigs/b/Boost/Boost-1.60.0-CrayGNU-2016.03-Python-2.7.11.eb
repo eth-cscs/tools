@@ -1,5 +1,3 @@
-# Built with EasyBuild version 2.7.0.dev0-r0479d88454e39c1ab0e60daeeb26f64e4305cf4e on 2016-03-16_00-49-17
-# Built with EasyBuild version 2.7.0.dev0-r0dfc64e099929811d322eb721da6d46f923a7e01 on 2016-03-15_00-50-09
 # contributed by Luca Marsella (CSCS)
 easyblock = 'boostcray'
 
@@ -19,8 +17,8 @@ pythonversion = '2.7.11'
 versionsuffix = '-Python-%s' % pythonversion
 
 dependencies = [
-    ('bzip2', '1.0.6', '', True),
-    ('Python', pythonversion, '', True),
+    ('bzip2', '1.0.6'),
+    ('Python', pythonversion),
 ]
 
 # also build boost_mpi

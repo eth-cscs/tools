@@ -25,6 +25,9 @@ dependencies = [
     ('ncurses', '6.0'),
     ('freetype', '2.5.5'),
     ('libpng', '1.6.16'),
+    ('SQLite', '3.9.2'),
+    ('Tk', '8.6.4'),
+    ('GMP', '6.1.0'),
 ]
 
 # enviroment variable to use package repository with pip
@@ -33,7 +36,7 @@ modextravars = {'PIP_CERT':'/apps/common/UES/certificates/DigiCertHighAssuranceE
 osdependencies = [('libopenssl-devel')]
 
 # order is important!
-# package versions updated Feb 4th 2016
+# package versions updated Mar 1st 2016
 exts_list = [
     ('setuptools', '20.2.2', {
         'source_urls': ['http://pypi.python.org/packages/source/s/setuptools/'],

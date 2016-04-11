@@ -10,10 +10,7 @@ description = """The primary goal of libunwind is to define a portable and effic
  (non-local goto). The API supports both local (same-process) and remote (across-process) operation.
  As such, the API is useful in a number of applications"""
 
-# toolchain = {'version': '2015.11-XC', 'name': 'CrayGNU'}
 toolchain = {'name': 'dummy', 'version': 'dummy'}
-builddependencies = [ ('zlib', '1.2.8'), ('binutils', '2.25'), ]
-dependencies = [ ('zlib', '1.2.8'), ('binutils', '2.25'), ]
 
 sources = [SOURCE_TAR_GZ]
 source_urls = [GNU_SAVANNAH_SOURCE]
@@ -24,5 +21,3 @@ sanity_check_paths = {
 }
 
 moduleclass = 'lib'
-# mv /apps/escha/UES/RH6.7/easybuild/modules/all/libunwind/1.1  /apps/escha/UES/RH6.7/easybuild/modules/all/libunwind/.1.1 
-

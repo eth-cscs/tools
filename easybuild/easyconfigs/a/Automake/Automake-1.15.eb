@@ -1,0 +1,22 @@
+easyblock = 'ConfigureMake'
+
+name = 'Automake'
+version = "1.15"
+
+homepage = 'http://www.gnu.org/software/automake/automake.html'
+description = "Automake: GNU Standards-compliant Makefile generator"
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+source_urls = [GNU_SOURCE]
+sources = [SOURCELOWER_TAR_GZ]
+
+# mll Autoconf/2.69
+builddependencies = [('Autoconf', '2.69'), ('M4', '1.4.17')]
+
+sanity_check_paths = {
+    'files': ['bin/automake', 'bin/aclocal'],
+    'dirs': []
+}
+
+moduleclass = 'devel'
