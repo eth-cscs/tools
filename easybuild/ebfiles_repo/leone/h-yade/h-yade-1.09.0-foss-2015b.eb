@@ -1,4 +1,4 @@
-# Built with EasyBuild version 2.7.0 on 2016-04-21_10-48-26
+# Built with EasyBuild version 2.7.0 on 2016-04-21_11-04-13
 easyblock = 'CMakeMake'
 
 name = 'h-yade'
@@ -23,7 +23,8 @@ dependencies = [('LOKI', '0.1.7'),
                 ('PyQt', '4.11.4', '-Python-2.7.10'),
 				('IPython', '3.2.3', '-Python-2.7.10'),
 				('Python-Xlib', '0.15rc1', '-Python-2.7.10'),
-				('matplotlib', '1.5.1', '-Python-2.7.10') ]
+				('matplotlib', '1.5.1', '-Python-2.7.10'),
+				('PIL', '1.1.7', '-Python-2.7.10') ]
 
 
 sources = ['yade-%(version)s.tar.gz']
@@ -69,9 +70,9 @@ sanity_check_paths={
 buildstats = [{
     "easybuild-framework_version": "2.7.0",
     "easybuild-easyblocks_version": "2.7.0",
-    "timestamp": 1461228498,
-    "build_time": 84.64,
-    "install_size": 79340180,
+    "timestamp": 1461229448,
+    "build_time": 95.97,
+    "install_size": 79477097,
     "command_line": ['--buildpath=/dev/shm/bignamic', '--force', '--group-writable-installdir', '--hide-deps=Bison,Doxygen,JasPer,NASM,SQLite,Szip,Tcl,bzip2,cURL,flex,freetype,libjpeg-turbo,libpng,libreadline,libtool,libxml2,ncurses,zlib,M4,Serf,APR,APR-util,expat,SCons,binutils,Coreutils,GLib,Qt,SCOTCH,Tk,hwloc,libffi,libunwind,make,numactl,pkg-config,gettext,Autotools,Automake,Autoconf,GCCcore,OPARI2,OTF2,UDUNITS,ZeroMQ,OpenPGM,util-linux,libsodium,libQGLViewer,Eigen,GTS,GL2PS,PyGTS,PyQt,IPython,Python-Xlib,LOKI,SIP', '--include-easyblocks=/apps/common/easybuild/easyblocks/*.py', '--installpath=/apps/leone/UES/RH6.7_PE15.12/easybuild', '--module-only', '--packagepath=/apps/leone/UES/RH6.7_PE15.12/easybuild/packages', '--prefix=/apps/leone/UES/RH6.7_PE15.12/easybuild', '--recursive-module-unload', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/leone', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/ebfiles_repo/leone:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--umask=002', 'h-yade-1.09.0-foss-2015b.eb'],
     "modules_tool": ('EnvironmentModulesC', '/usr/bin/modulecmd', '3.2.10'),
     "core_count": 24,
