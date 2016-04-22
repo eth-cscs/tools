@@ -1,4 +1,4 @@
-# Built with EasyBuild version 2.7.0 on 2016-04-22_14-52-59
+# Built with EasyBuild version 2.7.0 on 2016-04-22_14-53-14
 # Built with EasyBuild version 2.3.0 on 2015-10-09_14-54-37
 easyblock = 'Bundle'
 
@@ -46,8 +46,8 @@ buildstats = [{
 buildstats.append({
     "easybuild-framework_version": "2.7.0",
     "easybuild-easyblocks_version": "2.7.0",
-    "timestamp": 1461329568,
-    "build_time": 1.6,
+    "timestamp": 1461329583,
+    "build_time": 1.43,
     "install_size": 5288,
     "command_line": ['--buildpath=/dev/shm/perettig', '--group-writable-installdir', '--hide-deps=Bison,Doxygen,JasPer,NASM,SQLite,Szip,Tcl,bzip2,cURL,flex,freetype,libjpeg-turbo,libpng,libreadline,libtool,libxml2,ncurses,zlib,M4,Serf,APR,APR-util,expat,SCons,binutils,Coreutils,GLib,Qt,SCOTCH,Tk,hwloc,libffi,libunwind,make,numactl,pkg-config,gettext,Autotools,Automake,Autoconf,GCCcore,OPARI2,OTF2,UDUNITS,ZeroMQ,OpenPGM,util-linux,libsodium,libQGLViewer,Eigen,GTS,GL2PS,PyGTS,PyQt,IPython,Python-Xlib,LOKI,SIP,NASM,PIL,libjpeg-turbo', '--include-easyblocks=/apps/common/easybuild/easyblocks/*.py', '--installpath=/apps/monch/UES/RH6.7-16.04/easybuild', '--packagepath=/apps/monch/UES/RH6.7-16.04/easybuild/packages', '--prefix=/apps/monch/UES/RH6.7-16.04/easybuild', '--recursive-module-unload', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/monch', '--robot=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/ebfiles_repo/monch:/apps/common/UES/easybuild/software/EasyBuild/2.7.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.7.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/ebfiles_repo/monch:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--umask=002', 'GMP-6.0.0a-GNU-4.9.3-2.25.eb', 'Autotools-20150215-GNU-4.9.3-2.25.eb'],
     "modules_tool": ('EnvironmentModulesC', '/apps/monch/modules/3.2.10/bin/modulecmd', '3.2.10'),
