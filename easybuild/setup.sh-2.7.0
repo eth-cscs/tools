@@ -42,6 +42,8 @@ if [[ -z "$1" ]]; then
          export PROJ=$UES/5.2.UP04
        elif [[ "$hostName" == "leone" ]] ; then
          export PROJ=$UES/RH6.7_PE15.12  
+       elif [[ "$hostName" == "monch" ]] ; then
+         export PROJ='/apps/monch/UES/RH6.7-16.04'
        else
          export PROJ=$APPS
        fi
@@ -94,7 +96,7 @@ export EASYBUILD_BUILDPATH=/dev/shm/$USER
 export EASYBUILD_ROBOT_PATHS=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/ebfiles_repo/${hostName}:
 export EASYBUILD_INCLUDE_EASYBLOCKS="/apps/common/easybuild/easyblocks/*.py"
 export EASYBUILD_IGNORE_OSDEPS=0
-export EASYBUILD_HIDE_DEPS=Bison,Doxygen,JasPer,NASM,SQLite,Szip,Tcl,bzip2,cURL,flex,freetype,libjpeg-turbo,libpng,libreadline,libtool,libxml2,ncurses,zlib,M4,Serf,APR,APR-util,expat,SCons,binutils,Coreutils,GLib,Qt,SCOTCH,Tk,hwloc,libffi,libunwind,make,numactl,pkg-config,gettext,Autotools,Automake,Autoconf,GCCcore,OPARI2,OTF2,UDUNITS,ZeroMQ,OpenPGM,util-linux,libsodium,libQGLViewer,Eigen,GTS,GL2PS,PyGTS,PyQt,IPython,Python-Xlib,LOKI,SIP
+export EASYBUILD_HIDE_DEPS=Bison,Doxygen,JasPer,NASM,SQLite,Szip,Tcl,bzip2,cURL,flex,freetype,libjpeg-turbo,libpng,libreadline,libtool,libxml2,ncurses,zlib,M4,Serf,APR,APR-util,expat,SCons,binutils,Coreutils,GLib,Qt,SCOTCH,Tk,hwloc,libffi,libunwind,make,numactl,pkg-config,gettext,Autotools,Automake,Autoconf,GCCcore,OPARI2,OTF2,UDUNITS,ZeroMQ,OpenPGM,util-linux,libsodium,libQGLViewer,Eigen,GTS,GL2PS,PyGTS,PyQt,IPython,Python-Xlib,LOKI,SIP,NASM,PIL,libjpeg-turbo
 export EASYBUILD_RECURSIVE_MODULE_UNLOAD=1
 
 # Set up private repository for jenkins user (it doesnt belong to csstaff group, it is not supposed to write under /apps/common)

@@ -24,7 +24,7 @@ configopts = [
 
 withlimic2 = 'True'
 withhwloc = 'True'
-withmpe = 'True'
+#withmpe = 'True' # MPE seems to not work since MVAPICH 1.9
 
 builddependencies = [('Bison', '3.0.4')]
 
