@@ -1,7 +1,7 @@
 #!/usr/local/bin/bash
 
 source /apps/common/tools/easybuild/setup.sh $1
-module unload 2.6.0
+module unload /apps/common/UES/easybuild/modules/all/EasyBuild/2.8.1
 echo "Re-Loading EasyBuild... (testing)"
 #module load /apps/common/UES/easybuild/modules/all/EasyBuild/2.6.0
 

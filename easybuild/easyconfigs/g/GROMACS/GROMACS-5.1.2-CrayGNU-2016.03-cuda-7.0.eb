@@ -27,7 +27,7 @@
 # This work implements a part of the HPCBIOS project and is a component of the policy:
 # http://hpcbios.readthedocs.org/en/latest/HPCBIOS_2012-93.html
 
-easyblock = 'gromacscray'
+#easyblock = 'gromacscray'
 
 name = 'GROMACS'
 version = "5.1.2"
@@ -39,7 +39,7 @@ description = """GROMACS is a versatile package to perform molecular dynamics,
  i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles."""
 
 toolchain = {'name': 'CrayGNU', 'version': '2016.03'}
-toolchainopts = {'usempi': 'True', 'openmp': 'True', 'dynamic': 'True'}
+toolchainopts = {'usempi': 'True'}
 
 source_urls = ['ftp://ftp.gromacs.org/pub/gromacs/']
 sources = [SOURCELOWER_TAR_GZ]
@@ -47,10 +47,13 @@ sources = [SOURCELOWER_TAR_GZ]
 configopts = ' -DCMAKE_C_FLAGS="-g -fopenmp -fPIC" -DCMAKE_CXX_FLAGS="-g -fopenmp -fPIC" '
 configopts += ' -DCUDA_NVCC_FLAGS="-arch sm_35" '
 
+installopts = " -j16"
+ 
 skipsteps = ['test']
 
 builddependencies = [
-    ('CMake', '3.5.0'),
+#    ('CMake', '3.5.0'),
+    ('CMake', '3.5.0', '', True),
     ('cudatoolkit/7.0.28-1.0502.10742.5.1', EXTERNAL_MODULE),
     ('fftw/3.3.4.3', EXTERNAL_MODULE),
     ('Boost', '1.60.0', '-Python-2.7.11'),

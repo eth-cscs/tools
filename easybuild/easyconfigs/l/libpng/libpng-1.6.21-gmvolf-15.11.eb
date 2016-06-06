@@ -1,8 +1,8 @@
-# 
+#
 easyblock = 'ConfigureMake'
 
 name = 'libpng'
-version = '1.6.16'
+version = '1.6.21'
 
 homepage = 'http://www.libpng.org/pub/png/libpng.html'
 description = "libpng is the official PNG reference library"
