@@ -1,0 +1,52 @@
+#!/bin/bash -l
+#SBATCH --time=00:02:00
+#SBATCH --ntasks=XXX
+#SBATCH --output=o_XXX
+#SBATCH --error=o_XXX
+
+# -------------- create tarfile
+#OK IN=/apps/dora/UES/5.2.UP04/broadwell/easybuild/software/Python/2.7.11-CrayGNU-2016.03
+#OK TARF=Python-2.7.11-CrayGNU-2016.03.tar
+#OK /usr/bin/time -p \
+#OK tar cf \
+#OK $TARF \
+#OK --exclude='*.html' \
+#OK --exclude='*.jpg' \
+#OK --exclude='*.jpeg' \
+#OK --exclude='*.png' \
+#OK --exclude='*.pyc' \
+#OK --exclude='*.pyo' \
+#OK $IN/bin \
+#OK $IN/lib \
+#OK $IN/include \
+#OK $IN/share
+#OK # <1G, <15sec
+
+cat <<EOF > fast_import.sh
+#!/bin/bash
+
+# --- dora:
+module load Python/2.7.11-CrayGNU-2016.03
+IN=/apps/dora/UES/5.2.UP04/broadwell/easybuild/software/Python/2.7.11-CrayGNU-2016.03
+TARF=Python-2.7.11-CrayGNU-2016.03.tar
+mkdir -p /dev/shm/$USER
+tar xf \$TARF -C /dev/shm/$USER
+
+export OMP_NUM_THREADS=1
+export X=/dev/shm/$USER/\$IN
+export PATH=\$X/bin:\$PATH
+export LD_LIBRARY_PATH=\$X/lib:\$LD_LIBRARY_PATH
+export LIBRARY_PATH=\$X/lib:\$LIBRARY_PATH
+
+echo python=\`which python\`
+echo "start"
+\$X/bin/python 0.py
+echo "end"
+EOF
+
+chmod +x fast_import.sh
+time -p srun -n $SLURM_NTASKS ./fast_import.sh
+# -------------- put tarfile on compute node
+# /apps/dora/UES/5.2.UP04/broadwell/.Python-2.7.11-CrayGNU-2015.11.tar
+
+
