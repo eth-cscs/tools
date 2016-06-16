@@ -26,6 +26,8 @@ sources = [SOURCELOWER_TAR_GZ]
 
 configopts = ' -DCMAKE_C_FLAGS="-g -fopenmp" -DCMAKE_CXX_FLAGS="-g -fopenmp" '
 
+skipsteps = ['test']
+
 # CMake and libxml2 dependencies with dummy toolchain
 builddependencies = [
     ('CMake', '3.5.0', '', True),

@@ -25,7 +25,11 @@ esac
 # If argument is given, use it as path for easybuild and else use default (/scratch for jenkins or $APPS for the rest)
 if [[ -z "$1" ]]; then
     if [[ $USER == "jenscscs" ]] ; then
-       if [[ "$hostName" == "daint" || "$hostName" == "dora" || "$hostName" == "santis" || "$hostName" == "brisi" || "$hostName" == "pilatus" || "$hostName" == "monch" || "$hostName" == "leone" ]] ; then
+        if [[ "$hostName" == "daint" ]] ; then
+            export PROJ=/apps/daint/UES/jenkins/5.2.UP04
+        elif [[ "$hostName" == "dora" ]] ; then
+            export PROJ=/apps/dora/UES/jenkins/5.2.UP04
+        elif [[ "$hostName" == "santis" || "$hostName" == "brisi" || "$hostName" == "pilatus" || "$hostName" == "monch" || "$hostName" == "leone" ]] ; then
            export PROJ=$SCRATCH"/"$hostName
        elif [[ "$hostName" == "castor" ]] ; then
            export PROJ="/users/jenscscs/sandbox/"$hostName
@@ -98,6 +102,11 @@ export EASYBUILD_INCLUDE_EASYBLOCKS="/apps/common/easybuild/easyblocks/*.py"
 export EASYBUILD_IGNORE_OSDEPS=0
 export EASYBUILD_HIDE_DEPS=Bison,Doxygen,JasPer,NASM,SQLite,Szip,Tcl,bzip2,cURL,flex,freetype,libjpeg-turbo,libpng,libreadline,libtool,libxml2,ncurses,zlib,M4,Serf,APR,APR-util,expat,SCons,binutils,Coreutils,GLib,Qt,SCOTCH,Tk,hwloc,libffi,libunwind,make,numactl,pkg-config,gettext,Autotools,Automake,Autoconf,GCCcore,OPARI2,OTF2,UDUNITS,ZeroMQ,OpenPGM,util-linux,libsodium,libQGLViewer,Eigen,GTS,GL2PS,PyGTS,PyQt,IPython,Python-Xlib,LOKI,SIP,NASM,PIL,libjpeg-turbo,libxcb,libX11,libXau,xproto,kbproto,inputproto,libpthread-stubs,xextproto,libXdmcp,xcb-proto,xtrans,LibTIFF
 export EASYBUILD_RECURSIVE_MODULE_UNLOAD=1
+if [[ $USER == "jenscscs" ]] ; then
+    export EASYBUILD_BUILDPATH=${PROJ}
+else
+    export EASYBUILD_BUILDPATH=/dev/shm/$USER
+fi
 
 # Set up private repository for jenkins user (it doesnt belong to csstaff group, it is not supposed to write under /apps/common)
 if [[ -w /apps/common/easybuild/sources/ ]] ; then
