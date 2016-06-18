@@ -1,0 +1,10 @@
+#!/bin/bash -l
+#SBATCH --time=00:02:00
+#SBATCH --ntasks=XXX
+#SBATCH --output=o_XXX
+#SBATCH --error=o_XXX
+
+# dora:
+module load Python/2.7.11-CrayGNU-2016.03
+# module load Python/2.7.11-CrayGNU-2015.11
+time -p srun -n $SLURM_NTASKS python 0.py

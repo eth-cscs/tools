@@ -1,0 +1,7 @@
+python=/dev/shm/piccinal/apps/dora/UES/5.2.UP04/broadwell/easybuild/software/Python/2.7.11-CrayGNU-2016.03/bin/python
+start
+time to import numpy t=0.425478 rk=0 numpy=1.10.4
+end
+real 9.21
+user 0.01
+sys 0.05

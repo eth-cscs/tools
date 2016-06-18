@@ -1,0 +1,7 @@
+time to import numpy t=4.609395 rk=2 numpy=1.10.4
+time to import numpy t=4.611967 rk=0 numpy=1.10.4
+time to import numpy t=4.766112 rk=3 numpy=1.10.4
+time to import numpy t=4.941329 rk=1 numpy=1.10.4
+real 9.58
+user 0.00
+sys 0.11
