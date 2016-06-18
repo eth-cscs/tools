@@ -19,6 +19,8 @@ versionsuffix = '-%s-%s' % (python, pythonver)
 
 dependencies = [(python, pythonver)]
 
+# sanity check/import will fail when building on nodes where MPI is disabled 
+# the workaround is to change the module name
 options = {'modulename': 'os'}
 
 sanity_check_paths = {
