@@ -1,0 +1,30 @@
+# @author: gppezzi 
+
+easyblock = "CmdCp"
+
+name = 'Bazel'
+version = '0.3.0'
+
+homepage = 'http://baze.io/'
+description = """Correct, reproducible, fast builds for everyone"""
+
+toolchain = {'name': 'dummy', 'version': ''}
+
+dependencies = [
+    ('java/jdk1.8.0_51', EXTERNAL_MODULE),
+]
+
+sources = ['%(version)s.tar.gz']
+source_urls = ['https://github.com/bazelbuild/bazel/archive/']
+
+cmds_map = [('.*', "JAVA_VERSION=1.8 CC=gcc CXX=g++ ./compile.sh")]
+
+files_to_copy = ['*']
+
+
+sanity_check_paths={
+    'files': ['output/bazel'],
+    'dirs': ['output'],
+}
+
+moduleclass = 'devel'

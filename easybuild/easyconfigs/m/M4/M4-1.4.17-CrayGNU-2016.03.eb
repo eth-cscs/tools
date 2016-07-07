@@ -1,4 +1,3 @@
-# contributed by Luca Marsella (CSCS)
 easyblock = 'ConfigureMake'
 
 name = 'M4'
@@ -14,7 +13,7 @@ toolchain = {'name': 'CrayGNU', 'version': '2016.03'}
 sources = [SOURCELOWER_TAR_GZ]
 source_urls = [GNU_SOURCE]
 
-configopts = "--enable-cxx"
+configopts = "--enable-cxx CPPFLAGS=-fgnu89-inline"
 
 sanity_check_paths = {
     'files': ["bin/m4"],
