@@ -1,12 +1,13 @@
-# @author: gppezzi 
+# @author: Guilherme Peretti-Pezzi (CSCS) 
 
 easyblock = "CmdCp"
 
 name = 'Bazel'
 version = '0.3.0'
 
-homepage = 'http://baze.io/'
-description = """Correct, reproducible, fast builds for everyone"""
+homepage = 'http://bazel.io/'
+description = """Bazel is a build tool that builds code quickly and reliably. 
+It is used to build the majority of Google's software."""
 
 toolchain = {'name': 'CrayGNU', 'version': '2016.03'}
 
