@@ -1,0 +1,45 @@
+#!/usr/local/bin/bash
+
+# If argument is given, use it as path for easybuild and else use default (/scratch for jenkins or $APPS for the rest)
+if [[ -z "$1" ]]; then
+    if [[ $USER == "jenscscs" ]] ; then
+        if [[ "$hostName" == "daint" ]] ; then
+            export PROJ=/apps/daint/UES/jenkins/sandbox
+        elif [[ "$hostName" == "dora" ]] ; then
+            export PROJ=/apps/dora/UES/jenkins/sandbox
+        elif [[ "$hostName" == "santis" || "$hostName" == "brisi" || "$hostName" == "pilatus" || "$hostName" == "monch" || "$hostName" == "leone" ]] ; then
+           export PROJ=$SCRATCH"/"$hostName
+       elif [[ "$hostName" == "castor" ]] ; then
+           export PROJ="/users/jenscscs/sandbox/"$hostName
+           export SCRATCH="/tmp"
+       elif [[ "$hostName" == "ela" ]] ; then
+           export PROJ="/users/jenscscs/sandbox/"$hostName
+       elif [[ "$hostName" == "eschaln-" || "$hostName" == "keschln-" ]] ; then
+           export PROJ="/scratch/jenscscs/sandbox/"$hostName
+       fi
+    else # if installing on default apps path, then resulting easyconfig file needs to be pushed to github repository
+       if [[ "$hostName" == "eschaln-" || "$hostName" == "keschln-" ]] ; then
+         export PROJ=/apps/escha/UES/sandbox
+       elif [[ "$hostName" == "daint" || "$hostName" == "dora" || "$hostName" == "santis" || "$hostName" == "brisi" ]] ; then
+         export PROJ=$UES/sandbox
+       elif [[ "$hostName" == "leone" ]] ; then
+         export PROJ=$UES/sandbox
+       elif [[ "$hostName" == "monch" ]] ; then
+         export PROJ='/apps/monch/UES/sandbox'
+       else
+         export PROJ=$UES/sandbox
+       fi
+    fi
+else
+    export PROJ=${1}
+fi
+
+source /apps/common/tools/easybuild/setup.sh $PROJ
+
+export EASYBUILD_REPOSITORYPATH=${PROJ}/easybuild/ebfiles_repo/
+export EASYBUILD_REPOSITORY=FileRepository
+if [[ $USER == "jenscscs" ]] ; then
+   export EASYBUILD_BUILDPATH=/apps/daint/UES/jenkins/sandbox
+fi
+
+eb --show-config
