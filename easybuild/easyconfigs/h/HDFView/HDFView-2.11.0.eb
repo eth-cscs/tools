@@ -1,0 +1,23 @@
+# @author: gppezzi
+easyblock = 'Binary'
+
+name = 'HDFView'
+version = '2.11.0'
+
+homepage = 'https://www.hdfgroup.org/products/java/'
+description = """The HDF Java Products consist of HDFView (a Java browser for HDF4 and HDF5
+files) and the HDF-Java wrappers. """
+
+toolchain = {'name': 'dummy', 'version': ''}
+
+sources = [
+    'HDFView-2.11.0-Linux.sh'
+]
+
+dependencies = [ ('java/jdk1.7.0_45', 'EXTERNAL_MODULE') ]
+
+source_urls = ['http://www.hdfgroup.org/ftp/HDF5/hdf-java/current/src/'] 
+
+install_cmd = './HDFView-2.11.0-Linux.sh --skip-license --prefix=%(installdir)s && mv %(installdir)s/HDF_Group/HDFView/2.11.0/* %(installdir)s && sed -i "s#INSTALLDIR=/usr/local#INSTALLDIR=%(installdir)s#g" %(installdir)s/bin/hdfview.sh'
+
+moduleclass = 'system'
