@@ -27,7 +27,6 @@ dependencies = [
 builddependencies = [
     ('fftw/3.3.4.8', EXTERNAL_MODULE),
     ('flex', '2.6.0'),
-    ('Bison', '3.0.4'),
 ]
 
 # don't use parallel make, results in compilation failure
