@@ -1,0 +1,57 @@
+# Built with EasyBuild version 2.8.2 on 2016-08-02_13-48-25
+easyblock = 'ConfigureMake'
+
+name = 'FFmpeg'
+version = '2.8.7'
+
+homepage = 'https://www.ffmpeg.org/'
+description = """A complete, cross-platform solution to record, convert and stream audio and video."""
+
+toolchain = {'name': 'gmvolf', 'version': '15.11'}
+
+sources = [SOURCELOWER_TAR_BZ2]
+source_urls = ['http://ffmpeg.org/releases/']
+
+dependencies = [
+    ('NASM', '2.11.06'),
+    ('zlib', '1.2.8'),
+    ('x264', '20160430'),
+]
+
+configopts = '--enable-pic --enable-shared --enable-gpl --enable-version3 --enable-nonfree --cc="$CC" --cxx="$CXX" '
+configopts += '--enable-libx264'
+
+sanity_check_paths = {
+    'files': ['bin/ff%s' % x for x in ['mpeg', 'probe', 'server']] +
+             ['lib/lib%s.%s' % (x, y) for x in ['avdevice', 'avfilter', 'avformat', 'avcodec', 'postproc',
+                                                'swresample', 'swscale', 'avutil'] for y in [SHLIB_EXT, 'a']],
+    'dirs': ['include']
+}
+
+moduleclass = 'vis'
+
+# Build statistics
+buildstats = [{
+    "build_time": 304.85,
+    "command_line": ['--buildpath=/dev/shm/piccinal', '--group-writable-installdir', '--hide-deps=Bison,Doxygen,JasPer,NASM,SQLite,Szip,Tcl,bzip2,cURL,flex,freetype,libjpeg-turbo,libpng,libreadline,libtool,libxml2,ncurses,zlib,M4,Serf,APR,APR-util,expat,SCons,binutils,Coreutils,GLib,Qt,SCOTCH,Tk,hwloc,libffi,libunwind,make,numactl,pkg-config,gettext,Autotools,Automake,Autoconf,GCCcore,OPARI2,OTF2,UDUNITS,ZeroMQ,OpenPGM,util-linux,libsodium,libQGLViewer,Eigen,GTS,GL2PS,PyGTS,PyQt,IPython,Python-Xlib,LOKI,SIP,NASM,PIL,libjpeg-turbo,libxcb,libX11,libXau,xproto,kbproto,inputproto,libpthread-stubs,xextproto,libXdmcp,xcb-proto,xtrans,LibTIFF,byacc,guile,libunistring,CMake,PCRE,XZ,PROJ', '--include-easyblocks=/apps/common/easybuild/easyblocks/*.py', '--installpath=/apps/escha/UES/RH6.7/easybuild', '--packagepath=/apps/escha/UES/RH6.7/easybuild/packages', '--prefix=/apps/escha/UES/RH6.7/easybuild', '--recursive-module-unload', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/keschln-', '--robot=/apps/common/easybuild/cscs_easyconfigs:/apps/common/easybuild/software/EasyBuild/2.8.2/lib64/python2.6/site-packages/easybuild_easyconfigs-2.8.2-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--umask=002', 'FFmpeg-2.8.7-gmvolf-15.11.eb'],
+    "core_count": 24,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz",
+    "cpu_speed": 2601.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "2.8.2",
+    "easybuild-framework_version": "2.8.2",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/appsmnt/escha/UES/RH6.7/easybuild/software/GCC/4.9.3-binutils-2.25/bin/../libexec/gcc/x86_64-unknown-linux-gnu/4.9.3/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/escha/UES/RH6.7/easybuild/software/GCC/4.9.3-binutils-2.25 --with-local-prefix=/apps/escha/UES/RH6.7/easybuild/software/GCC/4.9.3-binutils-2.25; Thread model: posix; gcc version 4.9.3 (GCC) ; ",
+    "glibc_version": "2.12",
+    "hostname": "keschln-0003",
+    "install_size": 300516271,
+    "modules_tool": ('EnvironmentModulesC', '/usr/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "RHEL",
+    "os_type": "Linux",
+    "os_version": "6.7",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.6 (r266:84292, May 22 2015, 08:34:51) ; [GCC 4.4.7 20120313 (Red Hat 4.4.7-15)]",
+    "system_gcc_path": "/apps/escha/UES/RH6.7/easybuild/software/GCC/4.9.3-binutils-2.25/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1470138501,
+    "total_memory": 129091,
+}]
