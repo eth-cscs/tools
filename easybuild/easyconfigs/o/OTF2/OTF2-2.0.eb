@@ -1,40 +1,42 @@
-##
 # This is an easyconfig file for EasyBuild, see https://github.com/hpcugent/easybuild
-# Copyright:: Copyright 2013-2016 Juelich Supercomputing Centre, Germany
+# Copyright:: Copyright 2013 Juelich Supercomputing Centre, Germany
 # Authors::   Bernd Mohr <b.mohr@fz-juelich.de>
-#             Markus Geimer <m.geimer@fz-juelich.de>
-# License::   3-clause BSD
+# License::   New BSD
 #
-# This work is based on experiences from the UNITE project
+# This work is based from experiences from the UNITE project
 # http://apps.fz-juelich.de/unite/
 ##
+# easyblock = 'EB_Score_minus_P'
+easyblock = 'ConfigureMake'
 
-easyblock = 'EB_Score_minus_P'
-
-name = 'OTF2'
-version = '2.0'
+name = "OTF2"
+version = "2.0"
 
 homepage = 'http://www.score-p.org'
 description = """The Open Trace Format 2 is a highly scalable, memory efficient event
- trace data format plus support library. It is the new standard trace format for
- Scalasca, Vampir, and TAU and is open for other tools."""
+ trace data format plus support library. It will become the new standard trace format
+ for Scalasca, Vampir, and Tau and is open for other tools."""
 
+# toolchain = {'version': '15.11_cuda_7.0_gdr', 'name': 'gmvapich2'}
 toolchain = {'name': 'dummy', 'version': 'dummy'}
+configopts = ' --enable-shared'
+# builddependencies = [
+#         ('zlib', '1.2.8'),
+#         ('binutils', '2.25'),
+# ]
 
-sources = [SOURCELOWER_TAR_GZ]
+configopts += " CC=gcc"
+configopts += " CXX=g++"
+
+sources = ["otf2-%(version)s.tar.gz"]
 source_urls = ['http://www.vi-hps.org/upload/packages/otf2/']
-
-checksums = [
-    '5b546188b25bc1c4e285e06dddf75dfc',     # otf2-2.0.tar.gz
-]
-
-builddependencies = [('SIONlib', '1.6.1', '-tools')]
-
-configopts = '--enable-shared --with-nocross-compiler-suite=gcc'
-# --with-frontend-compiler-suite=gcc'
+checksums = [ '5b546188b25bc1c4e285e06dddf75dfc' ] # otf2-2.0.tar.gz
+# dependencies = [ ('binutils', '2.26-scorep'), ('libunwind', '1.1scorep') ]
+# builddependencies = [ ('zlib', '1.2.8'), ('binutils', '2.25'), ('libunwind', '1.1') ]
 
 sanity_check_paths = {
-    'files': ["bin/otf2-config", "include/otf2/otf2.h", ("lib/libotf2.a", "lib64/libotf2.a")],
+    # note by Bernd Mohr: on some systems libraries end up in lib/
+    'files': ["bin/otf2-config", "include/otf2/otf2.h", ("lib64/libotf2.a", "lib/libotf2.a")],
     'dirs': [],
 }
 

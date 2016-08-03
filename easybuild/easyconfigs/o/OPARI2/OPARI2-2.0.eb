@@ -1,19 +1,16 @@
-##
 # This is an easyconfig file for EasyBuild, see https://github.com/hpcugent/easybuild
-#
-# Copyright:: Copyright 2013-2016 Juelich Supercomputing Centre, Germany
+# Copyright:: Copyright 2013 Juelich Supercomputing Centre, Germany
 # Authors::   Bernd Mohr <b.mohr@fz-juelich.de>
-#             Markus Geimer <m.geimer@fz-juelich.de>
-# License::   3-clause BSD
+# License::   New BSD
 #
-# This work is based on experiences from the UNITE project
+# This work is based from experiences from the UNITE project
 # http://apps.fz-juelich.de/unite/
 ##
-
+# easyblock = 'EB_Score_minus_P'
 easyblock = 'ConfigureMake'
 
-name = 'OPARI2'
-version = '2.0'
+name = "OPARI2"
+version = "2.0"
 
 homepage = 'http://www.score-p.org'
 description = """OPARI2, the successor of Forschungszentrum Juelich's OPARI,
@@ -22,13 +19,11 @@ description = """OPARI2, the successor of Forschungszentrum Juelich's OPARI,
  the POMP2 measurement interface."""
 
 toolchain = {'name': 'dummy', 'version': 'dummy'}
+configopts = ' --enable-shared'
 
-sources = [SOURCELOWER_TAR_GZ]
+sources = ["opari2-%(version)s.tar.gz"]
 source_urls = ['http://www.vi-hps.org/upload/packages/opari2/']
-
-checksums = [
-    '72350dbdb6139f2e68a5055a4f0ba16c',     # opari2-2.0.tar.gz
-]
+checksums = [ '72350dbdb6139f2e68a5055a4f0ba16c' ]
 
 sanity_check_paths = {
     'files': ["bin/opari2", "include/opari2/pomp2_lib.h"],
