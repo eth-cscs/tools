@@ -1,6 +1,6 @@
 # @author: gppezzi
 
-easyblock = "ConfigureMake"
+easyblock = 'MakeCp'
 
 name = 'magma'
 version = '2.0.0'
@@ -11,18 +11,16 @@ description = """The MAGMA project aims to develop a dense linear algebra librar
 LAPACK but for heterogeneous/hybrid architectures, starting with current Multicore+GPU systems."""
 
 toolchain = {'name': 'CrayGNU', 'version': '2016.06'}
-toolchainopts = {'pic': True}
+toolchainopts = {'pic': True, 'openmp': True}
 
 sources = [SOURCE_TAR_GZ]
 source_urls = ['http://icl.cs.utk.edu/projectsfiles/magma/downloads/']
 
 patches = [('magma-2.0.0.patch')]
 
-builddependencies = [ ('cudatoolkit/7.0.28-1.0502.10280.4.1', EXTERNAL_MODULE) ]
+dependencies = [ ('cudatoolkit/7.0.28-1.0502.10280.4.1', EXTERNAL_MODULE) ]
 
-skipsteps = ['configure']
-
-preinstallopts = "export EBINSTALLPREFIX=%(installdir)s && "
+files_to_copy = ["lib", "include", "testing", "docs", "README"]
 
 sanity_check_paths={
     'files': ['lib/libmagma.so', 'lib/libmagma.a'],

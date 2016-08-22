@@ -22,7 +22,7 @@ dependencies = [
     ('bzip2', '1.0.6'),
     ('XZ', '5.2.2'),
     ('PCRE', '8.38'),
-    ('libpng', '1.6.21'),  # for plotting in R
+    ('libpng', '1.6.23'),  # for plotting in R
     ('libjpeg-turbo', '1.5.0'),  # for plottting in R
     ('java/jdk1.8.0_51', EXTERNAL_MODULE), # Java bindings are built if Java is found, might as well provide it
     ('Tcl', '8.6.4'),  # for tcltk

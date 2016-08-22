@@ -17,7 +17,7 @@ dependencies = [
         ('cray-netcdf/4.4.0', EXTERNAL_MODULE),
         ('cray-hdf5/1.8.16', EXTERNAL_MODULE),
         ('UDUNITS', '2.1.24'),
-        ('libpng', '1.6.21'), 
+        ('libpng', '1.6.23'), 
 ]
 
 configopts = 'CC=cc'

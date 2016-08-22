@@ -18,7 +18,7 @@ sources = [SOURCELOWER_TAR_XZ]
 dependencies = [
     ('cray-netcdf/4.4.0', 'EXTERNAL_MODULE'),
     ('expat', '2.2.0'),
-    ('libpng', '1.6.21'), 
+    ('libpng', '1.6.23'), 
     ('libxml2', '2.9.3'),
     ('zlib', '1.2.8'),
 ]
