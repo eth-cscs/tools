@@ -22,13 +22,11 @@ description = """OPARI2, the successor of Forschungszentrum Juelich's OPARI,
  the POMP2 measurement interface."""
 
 toolchain = {'name': 'dummy', 'version': 'dummy'}
+configopts = ' --enable-shared'
 
-sources = [SOURCELOWER_TAR_GZ]
+sources = ["opari2-%(version)s.tar.gz"]
 source_urls = ['http://www.vi-hps.org/upload/packages/opari2/']
-
-checksums = [
-    '72350dbdb6139f2e68a5055a4f0ba16c',     # opari2-2.0.tar.gz
-]
+checksums = [ '72350dbdb6139f2e68a5055a4f0ba16c' ]
 
 sanity_check_paths = {
     'files': ["bin/opari2", "include/opari2/pomp2_lib.h"],
