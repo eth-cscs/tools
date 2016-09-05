@@ -13,7 +13,7 @@ description = """The primary goal of libunwind is to define a portable and effic
 
 toolchain = {'name': 'dummy', 'version': 'dummy'}
 # builddependencies = [ ('zlib', '1.2.8'), ('binutils', '2.25'), ]
-dependencies = [ ('binutils', '2.26-scorep'), ]
+# dependencies = [ ('binutils', '2.26-scorep'), ]
 
 sources = [SOURCE_TAR_GZ]
 source_urls = [GNU_SAVANNAH_SOURCE]
