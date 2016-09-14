@@ -6,6 +6,7 @@ export EASYBUILD_BUILDPATH=/dev/shm/$USER
 
 # Set up the target architecture 
 export EASYBUILD_OPTARCH=sandybridge
+module switch craype-broadwell craype-sandybridge
 
 # Tell EasyBuild where to look for custom build recipes
 export EASYBUILD_ROBOT_PATHS=/lus/scratch/$USER/tools/easybuild/easyconfigs/:
