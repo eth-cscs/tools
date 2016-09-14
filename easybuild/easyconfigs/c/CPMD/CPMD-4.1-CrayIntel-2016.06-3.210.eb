@@ -8,15 +8,14 @@ homepage = 'http://www.cpmd.org/'
 description = """CPMD The CPMD code is a parallelized plane wave / pseudopotential
 implementation of Density Functional Theory, particularly designed for ab-initio molecular dynamics. """
 
-toolchain = {'name': 'CrayIntel', 'version': '2015.11'}
+toolchain = {'name': 'CrayIntel', 'version': '2016.06-3.210'}
 toolchainopts = {'usempi': True}
 
 sources = ['cpmd-v%s.tar.gz' %version]
 
 skipsteps = ['configure']
 
-#configopts = ' CRAY-XE6-INTEL'
-common_prebuildopts = 'sed -i \'s#/usr/bin/cpp#cpp#\' ./configure/CRAY-XE6-INTEL && ' 
+common_prebuildopts = 'sed -i \'s#/usr/bin/cpp -P -C -traditional#cpp -P -traditional#\' ./configure/CRAY-XE6-INTEL && '
 common_prebuildopts += './configure.sh PREFIX=%(installdir)s CRAY-XE6-INTEL &&'
 
 prebuildopts = [
