@@ -22,8 +22,7 @@ hdf5suff = '-parallel'
 versionsuffix = '-%s-%s%s' % (python, pyver, hdf5suff)
 
 dependencies = [
-#    (python, pyver),
-    ('Python/3.5.2-CrayGNU-2016.03+debug', EXTERNAL_MODULE),
+    (python, pyver),
     ('cray-hdf5-parallel/1.8.14', EXTERNAL_MODULE),
 ]
 
