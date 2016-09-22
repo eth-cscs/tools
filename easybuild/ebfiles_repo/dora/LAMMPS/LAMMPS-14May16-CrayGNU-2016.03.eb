@@ -1,0 +1,66 @@
+# Built with EasyBuild version 2.8.2 on 2016-09-22_13-36-25
+# Contributed by Luca Marsella (CSCS)
+easyblock = 'MakeCp'
+
+name = 'LAMMPS'
+version = '14May16'
+release = 'r15061'
+
+homepage = 'http://lammps.sandia.gov/'
+description = "LAMMPS (Large-scale Atomic/Molecular Massively Parallel Simulator) is a classical molecular dynamics simulation code designed to run efficiently on parallel computers."
+
+toolchain = {'name': 'CrayGNU', 'version': '2016.03'}
+toolchainopts = { 'usempi': True, 'openmp': True, 'dynamic': True }
+
+source_urls = ['https://github.com/lammps/lammps/archive']
+sources = ['%s.tar.gz' % (release)]
+
+maxparallel = 1
+prebuildopts = ' cd ./src && ' 
+prebuildopts += ' make yes-standard yes-user-reaxc yes-user-omp && '
+prebuildopts += ' make no-voronoi no-poems no-meam no-kim no-gpu && '
+prebuildopts += ' make package-update && '
+prebuildopts += ' pushd ../lib/reax && make -f Makefile.gfortran && popd && '
+prebuildopts += ' sed -e \'s/mpicxx/CC -fopenmp/\' ./MAKE/Makefile.mpi > ./MAKE/Makefile.omp && '
+prebuildopts += ' sed -i -e \'s/mpicxx/CC/\' ./MAKE/Makefile.mpi && '
+buildopts = [ ' mpi ', ' omp ' ]
+
+builddependencies = [
+    ('fftw/3.3.4.7', EXTERNAL_MODULE),
+    ('Python', '2.7.11'),
+]
+
+files_to_copy = [(['src/lmp*'], "bin")]
+
+sanity_check_paths = {
+    'files': ['bin/lmp_mpi', 'bin/lmp_omp'],
+    'dirs': [],
+}
+
+moduleclass = 'chem'
+
+# Build statistics
+buildstats = [{
+    "build_time": 3213.61,
+    "command_line": ['--buildpath=/dev/shm/lucamar', '--external-modules-metadata=/apps/common/easybuild/cray_external_modules_metadata.cfg', '--force', '--group-writable-installdir', '--hide-deps=Bison,Doxygen,JasPer,NASM,SQLite,Szip,Tcl,bzip2,cURL,flex,freetype,libjpeg-turbo,libpng,libreadline,libtool,libxml2,ncurses,zlib,M4,Serf,APR,APR-util,expat,SCons,binutils,Coreutils,GLib,Qt,SCOTCH,Tk,hwloc,libffi,libunwind,make,numactl,pkg-config,gettext,Autotools,Automake,Autoconf,OPARI2,OTF2,UDUNITS,ZeroMQ,OpenPGM,util-linux,libsodium,libQGLViewer,Eigen,GTS,GL2PS,PyGTS,PyQt,IPython,Python-Xlib,LOKI,SIP,NASM,PIL,libjpeg-turbo,libxcb,libX11,libXau,xproto,kbproto,inputproto,libpthread-stubs,xextproto,libXdmcp,xcb-proto,xtrans,LibTIFF,byacc,guile,libunistring,CMake,PCRE,XZ,PROJ', '--include-easyblocks=/apps/common/easybuild/easyblocks/*.py', '--installpath=/apps/dora/UES/5.2.UP04/easybuild', '--optarch=broadwell', '--packagepath=/apps/dora/UES/5.2.UP04/easybuild/packages', '--prefix=/apps/dora/UES/5.2.UP04/easybuild', '--repository=GitRepository', '--repositorypath=git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/dora', '--robot-paths=/apps/common/easybuild/cscs_easyconfigs/:', '--set-gid-bit', '--sourcepath=/apps/common/easybuild/sources/', '--umask=002', 'LAMMPS-14May16-CrayGNU-2016.03.eb'],
+    "core_count": 20,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz",
+    "cpu_speed": 2300.053,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "2.8.2",
+    "easybuild-framework_version": "2.8.2",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=/opt/gcc/4.9.3/bin/../snos/bin/gcc; COLLECT_LTO_WRAPPER=/opt/gcc/4.9.3/snos/libexec/gcc/x86_64-suse-linux/4.9.3/lto-wrapper; Target: x86_64-suse-linux; Configured with: ../cray-gcc-4.9.3/configure --prefix=/opt/gcc/4.9.3/snos --disable-nls --libdir=/opt/gcc/4.9.3/snos/lib --enable-languages=c,c++,fortran --with-gxx-include-dir=/opt/gcc/4.9.3/snos/include/g++ --with-slibdir=/opt/gcc/4.9.3/snos/lib --with-system-zlib --enable-shared --enable-__cxa_atexit --build=x86_64-suse-linux --with-ppl --with-cloog; Thread model: posix; gcc version 4.9.3 20150626 (Cray Inc.) (GCC) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "dora102",
+    "install_size": 276285216,
+    "modules_tool": ('EnvironmentModulesC', '/opt/modules/3.2.10.3/bin/modulecmd', '3.2.10'),
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP3",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Apr  7 2015, 08:28:12) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/opt/gcc/4.9.3/bin/gcc",
+    "system_python_path": "/apps/dora/UES/jenkins/5.2.UP04/easybuild/software/Python/2.7.11-CrayGNU-2016.03/bin/python",
+    "timestamp": 1474544180,
+    "total_memory": 258371,
+}]
