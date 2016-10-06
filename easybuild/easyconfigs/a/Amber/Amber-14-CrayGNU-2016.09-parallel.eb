@@ -30,7 +30,7 @@ configopts = 'gnu'
 
 prebuildopts = 'export AMBERHOME=%(builddir)s/amber%(version)s;'
 
-prebuildopts = prebuildopts + './configure -mpi -noX11 -crayxt5 --with-netcdf $NETCDF_DIR gnu;'
+prebuildopts = prebuildopts + './configure -mpi -noX11 -crayxt5 --with-netcdf $EBROOTNETCDF gnu;'
 
 buildopts = 'install'
 
