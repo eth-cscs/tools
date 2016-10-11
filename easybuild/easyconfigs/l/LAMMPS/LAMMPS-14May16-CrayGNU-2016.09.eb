@@ -8,7 +8,7 @@ release = 'r15061'
 homepage = 'http://lammps.sandia.gov/'
 description = "LAMMPS (Large-scale Atomic/Molecular Massively Parallel Simulator) is a classical molecular dynamics simulation code designed to run efficiently on parallel computers."
 
-toolchain = {'name': 'CrayGNU', 'version': '2016.06'}
+toolchain = {'name': 'CrayGNU', 'version': '2016.09'}
 toolchainopts = { 'usempi': True, 'openmp': True , 'dynamic': True }
 
 source_urls = ['https://github.com/lammps/lammps/archive']
@@ -25,7 +25,7 @@ prebuildopts += ' sed -i -e \'s/mpicxx/CC/\' ./MAKE/Makefile.mpi && '
 buildopts = [ ' mpi ', ' omp ' ]
 
 builddependencies = [
-    ('fftw/3.3.4.8', EXTERNAL_MODULE),
+    ('fftw/3.3.4.10', EXTERNAL_MODULE),
     ('Python', '2.7.12'),
 ]
 

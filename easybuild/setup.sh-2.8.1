@@ -39,7 +39,7 @@ if [[ -z "$1" ]]; then
        elif [[ "$hostName" == "ela" ]] ; then
            export PROJ="/users/jenscscs/sandbox/"$hostName
        elif [[ "$hostName" == "eschaln-" || "$hostName" == "keschln-" ]] ; then
-           export PROJ="/scratch/jenscscs/sandbox/"$hostName
+           export PROJ="/apps/escha/UES/jenkins/sandbox/"$hostName
        fi
     else # if installing on default apps path, then resulting easyconfig file needs to be pushed to github repository
        if [[ "$hostName" == "eschaln-" || "$hostName" == "keschln-" ]] ; then
@@ -67,13 +67,17 @@ fi
 
 # Switch environment modules (set PATH varible)
 echo "Switching to environment modules ..."
-if [[ "$hostName" == "daint" || "$hostName" == "dora" || "$hostName" == "santis" ]] ; then
+if [[ "$hostName" == "daint" || "$hostName" == "dora" ]] ; then
     source /opt/modules/3.2.10.3/init/bash
     export PATH=/opt/modules/3.2.10.3/bin/:$PATH
 elif [[ "$hostName" == "brisi" ]] ; then
     source /opt/cray/pe/modules/3.2.10.4/init/bash
     export PATH=/opt/cray/pe/modules/3.2.10.4/bin/:$PATH
     export CRAY_CPU_TARGET=broadwell
+elif [[ "$hostName" == "santis" ]] ; then
+    source /opt/cray/pe/modules/3.2.10.5/init/bash
+    export PATH=/opt/cray/pe/modules/3.2.10.5/bin/:$PATH
+    export CRAY_CPU_TARGET=sandybridge
 elif [[ "$hostName" == "eschaln-" || "$hostName" == "keschln-" ]] ; then
     source /usr/Modules/3.2.10/init/bash
     export PATH=/usr/Modules/3.2.10/bin/:$PATH
@@ -109,10 +113,11 @@ export EASYBUILD_INCLUDE_EASYBLOCKS="/apps/common/easybuild/easyblocks/*.py"
 export EASYBUILD_IGNORE_OSDEPS=0
 export EASYBUILD_HIDE_DEPS=Bison,Doxygen,JasPer,NASM,SQLite,Szip,Tcl,bzip2,cURL,flex,freetype,libjpeg-turbo,libpng,libreadline,libtool,libxml2,ncurses,zlib,M4,Serf,APR,APR-util,expat,SCons,binutils,Coreutils,GLib,Qt,SCOTCH,Tk,hwloc,libffi,libunwind,make,numactl,pkg-config,gettext,Autotools,Automake,Autoconf,OPARI2,OTF2,UDUNITS,ZeroMQ,OpenPGM,util-linux,libsodium,libQGLViewer,Eigen,GTS,GL2PS,PyGTS,PyQt,IPython,Python-Xlib,LOKI,SIP,NASM,PIL,libjpeg-turbo,libxcb,libX11,libXau,xproto,kbproto,inputproto,libpthread-stubs,xextproto,libXdmcp,xcb-proto,xtrans,LibTIFF,byacc,guile,libunistring,CMake,PCRE,XZ,PROJ
 export EASYBUILD_RECURSIVE_MODULE_UNLOAD=1
+export EASYBUILD_BUILDPATH=/dev/shm/$USER
 if [[ $USER == "jenscscs" ]] ; then
-    export EASYBUILD_BUILDPATH=${PROJ}
-else
-    export EASYBUILD_BUILDPATH=/dev/shm/$USER
+   if ! [[ "$hostName" == "eschaln-" || "$hostName" == "keschln-" ]] ; then
+       export EASYBUILD_BUILDPATH=${PROJ}
+   fi
 fi
 
 # Set up private repository for jenkins user (it doesnt belong to csstaff group, it is not supposed to write under /apps/common)
