@@ -11,10 +11,13 @@ toolchain = {'name': 'GCC', 'version': '5.4.0-2.26'}
 sources = [SOURCELOWER_TAR_GZ]
 source_urls = ['http://www.open-mpi.org/software/ompi/v%(version_major_minor)s/downloads']
 
-dependencies = [('hwloc', '1.11.3')]
+dependencies = [
+    ('hwloc', '1.11.3'),
+    ('slurm/.default', EXTERNAL_MODULE),
+]
 
 configopts = '--with-threads=posix --enable-shared --enable-mpi-thread-multiple --with-verbs' 
-configopts = '--with-pmi=/apps/leone/system/opt/slurm/default/include/slurm/ --with-pmi-libdir=/apps/leone/system/opt/slurm/default/lib '
+configopts = '--with-pmi=$SLURMDIR --with-pmi-libdir=$SLURMDIR '
 configopts += '--enable-mpirun-prefix-by-default '  # suppress failure modes in relation to mpirun path
 configopts += '--with-hwloc=$EBROOTHWLOC '  # hwloc support
 configopts += '--disable-dlopen '  # statically link component, don't do dynamic loading

@@ -14,28 +14,28 @@ description = """GPAW is a density-functional theory (DFT) Python code based on 
  method and the atomic simulation environment (ASE). It uses real-space uniform grids and multigrid methods or 
  atom-centered basis-functions."""
 
-toolchain = {'name': 'CrayGNU', 'version': '2016.03'}
+toolchain = {'name': 'foss', 'version': '2016.04'}
 
 source_urls = ['https://pypi.python.org/packages/source/g/gpaw/']
 sources = [SOURCELOWER_TAR_GZ]
 
-patches = ['gpaw-1.0.0-cray.patch']
+patches = ['gpaw-1.0.0-foss.patch']
 
-options = {'modulename': 'os'}
+#options = {'modulename': ‘os'}
 
 python = 'Python'
-pythonver = '2.7.11'
+pythonver = '2.7.12'
 pythonshortver = '.'.join(pythonver.split('.')[0:2])
 versionsuffix = '-%s-%s' % (python, pythonver)
 
 dependencies = [
                 (python, pythonver),
-                ('ASE', '3.10.0', versionsuffix),
-                ('libxc','2.2.2')
+                ('ASE', '3.11.0', versionsuffix),
+                ('libxc','2.2.3')
                ]
 
 sanity_check_paths = {
-                      'files': ['bin/gpaw%s' % x for x in ['', '-basis', '-mpisim', '-python', '-setup']],
+                      'files': ['bin/gpaw%s' % x for x in ['', '-basis', '-mpisim', '-python', '-setup']], #'-test']],
                       'dirs': ['lib/python%s/site-packages/%s' % (pythonshortver, name.lower())]
                      }
 
