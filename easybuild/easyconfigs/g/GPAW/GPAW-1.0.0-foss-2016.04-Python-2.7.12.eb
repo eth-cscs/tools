@@ -1,8 +1,4 @@
-# contributed by Luca Marsella (CSCS)
-#
-# This easyconfig is not working correctly:
-# build fails due to missing references to libreadline functions.
-# Manual build works instead as expected.
+# contributed by Luca Marsella (CSCS) and @gppezzi (CSCS)
 #
 easyblock = "PythonPackage"
 
