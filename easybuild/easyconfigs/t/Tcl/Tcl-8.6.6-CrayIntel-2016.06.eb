@@ -2,13 +2,13 @@
 easyblock = 'ConfigureMake'
 
 name = 'Tcl'
-version = '8.6.5'
+version = "8.6.6"
 
 homepage = 'http://www.tcl.tk/'
 description = """Tcl (Tool Command Language) is a very powerful but easy to learn dynamic programming language,
 suitable for a very wide range of uses, including web and desktop applications, networking, administration, testing and many more."""
 
-toolchain = {'name': 'dummy', 'version': 'dummy'}
+toolchain = {'name': 'CrayIntel', 'version': '2016.06'}
 
 source_urls = ["http://prdownloads.sourceforge.net/tcl"]
 sources = ['%(namelower)s%(version)s-src.tar.gz']
@@ -19,8 +19,7 @@ dependencies = [
 
 configopts = '--enable-threads EXTRA_INSTALL="install-private-headers"'
 
-# Cross compiling, so skipping tests
-#runtest = 'test'
+runtest = 'test'
 
 start_dir = 'unix'
 
