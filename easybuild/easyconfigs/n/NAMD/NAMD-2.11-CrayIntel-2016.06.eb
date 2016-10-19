@@ -20,7 +20,7 @@ prebuildopts += ' wget http://www.ks.uiuc.edu/Research/namd/libraries/tcl8.5.9-c
 prebuildopts += ' tar xzf tcl8.5.9-crayxe-threaded.tar.gz && '
 prebuildopts += ' unset CXX; unset CC && '
 prebuildopts += ' CFLAGS="$CFLAGS -L/opt/cray/pe/pmi/5.0.10-1.0000.11050.0.0.ari/lib64 -lpmi"'
-prebuildopts += ' ./config CRAY-XC-intel Eos --with-fftw3 --tcl-prefix `pwd`/tcl8.5.9-crayxe-threaded --charm-base `pwd`/charm-6.7.0 --charm-arch gni-crayxc-smp && '
+prebuildopts += ' ./config CRAY-XC-intel Eos --with-fftw3 --tcl-prefix `pwd`/tcl8.5.9-crayxe-threaded --charm-base `pwd`/charm-6.7.0 --charm-arch gni-crayxc-smp --enable-static && '
 prebuildopts += ' cd CRAY-XC-intel && '
 
 builddependencies = [
