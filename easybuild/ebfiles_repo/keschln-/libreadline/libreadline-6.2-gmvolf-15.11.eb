@@ -1,0 +1,57 @@
+# Built with EasyBuild version 2.9.0 on 2016-10-19_12-42-10
+easyblock = 'ConfigureMake'
+
+name = 'libreadline'
+version = '6.2'
+
+homepage = 'http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html'
+description = """The GNU Readline library provides a set of functions for use by applications that
+ allow users to edit command lines as they are typed in. Both Emacs and vi editing modes are available.
+ The Readline library includes additional functions to maintain a list of previously-entered command lines,
+ to recall and perhaps reedit those lines, and perform csh-like history expansion on previous commands."""
+
+toolchain = {'name': 'gmvolf', 'version': '15.11'}
+toolchainopts = {'pic': True}
+
+sources = ['readline-%(version)s.tar.gz']
+source_urls = ['http://ftp.gnu.org/gnu/readline']
+
+dependencies = [('ncurses', '5.9')]
+
+# for the termcap symbols, use EB ncurses
+preconfigopts = "env LDFLAGS='-lncurses'"
+
+sanity_check_paths = {
+    'files': ['lib/libreadline.a', 'lib/libhistory.a'] +
+             ['include/readline/%s' % x for x in ['chardefs.h', 'history.h', 'keymaps.h', 'readline.h', 'rlconf.h',
+                                                  'rlstdc.h', 'rltypedefs.h', 'tilde.h']],
+    'dirs': [],
+}
+
+moduleclass = 'lib'
+
+# Build statistics
+buildstats = [{
+    "build_time": 17.26,
+    "command_line": ["--buildpath='/dev/shm/lucamar'", '--group-writable-installdir', "--hide-deps='Bison,Doxygen,JasPer,NASM,SQLite,Szip,Tcl,bzip2,cURL,flex,freetype,libjpeg-turbo,libpng,libreadline,libtool,libxml2,ncurses,zlib,M4,Serf,APR,APR-util,expat,SCons,binutils,Coreutils,GLib,Qt,SCOTCH,Tk,hwloc,libffi,libunwind,make,numactl,pkg-config,gettext,Autotools,Automake,Autoconf,OPARI2,OTF2,UDUNITS,ZeroMQ,OpenPGM,util-linux,libsodium,libQGLViewer,Eigen,GTS,GL2PS,PyGTS,PyQt,IPython,Python-Xlib,LOKI,SIP,NASM,PIL,libjpeg-turbo,libxcb,libX11,libXau,xproto,kbproto,inputproto,libpthread-stubs,xextproto,libXdmcp,xcb-proto,xtrans,LibTIFF,byacc,guile,libunistring,CMake,PCRE,XZ,PROJ'", "--include-easyblocks='/apps/common/easybuild/easyblocks/*.py'", "--installpath='/users/lucamar/easybuildinstall'", "--packagepath='/apps/escha/UES/RH6.7/easybuild/packages'", "--prefix='/apps/escha/UES/RH6.7/easybuild'", '--pretend', '--recursive-module-unload', "--repository='GitRepository'", "--repositorypath='git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/keschln-'", "--robot='/apps/common/easybuild/cscs_easyconfigs:/apps/common/UES/easybuild/software/EasyBuild/2.9.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.9.0-py2.6.egg/easybuild/easyconfigs'", "--robot-paths='/apps/common/easybuild/cscs_easyconfigs:'", '--set-gid-bit', "--sourcepath='/apps/common/easybuild/sources/'", "--try-toolchain='gmvolf,15.11'", "--umask='002'", '/apps/common/UES/easybuild/software/EasyBuild/2.9.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.9.0-py2.6.egg/easybuild/easyconfigs/r/R/R-2.15.3-ictce-5.3.0.eb'],
+    "core_count": 24,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz",
+    "cpu_speed": 2601.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "2.9.0",
+    "easybuild-framework_version": "2.9.0",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/appsmnt/escha/UES/RH6.7/easybuild/software/GCC/4.9.3-binutils-2.25/bin/../libexec/gcc/x86_64-unknown-linux-gnu/4.9.3/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/escha/UES/RH6.7/easybuild/software/GCC/4.9.3-binutils-2.25 --with-local-prefix=/apps/escha/UES/RH6.7/easybuild/software/GCC/4.9.3-binutils-2.25; Thread model: posix; gcc version 4.9.3 (GCC) ; ",
+    "glibc_version": "2.12",
+    "hostname": "keschln-0002",
+    "install_size": 2194657,
+    "modules_tool": ('EnvironmentModulesC', '/usr/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "RHEL",
+    "os_type": "Linux",
+    "os_version": "6.7",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.6 (r266:84292, May 22 2015, 08:34:51) ; [GCC 4.4.7 20120313 (Red Hat 4.4.7-15)]",
+    "system_gcc_path": "/apps/escha/UES/RH6.7/easybuild/software/GCC/4.9.3-binutils-2.25/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1476873725,
+    "total_memory": 129091,
+}]
