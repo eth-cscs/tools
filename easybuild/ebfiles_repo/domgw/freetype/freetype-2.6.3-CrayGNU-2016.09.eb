@@ -1,0 +1,50 @@
+# Built with EasyBuild version 2.9.0 on 2016-10-21_21-41-25
+#
+name = 'freetype'
+version = '2.6.3'
+
+homepage = 'http://freetype.org'
+description = """FreeType 2 is a software font engine that is designed to be small, efficient, highly customizable, and
+ portable while capable of producing high-quality output (glyph images). It can be used in graphics libraries, display
+ servers, font conversion tools, text image generation tools, and many other products as well."""
+
+toolchain = {'name': 'CrayGNU', 'version': '2016.09'}
+
+source_urls = [GNU_SAVANNAH_SOURCE]
+sources = [SOURCE_TAR_GZ]
+
+dependencies = [('libpng', '1.6.23')]
+
+sanity_check_paths = {
+    'files': ['bin/freetype-config', 'lib/libfreetype.a', 'lib/libfreetype.so', 'lib/pkgconfig/freetype2.pc'],
+    'dirs': ['include/freetype2'],
+}
+
+moduleclass = 'vis'
+
+
+# Build statistics
+buildstats = [{
+    "build_time": 14.55,
+    "command_line": ["--buildpath='/dev/shm/lucamar'", "--external-modules-metadata='/apps/common/easybuild/cray_external_modules_metadata.cfg'", '--group-writable-installdir', "--hide-deps='Bison,Doxygen,JasPer,NASM,SQLite,Szip,Tcl,bzip2,cURL,flex,freetype,libjpeg-turbo,libpng,libreadline,libtool,libxml2,ncurses,zlib,M4,Serf,APR,APR-util,expat,SCons,binutils,Coreutils,GLib,Qt,SCOTCH,Tk,hwloc,libffi,libunwind,make,numactl,pkg-config,gettext,Autotools,Automake,Autoconf,OPARI2,OTF2,UDUNITS,ZeroMQ,OpenPGM,util-linux,libsodium,libQGLViewer,Eigen,GTS,GL2PS,PyGTS,PyQt,IPython,Python-Xlib,LOKI,SIP,NASM,PIL,libjpeg-turbo,libxcb,libX11,libXau,xproto,kbproto,inputproto,libpthread-stubs,xextproto,libXdmcp,xcb-proto,xtrans,LibTIFF,byacc,guile,libunistring,CMake,PCRE,XZ,PROJ'", "--include-easyblocks='/apps/common/easybuild/easyblocks/*.py'", "--installpath='/users/lucamar/easybuildinstall'", "--optarch='broadwell'", "--packagepath='/apps/dom/easybuild/packages'", "--prefix='/apps/dom/easybuild'", '--pretend', "--repository='GitRepository'", "--repositorypath='git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/domgw'", "--robot='/apps/common/easybuild/cscs_easyconfigs:/apps/common/UES/easybuild/software/EasyBuild/2.9.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.9.0-py2.6.egg/easybuild/easyconfigs'", "--robot-paths='/apps/common/easybuild/cscs_easyconfigs:'", '--set-gid-bit', "--sourcepath='/apps/common/easybuild/sources/'", "--umask='002'", 'GROMACS-5.1.4-CrayGNU-2016.09-cuda-8.0.eb'],
+    "core_count": 36,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2695 v4 @ 2.10GHz",
+    "cpu_speed": 2101.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "2.9.0",
+    "easybuild-framework_version": "2.9.0",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=/opt/gcc/5.3.0/bin/../snos/bin/gcc; COLLECT_LTO_WRAPPER=/opt/gcc/5.3.0/snos/libexec/gcc/x86_64-suse-linux/5.3.0/lto-wrapper; Target: x86_64-suse-linux; Configured with: ../cray-gcc-5.3.0/configure --prefix=/opt/gcc/5.3.0/snos --disable-nls --libdir=/opt/gcc/5.3.0/snos/lib --enable-languages=c,c++,fortran --with-gxx-include-dir=/opt/gcc/5.3.0/snos/include/g++ --with-slibdir=/opt/gcc/5.3.0/snos/lib --with-system-zlib --enable-shared --enable-__cxa_atexit --build=x86_64-suse-linux --with-ppl --with-cloog; Thread model: posix; gcc version 5.3.0 20151204 (Cray Inc.) (GCC) ; ",
+    "glibc_version": "2.19",
+    "hostname": "domgw02",
+    "install_size": 4190313,
+    "modules_tool": ('EnvironmentModulesC', '/opt/cray/pe/modules/3.2.10.5/bin/modulecmd', '3.2.10'),
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "12",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.9 (default, Dec 21 2014, 11:02:59) [GCC]",
+    "system_gcc_path": "/opt/gcc/5.3.0/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1477078881,
+    "total_memory": 64449,
+}]
