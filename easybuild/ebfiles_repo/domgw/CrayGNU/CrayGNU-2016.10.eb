@@ -1,0 +1,46 @@
+# Built with EasyBuild version 2.9.0 on 2016-10-21_22-30-28
+easyblock = 'CrayToolchain'
+
+name = 'CrayGNU'
+version = '2016.10'
+
+homepage = 'http://docs.cray.com/books/S-9408-1610/'
+description = """Toolchain using Cray compiler wrapper, using PrgEnv-gnu module (PE release: 10.2016).\n"""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+dependencies = [
+    # PrgEnv version is not pinned, as Cray recommends to use the latest (default) version
+    ('PrgEnv-gnu', EXTERNAL_MODULE),
+    ('gcc/5.3.0', EXTERNAL_MODULE),
+    ('cray-libsci/16.09.1', EXTERNAL_MODULE),
+    ('cray-mpich/7.4.4', EXTERNAL_MODULE),
+]
+
+moduleclass = 'toolchain'
+
+# Build statistics
+buildstats = [{
+    "build_time": 2.27,
+    "command_line": ["--buildpath='/dev/shm/lucamar'", "--external-modules-metadata='/apps/common/easybuild/cray_external_modules_metadata.cfg'", '--group-writable-installdir', "--hide-deps='Bison,Doxygen,JasPer,NASM,SQLite,Szip,Tcl,bzip2,cURL,flex,freetype,libjpeg-turbo,libpng,libreadline,libtool,libxml2,ncurses,zlib,M4,Serf,APR,APR-util,expat,SCons,binutils,Coreutils,GLib,Qt,SCOTCH,Tk,hwloc,libffi,libunwind,make,numactl,pkg-config,gettext,Autotools,Automake,Autoconf,OPARI2,OTF2,UDUNITS,ZeroMQ,OpenPGM,util-linux,libsodium,libQGLViewer,Eigen,GTS,GL2PS,PyGTS,PyQt,IPython,Python-Xlib,LOKI,SIP,NASM,PIL,libjpeg-turbo,libxcb,libX11,libXau,xproto,kbproto,inputproto,libpthread-stubs,xextproto,libXdmcp,xcb-proto,xtrans,LibTIFF,byacc,guile,libunistring,CMake,PCRE,XZ,PROJ'", "--include-easyblocks='/apps/common/easybuild/easyblocks/*.py'", "--installpath='/users/lucamar/easybuildinstall'", "--optarch='broadwell'", "--packagepath='/apps/dom/easybuild/packages'", "--prefix='/apps/dom/easybuild'", '--pretend', "--repository='GitRepository'", "--repositorypath='git@github.com:eth-cscs/tools.git,easybuild/ebfiles_repo/domgw'", "--robot='/apps/common/easybuild/cscs_easyconfigs:/apps/common/UES/easybuild/software/EasyBuild/2.9.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.9.0-py2.6.egg/easybuild/easyconfigs'", "--robot-paths='/apps/common/easybuild/cscs_easyconfigs:'", '--set-gid-bit', "--sourcepath='/apps/common/easybuild/sources/'", "--umask='002'", 'CP2K-4.1-CrayGNU-2016.10-cuda-8.0.eb'],
+    "core_count": 36,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2695 v4 @ 2.10GHz",
+    "cpu_speed": 2101.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "2.9.0",
+    "easybuild-framework_version": "2.9.0",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/usr/lib64/gcc/x86_64-suse-linux/4.8/lto-wrapper; Target: x86_64-suse-linux; Configured with: ../configure --prefix=/usr --infodir=/usr/share/info --mandir=/usr/share/man --libdir=/usr/lib64 --libexecdir=/usr/lib64 --enable-languages=c,c++,objc,fortran,obj-c++,java,ada --enable-checking=release --with-gxx-include-dir=/usr/include/c++/4.8 --enable-ssp --disable-libssp --disable-plugin --with-bugurl=http://bugs.opensuse.org/ --with-pkgversion='SUSE Linux' --disable-libgcj --disable-libmudflap --with-slibdir=/lib64 --with-system-zlib --enable-__cxa_atexit --enable-libstdcxx-allocator=new --disable-libstdcxx-pch --enable-version-specific-runtime-libs --enable-linker-build-id --enable-linux-futex --program-suffix=-4.8 --without-system-libunwind --with-arch-32=i586 --with-tune=generic --build=x86_64-suse-linux --host=x86_64-suse-linux; Thread model: posix; gcc version 4.8.5 (SUSE Linux) ; ",
+    "glibc_version": "2.19",
+    "hostname": "domgw02",
+    "install_size": 6831,
+    "modules_tool": ('EnvironmentModulesC', '/opt/cray/pe/modules/3.2.10.5/bin/modulecmd', '3.2.10'),
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "12",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.9 (default, Dec 21 2014, 11:02:59) [GCC]",
+    "system_gcc_path": "/usr/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1477081824,
+    "total_memory": 64449,
+}]
