@@ -40,6 +40,8 @@ prebuildopts += " sed -i -e 's/^DFLAGS .*/& -D__CUDA_PROFILING -D__FFTSG -D__LIB
 prebuildopts += " sed -i -e 's#-ffree-form .*#& -I$(EBROOTLIBINT)/include -I$(EBROOTLIBXC)/include#' ./arch/CRAY-XC30-gfortran-cuda.psmp && "
 # add libraries 
 prebuildopts += " sed -i -e '/LIBS     +=/a LIBS     += -lcudart -lcublas -lcufft -lrt $(EBROOTLIBINT)/lib/libderiv.a $(EBROOTLIBINT)/lib/libint.a $(EBROOTLIBINT)/lib/libr12.a -lstdc++ -L$(EBROOTLIBXC)/lib -lxcf90 -lxc -lnvToolsExt' ./arch/CRAY-XC30-gfortran-cuda.psmp && "
+# delete reference to specific GPU architecture
+prebuildopts += " sed -i -e 's/-arch sm_35//' ./arch/CRAY-XC30-gfortran-cuda.psmp && "
 prebuildopts += " pushd makefiles && "
 
 # don't use parallel make, results in compilation failure
