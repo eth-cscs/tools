@@ -16,15 +16,7 @@ cmds_map = [('NAMD_2.11_Source.tar.gz', ' tar -xvf charm-6.7.0.tar && cd charm-6
 
 builddependencies = [('craype-hugepages8M', EXTERNAL_MODULE)]
 
-
-
 files_to_copy = ['charm-6.7.0/gni-crayxc-smp'] 
-#'charm-6.7.0/gni-crayxc-smp/bin', 
-#                 'charm-6.7.0/gni-crayxc-smp/lib',
-#                 'charm-6.7.0/gni-crayxc-smp/lib_so',
-#                 'charm-6.7.0/gni-crayxc-smp/include',
-#                 'charm-6.7.0/gni-crayxc-smp/tests'
-#]
 
 sanity_check_paths = {
     'files': ['gni-crayxc-smp/bin/charmc'],

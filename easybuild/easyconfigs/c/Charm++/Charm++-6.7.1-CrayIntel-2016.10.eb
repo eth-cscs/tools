@@ -15,19 +15,10 @@ source_urls = ['http://charm.cs.illinois.edu/distrib/']
 sources = ['charm-%(version)s.tar.gz']
 
 cmds_map = [('charm-%(version)s.tar.gz', './build charm++ gni-crayxc smp --with-production -j12')]
-#rm charm-6.7.0/gni-crayxc-smp/doc')] 
 
 builddependencies = [('craype-hugepages8M', EXTERNAL_MODULE)]
 
-
-
 files_to_copy = ['gni-crayxc-smp'] 
-#'charm-6.7.0/gni-crayxc-smp/bin', 
-#                 'charm-6.7.0/gni-crayxc-smp/lib',
-#                 'charm-6.7.0/gni-crayxc-smp/lib_so',
-#                 'charm-6.7.0/gni-crayxc-smp/include',
-#                 'charm-6.7.0/gni-crayxc-smp/tests'
-#]
 
 sanity_check_paths = {
     'files': ['gni-crayxc-smp/bin/charmc'],
