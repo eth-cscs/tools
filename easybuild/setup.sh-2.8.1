@@ -14,7 +14,7 @@ if [[ $hostName =~ ^kesch  ]]; then
 fi
 # Check host name
 case "$hostName" in
-  "daint" | "dora" | "santis" | "ela" |"castor" | "pilatus" | "brisi" | "monch" | "eschaln-" | "keschln-" | "leone" )
+  "daint" | "dora" | "santis" | "ela" |"castor" | "pilatus" | "brisi" | "monch" | "eschaln-" | "keschln-" | "leone" | "domgw" )
   echo
   echo "Configuring EasyBuild on `hostname`: " "$hostName"
   ;;
@@ -78,6 +78,10 @@ elif [[ "$hostName" == "santis" ]] ; then
     source /opt/cray/pe/modules/3.2.10.5/init/bash
     export PATH=/opt/cray/pe/modules/3.2.10.5/bin/:$PATH
     export CRAY_CPU_TARGET=sandybridge
+elif [[ "$hostName" == "santis" ]] ; then
+    source /opt/cray/pe/modules/3.2.10.5/init/bash
+    export PATH=/opt/cray/pe/modules/3.2.10.5/bin/:$PATH
+    export CRAY_CPU_TARGET=haswell
 elif [[ "$hostName" == "eschaln-" || "$hostName" == "keschln-" ]] ; then
     source /usr/Modules/3.2.10/init/bash
     export PATH=/usr/Modules/3.2.10/bin/:$PATH
@@ -129,7 +133,7 @@ else
     export EASYBUILD_SOURCEPATH=$HOME
 fi
 
-if [[ "$hostName" == "daint" || "$hostName" == "dora" || "$hostName" == "santis" || "$hostName" == "brisi" ]] ; then
+if [[ "$hostName" == "daint" || "$hostName" == "dora" || "$hostName" == "santis" || "$hostName" == "brisi" || "$hostName" == "domgw" ]] ; then
     export EASYBUILD_EXTERNAL_MODULES_METADATA=/apps/common/easybuild/cray_external_modules_metadata.cfg
     export EASYBUILD_OPTARCH=$CRAY_CPU_TARGET
     export EASYBUILD_RECURSIVE_MODULE_UNLOAD=0 #recursive unload currently not working on Cray* toolchains

@@ -8,7 +8,7 @@ homepage = 'http://www.cpmd.org/'
 description = """CPMD The CPMD code is a parallelized plane wave / pseudopotential
 implementation of Density Functional Theory, particularly designed for ab-initio molecular dynamics. """
 
-toolchain = {'name': 'CrayIntel', 'version': '2016.06-3.210'}
+toolchain = {'name': 'CrayIntel', 'version': '2015.11'}
 toolchainopts = {'usempi': True}
 
 sources = ['cpmd-v%s.tar.gz' %version]

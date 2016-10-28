@@ -1,4 +1,4 @@
-# Contributed by gppezzi, Luca Marsella and Christopher Bignamini (CSCS)
+# Contributed by Luca Marsella and Christopher Bignamini (CSCS)
 easyblock = 'MakeCp'
 
 name = 'NAMD'
@@ -8,17 +8,24 @@ homepage = 'http://www.ks.uiuc.edu/Research/namd/'
 description = """NAMD is a parallel molecular dynamics code designed for high-performance simulation of large biomolecular systems."""
 
 toolchain = {'name': 'CrayIntel', 'version': '2016.10'}
+toolchainopts = {'dynamic': False}
 
 sources = ['NAMD_%(version)s_Source.tar.gz']
 
-prebuildopts = ' ./config CRAY-XC-intel Eos --with-fftw3 --tcl-prefix $EBROOTTCL --charm-base $EBROOTCHARMPLUSPLUS --charm-arch gni-crayxc-smp --cxx-opts  "-L/opt/cray/ugni/6.0.13-2.4/lib64 -lugni -L/opt/cray/pe/pmi/5.0.10-1.0000.11050.0.0.ari/lib64 -lpmi" && '
+maxparallel = 1
+prebuildopts = ' tar -xvf charm-6.7.0.tar && '
+prebuildopts += ' cd charm-6.7.0/ && '
+prebuildopts += ' ./build charm++ gni-crayxc smp --with-production && '
+prebuildopts += ' cd .. && '
+prebuildopts += ' unset CXX; unset CC && '
+prebuildopts += ' CFLAGS="$CFLAGS -L/opt/cray/pe/pmi/5.0.10-1.0000.11050.0.0.ari/lib64 -lpmi"'
+prebuildopts += ' ./config CRAY-XC-intel Eos --with-fftw3 --tcl-prefix $EBROOTTCL --charm-base `pwd`/charm-6.7.0 --charm-arch gni-crayxc-smp --cxx-opts -static && '
 prebuildopts += ' cd CRAY-XC-intel && '
 
 builddependencies = [
     ('fftw/3.3.4.10', EXTERNAL_MODULE),
     ('craype-hugepages8M', EXTERNAL_MODULE),
-    ('rca', EXTERNAL_MODULE),
-    ('Charm++', '6.7.1'), 
+	('rca/2.0.9_g7e009fa-2.27', EXTERNAL_MODULE),
     ('Tcl', '8.5.9', '-namd',  True),
 ]
 

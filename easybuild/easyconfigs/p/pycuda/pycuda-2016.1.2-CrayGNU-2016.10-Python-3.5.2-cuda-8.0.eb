@@ -16,7 +16,7 @@ sources = [SOURCE_TAR_GZ]
 python = 'Python'
 pyver = '3.5.2'
 pyshortver = '.'.join(pyver.split('.')[0:2])
-versionsuffix = '-%s-%s-cuda-8.0.34' % (python, pyver)
+versionsuffix = '-%s-%s-cuda-8.0' % (python, pyver)
 
 dependencies = [
     (python, pyver),

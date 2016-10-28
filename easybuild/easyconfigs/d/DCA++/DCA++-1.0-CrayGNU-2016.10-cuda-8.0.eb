@@ -20,7 +20,7 @@ dependencies = [
     ('gtest', '1.7.0'),
     ('cray-hdf5/1.10.0', EXTERNAL_MODULE),
     ('cudatoolkit/8.0.34_2.2.5_g8ce7a9a-2.1', EXTERNAL_MODULE),
-    ('magma', '2.0.0','-cuda-8.0.34'),
+    ('magma', '2.0.0','-cuda-8.0'),
 ]
 
 moduleclass = 'phys'
