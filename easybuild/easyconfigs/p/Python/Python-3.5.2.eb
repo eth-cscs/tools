@@ -17,7 +17,7 @@ sources = [SOURCE_TGZ]
 dependencies = [
     ('bzip2', '1.0.6'),
     ('zlib', '1.2.8'),
-    ('libreadline', '6.3'),
+    ('libreadline', '7.0'),
     ('ncurses', '6.0'),
 ]
 

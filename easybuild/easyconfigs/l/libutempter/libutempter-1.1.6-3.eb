@@ -7,7 +7,7 @@ versionsuffix = '-3'
 homepage = 'https://www.openhub.net/p/libutempter'
 description = """libutempter is library that provides an interface for terminal emulators"""
 
-toolchain = {'name': 'dummy', 'version': 'dummy'}
+toolchain = {'name': 'dummy', 'version': ''}
 source_urls = ['http://http.debian.net/debian/pool/main/libu/libutempter/']
 sources = ['libutempter_%(version)s.orig.tar.bz2']
 checksums = ['b43827806923903aba2bc7cd3a2d45b7']
