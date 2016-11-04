@@ -1,0 +1,10 @@
+#!/usr/local/bin/bash
+
+# Retrieve host name (excluding node number)
+export hostName=brisi
+export CRAY_CPU_TARGET=broadwell
+
+source /apps/common/tools/easybuild/setup.sh $1
+    
+source /opt/cray/pe/modules/3.2.10.4/init/bash
+export PATH=/opt/cray/pe/modules/3.2.10.4/bin/:$PATH
