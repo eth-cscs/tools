@@ -14,7 +14,6 @@ toolchainopts = { 'usempi': True, 'openmp': True , 'dynamic': True }
 source_urls = ['https://github.com/lammps/lammps/archive']
 sources = ['%s.tar.gz' % (release)]
 
-maxparallel = 1
 prebuildopts = ' cd ./src && ' 
 prebuildopts += ' make yes-standard yes-user-reaxc yes-user-omp && '
 prebuildopts += ' make no-voronoi no-poems no-meam no-kim no-gpu && '
