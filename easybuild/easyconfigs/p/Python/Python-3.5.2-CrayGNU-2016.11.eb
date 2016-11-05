@@ -34,6 +34,9 @@ modextravars = {
     'SSL_CERT_FILE':'/apps/common/UES/certificates/DigiCertHighAssuranceEVRootCA.pem',
 }
 
+# rpath is needed for buiding TensorFlow
+configopts = 'LDFLAGS="$LDFLAGS -Wl,--rpath=%(installdir)s/lib"'
+
 osdependencies = [('openssl-devel', 'libssl-dev', 'libopenssl-devel')]
 
 # order is important!
