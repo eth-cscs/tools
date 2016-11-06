@@ -11,7 +11,7 @@ toolchain = {'name': 'dummy', 'version': 'dummy'}
 # wget => https://support.rstudio.com/hc/en-us/articles/206569407-Older-Versions-of-RStudio-Desktop
 #no: wget https://download1.rstudio.org/rstudio-0.99.892-x86_64-fedora.tar.gz
 
-source_urls = ['http://download1.rstudio.org/rstudio-0.98.1103-x86_64-fedora.tar.gz']
+source_urls = ['http://download1.rstudio.org/']
 sources = ['rstudio-%(version)s-x86_64-fedora.tar.gz']
 skipsteps = ['build']
 
