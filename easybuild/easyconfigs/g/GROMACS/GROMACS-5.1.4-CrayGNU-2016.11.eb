@@ -32,7 +32,7 @@ skipsteps = ['test']
 builddependencies = [
     ('CMake', '3.6.0'),
     ('fftw/3.3.4.10', EXTERNAL_MODULE),
-    ('Boost', '1.61.0', '-Python-2.7.12'),
+    ('Boost', '1.62.0', '-Python-2.7.12'),
     ('libxml2', '2.9.3'),
 ]
 
