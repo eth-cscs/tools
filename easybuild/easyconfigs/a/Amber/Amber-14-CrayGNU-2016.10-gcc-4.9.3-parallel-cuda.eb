@@ -28,23 +28,19 @@ builddependencies = [
 
 buildininstalldir = True
 configopts = 'gnu'
-prebuildopts = 'export CUDA_HOME=$CUDATOOLKIT_HOME; export AMBERHOME=%(builddir)s/amber%(version)s;'
+prebuildopts = 'cd .. && mv amber14/* . && export CUDA_HOME=$CUDATOOLKIT_HOME; export AMBERHOME=%(builddir)s;'
 prebuildopts = prebuildopts + './configure -noX11 -mpi -crayxt5 -cuda --with-netcdf $EBROOTNETCDF gnu;'
 prebuildopts = prebuildopts + "echo 'PMEMD_CU_INCLUDES += -I$(MPICH_DIR)/include' >> config.h;"
 buildopts = 'install'
 
 files_to_copy = []
 sanity_check_paths = {
-    'files' : [ 'amber%(version)s/bin/pmemd.cuda.MPI' ],
+    'files' : [ 'bin/pmemd.cuda.MPI' ],
     'dirs'  : [],
 }
 
 modextravars = {
-    'AMBERHOME' : '%(builddir)s/amber%(version)s',
-}
-
-modextrapaths = {
-    'PATH' : 'amber%(version)s/bin',
+    'AMBERHOME' : '%(builddir)s',
 }
 
 #sanity_check_commands = [('make', '-C amber%(version)s test')]
