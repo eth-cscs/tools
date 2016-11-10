@@ -21,29 +21,29 @@ dependencies = [ ('bzip2', '1.0.6'),
 builddependencies = [
     ('cray-hdf5/1.10.0', EXTERNAL_MODULE),
     ('cray-netcdf/4.4.1', EXTERNAL_MODULE),
-    ('flex', '2.6.0')
+    ('flex', '2.6.0'),
 ]
 
 buildininstalldir = True
 
 configopts = 'gnu'
 
-prebuildopts = 'export AMBERHOME=%(builddir)s/amber%(version)s;'
+prebuildopts = 'cd .. && mv amber14/* . && '
+prebuildopts += 'export AMBERHOME=%(builddir)s;'
 
 prebuildopts = prebuildopts + './configure -noX11 -crayxt5 --with-netcdf $EBROOTNETCDF gnu;'
 
 buildopts = 'install'
 
 files_to_copy = []
+
 sanity_check_paths = {
-    'files' : [ 'amber%(version)s/bin/pmemd',
-                'amber%(version)s/bin/pmemd.amoeba'],
+    'files' : [ 'bin/pmemd' ],
     'dirs'  : [],
 }
 
 modextravars = {
-    'AMBERHOME' : '%(builddir)s/amber%(version)s',
-    'PATH' : 'amber%(version)s/bin',
+    'AMBERHOME' : '%(builddir)s',
 }
 
 #sanity_check_commands = [('export AMBERHOME=%(builddir)s/amber%(version)s; export LD_LIBRARY_PATH=$AMBERHOME/lib:$LD_LIBRARY_PATH; make', '-C amber%(version)s test')]

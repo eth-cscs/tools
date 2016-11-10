@@ -28,7 +28,8 @@ buildininstalldir = True
 
 configopts = 'gnu'
 
-prebuildopts = 'export AMBERHOME=%(builddir)s/amber%(version)s;'
+prebuildopts = 'cd .. && mv amber14/* . && '
+prebuildopts += 'export AMBERHOME=%(builddir)s;'
 
 prebuildopts = prebuildopts + './configure -mpi -noX11 -crayxt5 --with-netcdf $EBROOTNETCDF gnu;'
 
@@ -37,13 +38,12 @@ buildopts = 'install'
 files_to_copy = []
 
 sanity_check_paths = {
-    'files' : [ 'amber%(version)s/bin/pmemd.MPI' ],
+    'files' : [ 'bin/pmemd.MPI' ],
     'dirs'  : [],
 }
 
 modextravars = {
-    'AMBERHOME' : '%(builddir)s/amber%(version)s',
-    'PATH' : 'amber%(version)s/bin',
+    'AMBERHOME' : '%(builddir)s',
 }
 
 #sanity_check_commands = [('export AMBERHOME=%(builddir)s/amber%(version)s; export LD_LIBRARY_PATH=$AMBERHOME/lib:$LD_LIBRARY_PATH; make', '-C amber%(version)s test')]
