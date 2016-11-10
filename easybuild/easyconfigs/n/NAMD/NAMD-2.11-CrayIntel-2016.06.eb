@@ -1,4 +1,4 @@
-# Contributed by Luca Marsella and Christopher Bignamini (CSCS)
+# Contributed by Luca Marsella, Christopher Bignamini and Guilherme Peretti-Pezzi (CSCS)
 easyblock = 'MakeCp'
 
 name = 'NAMD'
@@ -11,21 +11,14 @@ toolchain = {'name': 'CrayIntel', 'version': '2016.06'}
 
 sources = ['NAMD_%(version)s_Source.tar.gz']
 
-maxparallel = 1
-prebuildopts = ' tar -xvf charm-6.7.0.tar && '
-prebuildopts += ' cd charm-6.7.0/ && '
-prebuildopts += ' ./build charm++ gni-crayxc smp --with-production && '
-prebuildopts += ' cd .. && '
-prebuildopts += ' wget http://www.ks.uiuc.edu/Research/namd/libraries/tcl8.5.9-crayxe-threaded.tar.gz && '
-prebuildopts += ' tar xzf tcl8.5.9-crayxe-threaded.tar.gz && '
-prebuildopts += ' unset CXX; unset CC && '
-prebuildopts += ' CFLAGS="$CFLAGS -L/opt/cray/pe/pmi/5.0.10-1.0000.11050.0.0.ari/lib64 -lpmi"'
-prebuildopts += ' ./config CRAY-XC-intel Eos --with-fftw3 --tcl-prefix `pwd`/tcl8.5.9-crayxe-threaded --charm-base `pwd`/charm-6.7.0 --charm-arch gni-crayxc-smp --enable-static && '
+prebuildopts = ' ./config CRAY-XC-intel Eos --with-fftw3 --tcl-prefix $EBROOTTCL --charm-base $EBROOTCHARMPLUSPLUS --charm-arch gni-crayxc-smp --cxx-opts  "$CRAY_UGNI_POST_LINK_OPTS -lugni $CRAY_PMI_POST_LINK_OPTS -lpmi" && '
 prebuildopts += ' cd CRAY-XC-intel && '
 
 builddependencies = [
-    ('fftw', EXTERNAL_MODULE),
+    ('fftw/3.3.4.8', EXTERNAL_MODULE),
     ('craype-hugepages8M', EXTERNAL_MODULE),
+    ('Charm++', '6.7.1'),
+    ('Tcl', '8.5.9', '-namd',  True),
 ]
 
 files_to_copy = [(['./CRAY-XC-intel/namd2'], 'bin')]
