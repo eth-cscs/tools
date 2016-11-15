@@ -3,7 +3,7 @@ easyblock = 'MakeCp'
 
 name = 'LAMMPS'
 version = '30Jul16'
-release = 'r15061'
+release = 'r15407'
 cudaversion =  '8.0'
 versionsuffix = '-cuda-%s' % cudaversion
 
@@ -23,7 +23,7 @@ prebuildopts += ' make package-update && '
 # go to folder ./lib/reax and make package reax
 prebuildopts += ' pushd ../lib/reax && make -f Makefile.gfortran && popd && '
 # go to folder ./lib/gpu, create Makefile.gpu and correct file ./lib/gpu/geryon/nvd_device.h
-prebuildopts += ' pushd ../lib/gpu && sed -e "/CUDR_OPTS/d" -e "/CUDA_ARCH/d" Makefile.xk7 > Makefile.gpu && '
+prebuildopts += ' pushd ../lib/gpu && sed -e "s/-march=bdver1//g" -e "s/sm_[0-9]*/sm_60/g" Makefile.xk7 > Makefile.gpu && '
 prebuildopts += ' sed -i -e "/CU_COMPUTEMODE_EXCLUSIVE)/ {N; d;}" geryon/nvd_device.h && make -f Makefile.gpu && popd && '
 # create Makefile.omp and correct Makefile.mpi
 prebuildopts += ' sed -e \'s/mpicxx/CC -fopenmp/\' ./MAKE/Makefile.mpi > ./MAKE/Makefile.omp && '
