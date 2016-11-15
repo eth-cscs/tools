@@ -26,7 +26,6 @@ prebuildopts += ' sed -i -e \'s/mpicxx/CC/\' ./MAKE/Makefile.mpi && '
 buildopts = [ ' mpi ', ' omp ' ]
 
 builddependencies = [
-    ('cudatoolkit/%s.34_2.2.5_g8ce7a9a-2.1' %cudaversion, EXTERNAL_MODULE),
     ('fftw/3.3.4.10', EXTERNAL_MODULE),
     ('Python', '2.7.12'),
 ]
