@@ -1,4 +1,4 @@
-# Contributed by Luca Marsella and Victor Holanda Rusu (CSCS)
+# Contributed by Guilherme Peretti-Pezzi, Luca Marsella and Victor Holanda Rusu (CSCS)
 easyblock = 'MakeCp'
 
 name = 'LAMMPS'
