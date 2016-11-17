@@ -7,13 +7,13 @@ version = "5.4.1"
 homepage = 'http://www.vasp.at'
 description = """The Vienna Ab initio Simulation Package (VASP) is a computer program for atomic scale materials modelling, e.g. electronic structure calculations and quantum-mechanical molecular dynamics, from first principles. """
 
-toolchain = {'name': 'CrayIntel', 'version': '2016.10'}
+toolchain = {'name': 'CrayIntel', 'version': '2016.06'}
 toolchainopts = { 'usempi': True }
 
 sources = [SOURCELOWER_TAR_BZ2]
 
 builddependencies = [
-    ('fftw/3.3.4.10', EXTERNAL_MODULE),
+    ('fftw/3.3.4.8', EXTERNAL_MODULE),
 ]
 
 # adapt ./arch/makefile.include.linux_intel and copy to ./makefile.include 
