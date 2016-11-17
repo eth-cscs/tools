@@ -18,7 +18,7 @@ source_urls = ['http://icl.cs.utk.edu/projectsfiles/magma/downloads/']
 
 patches = [('magma-2.0.0.patch')]
 
-dependencies = [ ('cudatoolkit/8.0.34_2.2.5_g8ce7a9a-2.1', EXTERNAL_MODULE) ]
+dependencies = [ ('cudatoolkit/8.0.44_GA_2.2.7_g4a6c213-2.1', EXTERNAL_MODULE) ]
 
 files_to_copy = ["lib", "include", "testing", "docs", "README"]
 
