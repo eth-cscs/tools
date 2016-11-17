@@ -25,7 +25,7 @@ dependencies = [
 ]
 
 builddependencies = [
-    ('cudatoolkit/%s.34_2.2.5_g8ce7a9a-2.1' %cudaversion, EXTERNAL_MODULE),
+    ('cudatoolkit/%s.44_GA_2.2.7_g4a6c213-2.1' %cudaversion, EXTERNAL_MODULE),
     ('fftw/3.3.4.10', EXTERNAL_MODULE),
     ('Python', '2.7.12'),
     ('flex', '2.6.0'),
