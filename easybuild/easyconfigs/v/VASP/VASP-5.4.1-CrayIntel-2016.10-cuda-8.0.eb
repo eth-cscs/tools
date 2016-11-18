@@ -16,15 +16,14 @@ cudaversion = '8.0'
 versionsuffix = '-cuda-%s' % cudaversion
 
 builddependencies = [
-    ('cudatoolkit/%s.44_GA_2.2.7_g4a6c213-2.1' %cudaversion, EXTERNAL_MODULE),
+    ('cudatoolkit/%s.34_2.2.5_g8ce7a9a-2.1' %cudaversion, EXTERNAL_MODULE),
+#    ('cudatoolkit/%s.44_GA_2.2.7_g4a6c213-2.1' %cudaversion, EXTERNAL_MODULE),
     ('fftw/3.3.4.10', EXTERNAL_MODULE),
     ('gcc/4.9.3', EXTERNAL_MODULE),
 ]
 
-# makefile.include from source distribution: ./arch/makefile.include.linux_intel_cuda
-makeincfile = ' ./arch/makefile.include.linux_intel_cuda ' 
-# adapt makeincflie and copy to ./makefile.include 
-prebuildopts = ' sed -e "s/mpif90/ftn/g" -e "/MKLROOT    =/d" -e "s#-lmkl_blacs_intelmpi_lp64#\$(MKL_PATH)/libmkl_blacs_lp64.a#" -e "/FFT_ROOT/d" -e "/SCALAPACK  =/a FFT_LIB := -L\$(FFTW_DIR) -lfftw3" -e "/OBJECTS     =/i INCS = -I\$(FFTW_INC)" -e "s#/opt/cuda/#\$(CUDATOOLKIT_HOME)#" -e "s/\S*_30\S*//" -e "/MAGMA_ROOT/d" -e "s#/opt/openmpi/include#\$(MPICH_DIR)/include#" %s > ./makefile.include && ' % makeincfile
+# adapt ./arch/makefile.include.linux_intel_cuda and copy to ./makefile.include 
+prebuildopts = ' sed -e "s/mpif90/ftn/g" -e "s/-mkl//" -e "/mkl/Id" -e "/FFT_ROOT/d" -e "/OBJECTS /a FFT_LIB=-L\$(FFTW_DIR) -lfftw3 \\nINCS=-I\$(FFTW_INC)" -e "s#/opt/cuda/#\$(CUDATOOLKIT_HOME)#" -e "/GENCODE_ARCH/d" -e "/MAGMA_ROOT/d" -e "s#/opt/openmpi/include#\$(MPICH_DIR)/include#" ./arch/makefile.include.linux_intel_cuda > ./makefile.include && '
 # correct common.mk for Intel compiler
 prebuildopts += ' sed -i -e "s/gcc/icc/" -e "s/g++/icpc/g" src/CUDA/common.mk && '
 # correct kernels.h for CUDA 8.0
