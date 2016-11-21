@@ -1,27 +1,22 @@
 # contributed by Luca Marsella (CSCS)
 #         and Victor Holanda Rusu (CSCS)
 #
-easyblock = 'CMakeMake'
-name = 'GROMACS+PLUMED'
-version = "5.1.2-2.2.3"
+name = 'GROMACS'
+version = "5.1.2"
 cudaversion = '8.0'
-versionsuffix = '-cuda-%s' % cudaversion
+versionsuffix = '-PLUMED-2.2.3-cuda-%s' % cudaversion
 
 homepage = 'http://www.gromacs.org'
 description = """GROMACS is a versatile package to perform molecular dynamics,
  i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles."""
 
 toolchain = {'name': 'CrayGNU', 'version': '2016.11'}
-toolchainopts = {'usempi': 'True', 'openmp': 'True'}
+toolchainopts = {'usempi': True, 'openmp': True, 'pic': True, 'verbose': False}
 
 source_urls = ['ftp://ftp.gromacs.org/pub/gromacs/']
-sources = ['gromacs-5.1.2.tar.gz']
+sources = [SOURCELOWER_TAR_GZ]
 
-preconfigopts = ' plumed-patch -p --runtime <<< 5 && '
-
-configopts = ' -DCMAKE_BUILD_TYPE=Release -DGMX_OPENMP=ON -DGMX_MPI=ON -DGMX_THREAD_MPI=OFF '
-
-skipsteps = ['test']
+preconfigopts = ' cd ../gromacs-%(version)s && plumed-patch -p --runtime --shared <<< 5 && cd - && '
 
 dependencies = [ ('PLUMED', '2.2.3'),
                  ('Boost', '1.61.0', '-Python-2.7.12') ]
@@ -35,5 +30,7 @@ builddependencies = [
     ('Boost', '1.61.0', '-Python-2.7.12'),
     ('libxml2', '2.9.3'),
 ]
+
+runtest = False
 
 moduleclass = 'bio'
