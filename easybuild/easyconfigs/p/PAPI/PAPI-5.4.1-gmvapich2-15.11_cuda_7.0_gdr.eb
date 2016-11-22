@@ -26,7 +26,6 @@ sanity_check_paths = {
                                           "cost", "decode", "error_codes", "event_chooser",
                                           "mem_info", "multiplex_cost", "native_avail", "version",
                                           "xml_event_info"]],
-
     'dirs': [],
 }
 
