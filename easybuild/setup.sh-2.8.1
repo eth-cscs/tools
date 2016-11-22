@@ -106,10 +106,10 @@ elif [[ "$hostName" == "ela" || "$hostName" == "pilatus" ]] ; then
 fi
 
 export EASYBUILD_PREFIX=${PROJ}/easybuild
-export EASYBUILD_SET_GID_BIT=1
-export EASYBUILD_GROUP_WRITABLE_INSTALLDIR=1
+#export EASYBUILD_SET_GID_BIT=1
+#export EASYBUILD_GROUP_WRITABLE_INSTALLDIR=1
 #export EASYBUILD_STICKY_BIT=1
-export EASYBUILD_UMASK=002
+#export EASYBUILD_UMASK=002
 export EASYBUILD_BUILDPATH=/dev/shm/$USER
 #export EASYBUILD_ROBOT_PATHS=/apps/common/easybuild/cscs_easyconfigs/:/apps/common/easybuild/ebfiles_repo/${hostName}:
 export EASYBUILD_ROBOT_PATHS=/apps/common/easybuild/cscs_easyconfigs/:
