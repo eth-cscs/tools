@@ -19,7 +19,7 @@ start_dir = 'src'
 # parallel build doesn't always work
 parallel = 1
 
-runtest = 'fulltest'
+#runtest = 'fulltest'
 
 sanity_check_paths = {
     'files': ["bin/papi_%s" % x for x in ["avail", "clockres", "command_line", "component_avail",
