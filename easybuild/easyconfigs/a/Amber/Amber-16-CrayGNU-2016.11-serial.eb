@@ -4,7 +4,7 @@
 easyblock = 'MakeCp'
 
 name = 'Amber'
-version = '14'
+version = '16'
 versionsuffix = '-serial'
 amber_version='%(version)s'
 
@@ -13,14 +13,16 @@ description = 'Assisted Model Building with Energy Refinement'
 
 toolchain = {'name': 'CrayGNU', 'version': '2016.11'}
 toolchainopts = { 'verbose' : False }
-sources = ['Amber%(version)s.tar.gz', 'AmberTools15.tar.bz2']
+sources = ['Amber%(version)s.tar.bz2', 'AmberTools%(version)s.tar.bz2']
 
 dependencies = [ ('bzip2', '1.0.6'),
-                 ('zlib', '1.2.8') ]
+                 ('zlib', '1.2.8'),
+                 ('Python', '2.7.12') ]
 
 builddependencies = [
     ('cray-hdf5/1.10.0', EXTERNAL_MODULE),
     ('cray-netcdf/4.4.1', EXTERNAL_MODULE),
+    ('Python', '2.7.12'),
     ('flex', '2.6.0'),
 ]
 

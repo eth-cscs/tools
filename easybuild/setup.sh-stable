@@ -82,10 +82,11 @@ elif [[ "$hostName" == "ela" || "$hostName" == "pilatus" ]] ; then
 fi
 
 export EASYBUILD_PREFIX=${PROJ}/easybuild
-export EASYBUILD_SET_GID_BIT=1
-export EASYBUILD_GROUP_WRITABLE_INSTALLDIR=1
+export EASYBUILD_TMPDIR=$EASYBUILD_PREFIX/tmp
+#export EASYBUILD_SET_GID_BIT=1
+#export EASYBUILD_GROUP_WRITABLE_INSTALLDIR=1
 #export EASYBUILD_STICKY_BIT=1
-export EASYBUILD_UMASK=002
+#export EASYBUILD_UMASK=002
 export EASYBUILD_BUILDPATH=/dev/shm/$USER
 export EASYBUILD_ROBOT_PATHS=$TOOLS/easybuild/easyconfigs/:
 export EASYBUILD_INCLUDE_EASYBLOCKS="$TOOLS/easybuild/easyblocks/*.py"
