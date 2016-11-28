@@ -1,3 +1,13 @@
+`THIS REPO WILL BE DELETED`
+
+use https://github.com/eth-cscs/production instead
+
+`THIS REPO WILL BE DELETED`
+
+
+
+
+
 # tools
 
 CSCS tools including profiling, debug, perf, R, python, netcdf, etc...
